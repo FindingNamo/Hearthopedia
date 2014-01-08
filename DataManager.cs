@@ -9,9 +9,9 @@ namespace Hearthopedia
     class DataManager
     {
         private List<Card> cards = new List<Card>();
-        private DataManager dataManager;
+        private static DataManager dataManager;
 
-        public DataManager Instance
+        public static DataManager Instance
         {
             get
             {

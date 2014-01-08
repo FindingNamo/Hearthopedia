@@ -24,7 +24,17 @@ namespace Hearthopedia
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Utilities.GetCardFromJson("lala");
+            DataAccess.GetDataFromHearthHead();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DataAccess.DeleteFromLocalStorage("cards.txt");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DataAccess.PopulateDataManager();
         }
 
         // Sample code for building a localized ApplicationBar

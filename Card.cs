@@ -10,6 +10,14 @@ namespace Hearthopedia
     {
         public int id { get; set; }
         public string image { get; set; }
+        public string imageURL
+        {
+            get
+            {
+                string concat = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + image + ".png";
+                return concat;
+            }
+        }
         public int set { get; set; }
         public string icon { get; set; }
         public int type { get; set; }
@@ -22,5 +30,6 @@ namespace Hearthopedia
         public string name { get; set; }
         public string description { get; set; }
         public List<int> mechanics { get; set; }
+
     }
 }
