@@ -97,6 +97,8 @@ namespace Hearthopedia
 
         public static async Task PopulateDataManager()
         {
+            DataManager.Instance.Cards.Clear();
+
             using (StreamReader reader = new StreamReader(
             await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
             {

@@ -9,21 +9,29 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Navigation;
+using System.Collections.ObjectModel;
 
 namespace Hearthopedia
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        ObservableCollection<Card> displayedCards = new ObservableCollection<Card>();
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
+            // Bind the listbox to the cards list
             Binding cardsBinding = new Binding();
-            cardsBinding.Source = DataManager.Instance.Cards;
-
-            // BindingOperations.SetBinding(listCards, ListBox.ItemsSourceProperty, cardsBinding);
+            cardsBinding.Source = displayedCards;
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
+
+            // Populate the cards list
+            DataAccess.PopulateDataManager();
+
+            // Check for update (we still need to prompt for update, this simply tells the user theere has been updates but won't read from it until the next boot)
+            DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -42,6 +50,16 @@ namespace Hearthopedia
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             DataAccess.PopulateDataManager();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            displayedCards.Clear();
+            foreach(Card card in DataManager.Instance.Cards)
+            {
+                if (card.name.Contains(txtbox1.Text))
+                    displayedCards.Add(card);
+            }
         }
 
         // Sample code for building a localized ApplicationBar
