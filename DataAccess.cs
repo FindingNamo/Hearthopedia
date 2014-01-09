@@ -105,7 +105,7 @@ namespace Hearthopedia
                     string currentLine = reader.ReadLine();
                     if (currentLine.Contains("\"id\""))
                     {
-                        string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{"));
+                        string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
                         Card currentCard = Utilities.GetCardFromJson(jsonString);
                         DataManager.Instance.Cards.Add(currentCard);
                     }

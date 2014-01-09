@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Hearthopedia
 {
     class DataManager
     {
-        private List<Card> cards = new List<Card>();
+        private ObservableCollection<Card> cards = new ObservableCollection<Card>();
         private static DataManager dataManager;
 
         public static DataManager Instance
@@ -22,7 +23,7 @@ namespace Hearthopedia
             }
         }
 
-        public List<Card> Cards
+        public ObservableCollection<Card> Cards
         {
             get
             {

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Hearthopedia.Resources;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using Hearthopedia.Resources;
 
 namespace Hearthopedia
 {
@@ -17,6 +18,12 @@ namespace Hearthopedia
         public MainPage()
         {
             InitializeComponent();
+
+            Binding cardsBinding = new Binding();
+            cardsBinding.Source = DataManager.Instance.Cards;
+
+            // BindingOperations.SetBinding(listCards, ListBox.ItemsSourceProperty, cardsBinding);
+            listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
