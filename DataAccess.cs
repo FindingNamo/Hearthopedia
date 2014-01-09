@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using Windows.Foundation;
 using Windows.Storage;
+using System.Threading;
 
 namespace Hearthopedia
 {
@@ -95,7 +96,7 @@ namespace Hearthopedia
             await file.DeleteAsync();
         }
 
-        public static async Task PopulateDataManager()
+        public static async Task PopulateDataManagerCards()
         {
             DataManager.Instance.Cards.Clear();
 
@@ -113,7 +114,37 @@ namespace Hearthopedia
                     }
                 }
             }
+        }
 
+        public static async Task PopulateDataManagerDisplayedCards(string searchString)
+        {
+            // Only do the if it's been this many seconds since the textbox changed
+            int searchDelaySec = 2;
+            int searchNumMinChar = 2;
+
+            // only do the search if there are this many characters
+            if (searchString.Length >= searchNumMinChar)
+            {
+                Thread thread = new Thread((ThreadStart)delegate
+                {
+                    Thread.Sleep(searchDelaySec * 1000);
+
+                    // if it's been long enough and no new search has been requested, actually do the search
+                    if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
+                    {
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            DataManager.Instance.DisplayedCards.Clear();
+                            foreach (Card card in DataManager.Instance.Cards)
+                            {
+                                if (card.name.ToLower().Contains(searchString.ToLower()))
+                                    DataManager.Instance.DisplayedCards.Add(card);
+                            }
+                        });
+                    }
+                });
+                thread.Start();
+            }
         }
     }
 }

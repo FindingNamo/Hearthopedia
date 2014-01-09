@@ -10,13 +10,12 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Navigation;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Hearthopedia
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        ObservableCollection<Card> displayedCards = new ObservableCollection<Card>();
-
         // Constructor
         public MainPage()
         {
@@ -24,11 +23,11 @@ namespace Hearthopedia
 
             // Bind the listbox to the cards list
             Binding cardsBinding = new Binding();
-            cardsBinding.Source = displayedCards;
+            cardsBinding.Source = DataManager.Instance.DisplayedCards;
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
             // Populate the cards list
-            DataAccess.PopulateDataManager();
+            DataAccess.PopulateDataManagerCards();
 
             // Check for update (we still need to prompt for update, this simply tells the user theere has been updates but won't read from it until the next boot)
             DataAccess.GetDataFromHearthHead();
@@ -49,17 +48,14 @@ namespace Hearthopedia
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            DataAccess.PopulateDataManager();
+            DataAccess.PopulateDataManagerCards();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            displayedCards.Clear();
-            foreach(Card card in DataManager.Instance.Cards)
-            {
-                if (card.name.Contains(txtbox1.Text))
-                    displayedCards.Add(card);
-            }
+            // Update search time
+            DataManager.Instance.LastSearchTime = DateTime.Now;
+            DataAccess.PopulateDataManagerDisplayedCards(txtbox1.Text);
         }
 
         // Sample code for building a localized ApplicationBar
