@@ -15,6 +15,31 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        
+        <Grid.Resources>
+
+
+            <Style x:Key="SmallCardLabel" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+            
+            <Style x:Key="SmallCardStatsOverType" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFFFFFFF" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontWeight" Value="Normal"/>
+            </Style>
+            <Style x:Key="SmallCardStatsOverType2" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FF000000" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="FontWeight" Value="ExtraBold"/>
+            </Style>
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -63,18 +88,62 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ListBox x:Name="listCards">
-                    <ListBox.ItemTemplate>
+                
+                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate >
                         <DataTemplate>
-                            <TextBlock Text="{Binding name}"
-                               FontSize="32"/>
+
+                            <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
+                            <Grid HorizontalAlignment="Stretch" Margin="8,8,8,8" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="1" BorderThickness="0, 0, 0, 1" BorderBrush="#FF808080" />
+                                
+                                <!-- A grid for the label, and stats of the card -->
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="32"/>
+                                        <ColumnDefinition Width="32"/>
+                                        <ColumnDefinition Width="32"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Card name -->
+                                    <TextBlock Grid.Column="0" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
+
+                                    <!-- Cost -->
+                                    <Image Grid.Column="1" Source="Assets/blue32.png" />
+                                    <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType2}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
+                                    
+
+                                    <!-- Attack -->
+                                    <Image Grid.Column="2" Source="Assets/yellow32.png" />
+                                    <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType2}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}"/>
+
+                                    <!-- Health -->
+                                    <Image Grid.Column="3" Source="Assets/red32.png" />
+                                    <TextBlock Grid.Column="3" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverType2}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverType}"/>
+                                </Grid>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
         </Grid>
-        
-        
+
+
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
