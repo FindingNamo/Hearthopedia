@@ -58,6 +58,12 @@ namespace Hearthopedia
             DataAccess.PopulateDataManagerDisplayedCards(txtbox1.Text);
         }
 
+        private void listCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Card selectedCard = (Card)(e.AddedItems[0]);
+            NavigationService.Navigate(new Uri("/CardPage.xaml?name="+selectedCard.name, UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

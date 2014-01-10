@@ -8,6 +8,7 @@ using System.IO;
 using Windows.Foundation;
 using Windows.Storage;
 using System.Threading;
+using System.Net;
 
 namespace Hearthopedia
 {

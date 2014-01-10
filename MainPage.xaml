@@ -80,7 +80,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 
-                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch">
+                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" SelectionChanged="listCards_SelectionChanged">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
