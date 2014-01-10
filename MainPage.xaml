@@ -113,7 +113,7 @@
 
                                     <!-- Cost -->
                                     <Image Grid.Column="1" Source="Assets/blue32.png" />
-                                    <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType2}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding cost}"  Style="{StaticResource SmallCardStatsOverType2}"/>
                                     <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
                                     
 

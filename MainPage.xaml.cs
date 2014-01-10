@@ -60,8 +60,11 @@ namespace Hearthopedia
 
         private void listCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Card selectedCard = (Card)(e.AddedItems[0]);
-            NavigationService.Navigate(new Uri("/CardPage.xaml?name="+selectedCard.name, UriKind.Relative));
+            if (e.AddedItems.Count > 0)
+            {
+                Card selectedCard = (Card)(e.AddedItems[0]);
+                NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
+            }
         }
 
         // Sample code for building a localized ApplicationBar
