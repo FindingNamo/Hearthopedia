@@ -23,7 +23,7 @@ namespace Hearthopedia
 
             // Bind the listbox to the cards list
             Binding cardsBinding = new Binding();
-            cardsBinding.Source = DataManager.Instance.DisplayedCards;
+            cardsBinding.Source = DataManager.Instance.SearchedCards;
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
             // Populate the cards list
@@ -55,7 +55,7 @@ namespace Hearthopedia
         {
             // Update search time
             DataManager.Instance.LastSearchTime = DateTime.Now;
-            DataAccess.PopulateDataManagerDisplayedCards(txtbox1.Text);
+            DataAccess.SearchCards(txtbox1.Text);
         }
 
         private void listCards_SelectionChanged(object sender, SelectionChangedEventArgs e)

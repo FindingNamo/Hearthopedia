@@ -10,7 +10,7 @@ namespace Hearthopedia
     class DataManager
     {
         private ObservableCollection<Card> cards = new ObservableCollection<Card>();
-        private ObservableCollection<Card> displayedCards = new ObservableCollection<Card>();
+        private ObservableCollection<Card> searchedCards = new ObservableCollection<Card>();
         private static DataManager dataManager;
 
         public static DataManager Instance
@@ -34,12 +34,17 @@ namespace Hearthopedia
             }
         }
 
-        public ObservableCollection<Card> DisplayedCards
+        public ObservableCollection<Card> SearchedCards
         {
             get
             {
-                return displayedCards;
+                return searchedCards;
             }
+        }
+
+        public void SortCards()
+        {
+            cards = new ObservableCollection<Card>(from i in cards orderby i.name select i);
         }
     }
 }

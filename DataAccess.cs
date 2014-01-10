@@ -9,6 +9,7 @@ using Windows.Foundation;
 using Windows.Storage;
 using System.Threading;
 using System.Net;
+using System.Windows;
 
 namespace Hearthopedia
 {
@@ -50,7 +51,11 @@ namespace Hearthopedia
                             // Tell the app that there has been updates and let user choose when to update
                             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                             {
-                                System.Windows.MessageBox.Show("There has been updates");
+                                MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);    
+                                if (result == MessageBoxResult.OK)
+                                {
+                                    DataAccess.PopulateDataManagerCards();
+                                }
                             });
                         }
                     }
@@ -71,10 +76,10 @@ namespace Hearthopedia
                         writer.Flush();
                     }
 
-                    // Tell the app that there has been updates and let user choose when to update
+                    // Populate the dataManager since it has nothing because we didn't have a cached version of the data before
                     System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
-                        System.Windows.MessageBox.Show("There has been updates");
+                            DataAccess.PopulateDataManagerCards();
                     });
                 }
 
@@ -113,11 +118,14 @@ namespace Hearthopedia
                         Card currentCard = Utilities.GetCardFromJson(jsonString);
                         DataManager.Instance.Cards.Add(currentCard);
                     }
+
+                    // Sort
+                    DataManager.Instance.SortCards();
                 }
             }
         }
 
-        public static async Task PopulateDataManagerDisplayedCards(string searchString)
+        public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
             int searchDelaySec = 2;
@@ -135,11 +143,11 @@ namespace Hearthopedia
                     {
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
-                            DataManager.Instance.DisplayedCards.Clear();
+                            DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
                                 if (card.name.ToLower().Contains(searchString.ToLower()))
-                                    DataManager.Instance.DisplayedCards.Add(card);
+                                    DataManager.Instance.SearchedCards.Add(card);
                             }
                         });
                     }
