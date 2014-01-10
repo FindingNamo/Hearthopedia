@@ -1,33 +1,36 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="Hearthopedia.CardPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    x:Class="Hearthopedia.CardPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
-
-    <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/background.png" />
         </Grid.Background>
-        <phone:Panorama Title="Hearthopedia">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <phone:Panorama Title="Hearthopedia" Grid.Row="0">
             <!--Panorama item one-->
             <phone:PanoramaItem x:Name="mainItem" Header="">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Image x:Name="imageCard"></Image>
+                    <Image x:Name="imageCard"/>
 
+                    
                 </Grid>
             </phone:PanoramaItem>
 
@@ -35,7 +38,9 @@
             <phone:PanoramaItem Header="More Info">
                 <Grid/>
             </phone:PanoramaItem>
+            
         </phone:Panorama>
+        <UI:AdControl Grid.Row="1" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="480"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
