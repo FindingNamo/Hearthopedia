@@ -21,6 +21,7 @@
             <Style x:Key="SmallCardLabel" TargetType="TextBlock">
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="Margin" Value="100,0,0,0" />
             </Style>
 
             <Style x:Key="SmallCardStatsOverType" TargetType="TextBlock">
@@ -30,12 +31,14 @@
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontWeight" Value="Normal"/>
             </Style>
+            
             <Style x:Key="SmallCardStatsOverType2" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="#FF000000" />
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="FontSize" Value="28" />
+                <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontWeight" Value="ExtraBold"/>
+                <Setter Property="Margin" Value="1,1,0,0"></Setter>
             </Style>
         </Grid.Resources>
 
@@ -88,7 +91,6 @@
                     </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate >
                         <DataTemplate>
-
                             <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
                             <Grid HorizontalAlignment="Stretch" Margin="8,8,8,8" >
                                 <Grid.RowDefinitions>
@@ -97,6 +99,17 @@
                                 </Grid.RowDefinitions>
 
                                 <Border Grid.Row="1" BorderThickness="0, 0, 0, 1" BorderBrush="#FF808080" />
+
+                                <Image Grid.Row="0" HorizontalAlignment="Left" Source="{Binding ClassPortraitImagePath}" Stretch="None" RenderTransformOrigin="0,0"/>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.Background>
+                                        <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0,0.5" MappingMode="RelativeToBoundingBox">
+                                            <GradientStop Color="#FF000000"/>
+                                            <GradientStop Color="#00000000" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                </Grid>
 
                                 <!-- A grid for the label, and stats of the card -->
                                 <Grid Grid.Row="0">
@@ -108,7 +121,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Card name -->
-                                    <TextBlock Grid.Column="0" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
+                                    <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
 
                                     <!-- Cost -->
                                     <Image Grid.Column="1" Source="Assets/blue32.png" />
@@ -133,8 +146,6 @@
             </Grid>
             <UI:AdControl Grid.Row="2" ApplicationId="test_client" AdUnitId="Image480_80" Height="80" VerticalAlignment="Top" Width="480"/>
         </Grid>
-
-
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to

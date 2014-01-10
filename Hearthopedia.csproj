@@ -139,8 +139,11 @@
     </Content>
     <Content Include="Assets\background.PNG" />
     <Content Include="Assets\blue32.png" />
+    <Content Include="Assets\ClassPortraits\unknown.png" />
+    <Content Include="Assets\ClassPortraits\warrior.png" />
     <Content Include="Assets\red32.png" />
     <Content Include="Assets\searchbar.png" />
+    <Content Include="Assets\ClassPortraits\druid.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -150,12 +153,19 @@
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\ClassPortraits\hunter.png" />
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\ClassPortraits\mage.png" />
+    <Content Include="Assets\ClassPortraits\paladin.png" />
+    <Content Include="Assets\ClassPortraits\priest.png" />
+    <Content Include="Assets\ClassPortraits\rogue.png" />
+    <Content Include="Assets\ClassPortraits\shaman.png" />
+    <Content Include="Assets\ClassPortraits\warlock.png" />
     <Content Include="Assets\yellow32.png" />
   </ItemGroup>
   <ItemGroup>
