@@ -18,20 +18,13 @@
             <ImageBrush ImageSource="/Assets/background.png" />
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <phone:Panorama Title="Hearthopedia" Grid.Row="0">
             <!--Panorama item one-->
             <phone:PanoramaItem x:Name="mainItem" Header="">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Image x:Name="imageCard"/>
-
-                    
-                </Grid>
+                <Image x:Name="imageCard" Stretch="Uniform"/>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->

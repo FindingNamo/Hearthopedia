@@ -140,6 +140,7 @@
     <Content Include="Assets\background.PNG" />
     <Content Include="Assets\blue32.png" />
     <Content Include="Assets\red32.png" />
+    <Content Include="Assets\searchbar.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Hearthopedia
 {
@@ -51,11 +52,11 @@ namespace Hearthopedia
             DataAccess.PopulateDataManagerCards();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Update search time
             DataManager.Instance.LastSearchTime = DateTime.Now;
-            DataAccess.SearchCards(txtbox1.Text);
+            DataAccess.SearchCards(textBoxSearch.Text);
         }
 
         private void listCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,6 +66,13 @@ namespace Hearthopedia
                 Card selectedCard = (Card)(e.AddedItems[0]);
                 NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
             }
+        }
+
+        private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxSearch.Background = new SolidColorBrush(Colors.Transparent);
+            textBoxSearch.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            textBoxSearch.SelectionBackground = new SolidColorBrush(Colors.Transparent);
         }
 
         // Sample code for building a localized ApplicationBar
