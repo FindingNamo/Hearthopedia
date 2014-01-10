@@ -46,11 +46,11 @@ namespace Hearthopedia
         private void  DownloadImage(string url)
         {
             WebClient webClient = new WebClient();
-            webClient.OpenReadCompleted += ImageOpenReadCompleted;
+            webClient.OpenReadCompleted += DownloadImageCompleted;
             webClient.OpenReadAsync(new Uri(url));
         }
 
-        private void ImageOpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+        private void DownloadImageCompleted(object sender, OpenReadCompletedEventArgs e)
         {
             if (!e.Cancelled && e.Error == null)
             {
