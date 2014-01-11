@@ -16,21 +16,37 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
-        <Grid.RowDefinitions>
+
+            <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-              
-        <phone:Panorama x:Name="PanoramaObject" Title="{Binding name}" Background="{Binding ClassBannerBrush}" Grid.Row="0" Clip="" SelectionChanged="PanoramaObject_SelectionChanged">
 
-            <!--Panorama item one-->
-            <phone:PanoramaItem x:Name="mainItem" Header="Card">
-                <Image x:Name="imageCard" Stretch="Uniform"/>
+        <phone:Panorama x:Name="PanoramaObject" Title="{Binding name}" Background="{Binding ClassBannerBrush}" Grid.Row="0" Foreground="{Binding QualityColourHexString}" >
+            <phone:Panorama.TitleTemplate>
+                <DataTemplate>
+                    <ContentPresenter>
+                        <TextBlock Margin="0,70,0,0" Text="{Binding}" FontSize="72" FontFamily="Segoe WP SemiLight" />
+                    </ContentPresenter>
+                </DataTemplate>
+            </phone:Panorama.TitleTemplate>
+            
+            <phone:Panorama.HeaderTemplate>
+                <DataTemplate>
+                    <ContentPresenter>
+                        <TextBlock Foreground="White" Text="{Binding}" FontSize="48" />
+                    </ContentPresenter>
+                </DataTemplate>
+            </phone:Panorama.HeaderTemplate>
+            
+                <!--Panorama item one-->
+            <phone:PanoramaItem x:Name="mainItem">
+                <Image x:Name="imageCard" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform" Source="Assets\UnloadedCard.png"/>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="Basic Info">
-                <TextBlock Text="{Binding Dump}" />
+                <TextBlock Foreground="Green"  Text="{Binding Dump}" />
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="Advanced">

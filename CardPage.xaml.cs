@@ -41,7 +41,8 @@ namespace Hearthopedia
             }
             this.DataContext = selectedCard;
 
-            mainItem.Header = selectedCard.name;
+            imageCard.Source = new BitmapImage(new Uri("\\Assets\\UnloadedCard.png", UriKind.Relative));
+
             DownloadImage(selectedCard.imageURL);
         }
 

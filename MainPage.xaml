@@ -43,7 +43,7 @@
         </Grid.Resources>
 
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="Fill" />
+            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -92,7 +92,7 @@
                     <ListBox.ItemTemplate >
                         <DataTemplate>
                             <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
-                            <Grid HorizontalAlignment="Stretch" Margin="8,8,8,8" Tap="OnListItemClick" >
+                            <Grid HorizontalAlignment="Stretch" Tap="OnListItemClick" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />

@@ -232,6 +232,8 @@ namespace Hearthopedia
             {
                 switch (classs)
                 {
+                    case 0:
+                        return "Everyone";
                     case 1:
                         return "Warrior";
                     case 2:
