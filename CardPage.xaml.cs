@@ -61,5 +61,10 @@ namespace Hearthopedia
                 imageCard.Source = bmp;
             }
         }
+
+        private void PanoramaObject_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Panorama pan = (Panorama)sender;
+        }
     }
 }

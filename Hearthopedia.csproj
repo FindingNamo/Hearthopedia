@@ -139,6 +139,32 @@
     </Content>
     <Content Include="Assets\background.PNG" />
     <Content Include="Assets\blue32.png" />
+    <Content Include="Assets\ClassBanners\druid.jpg" />
+    <Content Include="Assets\ClassBanners\hunter.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\mage.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\paladin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\priest.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\rogue.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\shaman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\unknown.jpg" />
+    <Content Include="Assets\ClassBanners\warlock.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ClassBanners\warrior.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\ClassPortraits\unknown.png" />
     <Content Include="Assets\ClassPortraits\warrior.png" />
     <Content Include="Assets\red32.png" />
@@ -166,6 +192,7 @@
     <Content Include="Assets\ClassPortraits\rogue.png" />
     <Content Include="Assets\ClassPortraits\shaman.png" />
     <Content Include="Assets\ClassPortraits\warlock.png" />
+    <Content Include="Assets\unknown.png" />
     <Content Include="Assets\yellow32.png" />
   </ItemGroup>
   <ItemGroup>

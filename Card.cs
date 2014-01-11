@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Hearthopedia
 {
@@ -131,6 +133,30 @@ namespace Hearthopedia
             get
             {
                return "Assets\\ClassPortraits\\" + ClassNameString + ".png";
+            }
+        }
+
+        /// <summary>
+        /// Get a relative path to the portrait for the class of this card.
+        /// </summary>
+        public string ClassBannerImagePath
+        {
+            get
+            {
+                return "Assets\\ClassBanners\\" + ClassNameString + ".jpg";
+            }
+        }
+
+        public ImageBrush ClassBannerBrush
+        {
+            get
+            {
+                return new ImageBrush()
+                {
+                    ImageSource = new BitmapImage(new Uri(ClassBannerImagePath, UriKind.Relative)),
+                    Stretch = Stretch.UniformToFill,
+                    Opacity = 0.3,
+                };
             }
         }
 

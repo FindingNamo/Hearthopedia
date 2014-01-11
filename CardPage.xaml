@@ -20,10 +20,8 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <phone:Panorama x:Name="PanoramaObject" Title="{Binding name}" Grid.Row="0">
-            <phone:Panorama.Background>
-                <ImageBrush Stretch="Fill" ImageSource="{Binding ClassPortraitImagePath}"/>
-            </phone:Panorama.Background>
+              
+        <phone:Panorama x:Name="PanoramaObject" Title="{Binding name}" Background="{Binding ClassBannerBrush}" Grid.Row="0" Clip="" SelectionChanged="PanoramaObject_SelectionChanged">
 
             <!--Panorama item one-->
             <phone:PanoramaItem x:Name="mainItem" Header="Card">
@@ -31,10 +29,14 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Description">
+            <phone:PanoramaItem Header="Basic Info">
                 <TextBlock Text="{Binding Dump}" />
             </phone:PanoramaItem>
-            
+
+            <phone:PanoramaItem Header="Advanced">
+                <TextBlock Text="{Binding Dump}" />
+            </phone:PanoramaItem>
+
         </phone:Panorama>
         <UI:AdControl Grid.Row="1" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="480"/>
     </Grid>
