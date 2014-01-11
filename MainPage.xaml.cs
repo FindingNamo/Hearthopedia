@@ -44,20 +44,18 @@ namespace Hearthopedia
             DataAccess.SearchCards(textBoxSearch.Text);
         }
 
-        private void listCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0)
-            {
-                Card selectedCard = (Card)(e.AddedItems[0]);
-                NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
-            }
-        }
-
         private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             textBoxSearch.Background = new SolidColorBrush(Colors.Transparent);
             textBoxSearch.BorderBrush = new SolidColorBrush(Colors.Transparent);
             textBoxSearch.SelectionBackground = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void OnListItemClick(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            FrameworkElement clickedObject = (FrameworkElement)sender;
+            Card selectedCard = (Card)clickedObject.DataContext;
+            NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar

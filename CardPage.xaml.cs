@@ -39,6 +39,8 @@ namespace Hearthopedia
                     }
                 }
             }
+            this.DataContext = selectedCard;
+
             mainItem.Header = selectedCard.name;
             DownloadImage(selectedCard.imageURL);
         }

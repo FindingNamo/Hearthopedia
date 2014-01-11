@@ -82,7 +82,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" SelectionChanged="listCards_SelectionChanged">
+                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -92,7 +92,7 @@
                     <ListBox.ItemTemplate >
                         <DataTemplate>
                             <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
-                            <Grid HorizontalAlignment="Stretch" Margin="8,8,8,8" >
+                            <Grid HorizontalAlignment="Stretch" Margin="8,8,8,8" Tap="OnListItemClick" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />

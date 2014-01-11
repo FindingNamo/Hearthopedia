@@ -31,9 +31,101 @@ namespace Hearthopedia
         public int health { get; set; }
         public int collectible { get; set; }
         public string name { get; set; }
+        public int race { get; set; }
         public string description { get; set; }
         public List<int> mechanics { get; set; }
 
+        public string Dump
+        {
+            get
+            {
+                return string.Format("Set: {0}\nType: {2}\nFaction: {3}\nClass: {4}\nQuality: {5}\nCost: {6}\nAttack: {7}\nHealth: {8}\n, Collectible: {9}\n, Description: {10}\n, Mechanics: {11}\nRace: {12}",
+                    CardSetString, icon, CardTypeString, faction, classs, quality, cost, attack, health, collectible, description, mechanics, CardRaceString);
+            }
+        }
+
+        /// <summary>
+        /// Gets a string representation of the race of this card.
+        /// </summary>
+        public string CardRaceString
+        {
+            get
+            {
+                switch (race)
+                {
+                    case 0:
+                        return "None";
+                    case 20:
+                        return "Beast";
+                    case 15:
+                        return "Demon";
+                    case 24:
+                        return "Dragon";
+                    case 14:
+                        return "Murloc";
+                    case 23:
+                        return "Pirate";
+                    case 21:
+                        return "Totem";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get a string representative of the Card's Set.
+        /// </summary>
+        public string CardSetString
+        {
+            get
+            {
+                switch (set)
+                {
+                    case 2:
+                        return "Basic";
+                    case 3:
+                        return "Expert";
+                    case 4:
+                        return "Reward";
+                    case 5:
+                        return "Missions";
+                    case 11:
+                        return "Promotions";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get a string representative of the Card Type.
+        /// </summary>
+        public string CardTypeString
+        {
+            get
+            {
+                switch (type)
+                {
+                    case 3:
+                        return "Hero";
+                    case 4:
+                        return "Minion";
+                    case 5:
+                        return "Spell";
+                    case 7:
+                        return "Weapon";
+                    case 10:
+                        return "Hero Power";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get a relative path to the portrait for the class of this card.
+        /// </summary>
         public string ClassPortraitImagePath
         {
             get
@@ -42,6 +134,9 @@ namespace Hearthopedia
             }
         }
 
+        /// <summary>
+        /// Get a hex colour string for the quality of this card.
+        /// </summary>
         public string QualityColourHexString
         {
             get{
@@ -75,6 +170,9 @@ namespace Hearthopedia
             }
         }
 
+        /// <summary>
+        /// Get the string name of the Class of this card.
+        /// </summary>
         public string ClassNameString
         {
             get
