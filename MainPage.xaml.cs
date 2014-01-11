@@ -28,28 +28,13 @@ namespace Hearthopedia
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
             // Populate the cards list
-            DataAccess.PopulateDataManagerCards();
+            DataAccess.PopulateDataManagerCards(true);
 
             // Check for update (we still need to prompt for update, this simply tells the user theere has been updates but won't read from it until the next boot)
             DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DataAccess.GetDataFromHearthHead();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DataAccess.DeleteFromLocalStorage("cards.txt");
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            DataAccess.PopulateDataManagerCards();
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)

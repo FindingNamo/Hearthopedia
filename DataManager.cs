@@ -40,6 +40,11 @@ namespace Hearthopedia
             {
                 return searchedCards;
             }
+
+            set
+            {
+                searchedCards = value;
+            }
         }
 
         public void SortCards()

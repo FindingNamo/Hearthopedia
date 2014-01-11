@@ -10,6 +10,7 @@ using Windows.Storage;
 using System.Threading;
 using System.Net;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace Hearthopedia
 {
@@ -54,7 +55,7 @@ namespace Hearthopedia
                                 MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);    
                                 if (result == MessageBoxResult.OK)
                                 {
-                                    DataAccess.PopulateDataManagerCards();
+                                    DataAccess.PopulateDataManagerCards(false);
                                 }
                             });
                         }
@@ -79,7 +80,7 @@ namespace Hearthopedia
                     // Populate the dataManager since it has nothing because we didn't have a cached version of the data before
                     System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
-                            DataAccess.PopulateDataManagerCards();
+                            DataAccess.PopulateDataManagerCards(true);
                     });
                 }
 
@@ -102,7 +103,7 @@ namespace Hearthopedia
             await file.DeleteAsync();
         }
 
-        public static async Task PopulateDataManagerCards()
+        public static async Task PopulateDataManagerCards(bool onBoot)
         {
             DataManager.Instance.Cards.Clear();
 
@@ -121,6 +122,17 @@ namespace Hearthopedia
 
                     // Sort
                     DataManager.Instance.SortCards();
+
+                    // Display cards if we just booted
+                    if (onBoot)
+                    {
+                        DataManager.Instance.SearchedCards.Clear();
+
+                        foreach (Card card in DataManager.Instance.Cards)
+                        {
+                            DataManager.Instance.SearchedCards.Add(card);
+                        }
+                    }
                 }
             }
         }
@@ -128,7 +140,7 @@ namespace Hearthopedia
         public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
-            int searchDelaySec = 2;
+            int searchDelaySec = 1;
             int searchNumMinChar = 2;
 
             // only do the search if there are this many characters
@@ -151,6 +163,36 @@ namespace Hearthopedia
                             }
                         });
                     }
+                });
+                thread.Start();
+            }
+        }
+
+        public static async Task SearchCardsLINQ(string searchString)
+        {
+            // Only do the if it's been this many seconds since the textbox changed
+            int searchDelaySec = 1;
+            int searchNumMinChar = 2;
+
+            // only do the search if there are this many characters
+            if (searchString.Length >= searchNumMinChar)
+            {
+                Thread thread = new Thread((ThreadStart)delegate
+                {
+                    Thread.Sleep(searchDelaySec * 1000);
+
+                    ObservableCollection<Card> cards = new ObservableCollection<Card>(from card in DataManager.Instance.Cards where card.name.Contains(searchString) select card);
+
+                    
+
+                    System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        DataManager.Instance.SearchedCards.Clear();
+                        foreach (Card card in cards)
+                        {
+                            DataManager.Instance.SearchedCards.Add(card);
+                        }
+                    });
                 });
                 thread.Start();
             }
