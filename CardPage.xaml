@@ -20,7 +20,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <phone:Panorama Title="{Binding name}" Grid.Row="0">
+        <phone:Panorama x:Name="PanoramaObject" Title="{Binding name}" Grid.Row="0">
             <phone:Panorama.Background>
                 <ImageBrush Stretch="Fill" ImageSource="{Binding ClassPortraitImagePath}"/>
             </phone:Panorama.Background>

@@ -40,7 +40,7 @@ namespace Hearthopedia
             get
             {
                 return string.Format("Set: {0}\nType: {2}\nFaction: {3}\nClass: {4}\nQuality: {5}\nCost: {6}\nAttack: {7}\nHealth: {8}\n, Collectible: {9}\n, Description: {10}\n, Mechanics: {11}\nRace: {12}",
-                    CardSetString, icon, CardTypeString, faction, classs, quality, cost, attack, health, collectible, description, mechanics, CardRaceString);
+                    CardSetString, icon, CardTypeString, faction, classs, CardQualityString, cost, attack, health, collectible, description, mechanics, CardRaceString);
             }
         }
 
@@ -131,6 +131,33 @@ namespace Hearthopedia
             get
             {
                return "Assets\\ClassPortraits\\" + ClassNameString + ".png";
+            }
+        }
+
+        /// <summary>
+        /// Get a string name for the quality of this card.
+        /// </summary>
+        public string CardQualityString
+        {
+            get
+            {
+                switch (quality)
+                {
+                    case 0:
+                        return "Free";
+                    case 1:
+                        return "Common";
+                    case 2:
+                        return "Magic";
+                    case 3:
+                        return "Rare";
+                    case 4:
+                        return "Epic";
+                    case 5:
+                        return "Legendary";
+                    default:
+                        return "Unknown";
+                }
             }
         }
 
