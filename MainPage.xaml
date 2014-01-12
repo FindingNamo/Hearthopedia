@@ -5,6 +5,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     x:Class="Hearthopedia.MainPage"
     mc:Ignorable="d"
@@ -75,7 +76,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Image Stretch="UniformToFill" Grid.Row="0" Source="/Assets/searchbar.png" />
-            <TextBox BorderBrush="Transparent" Background="Transparent" VerticalAlignment="Center" x:Name="textBoxSearch" Grid.Row="0" Height="72" TextWrapping="Wrap" TextChanged="TextBoxSearch_TextChanged" Margin="100,15.5,100,20" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" />
+            <toolkit:PhoneTextBox BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" Grid.Row="0" Height="72" TextWrapping="Wrap" TextChanged="textBoxSearch_TextChanged" Margin="100,15.5,100,20" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" />
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

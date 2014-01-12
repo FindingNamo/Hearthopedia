@@ -32,14 +32,14 @@ namespace Hearthopedia
             DataAccess.PopulateDataManagerCards(true);
 
             // Check for update (we still need to prompt for update, this simply tells the user theere has been updates but won't read from it until the next boot)
-        //    DataAccess.GetDataFromHearthHead();
+            DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
         }
 
-        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Update search time
             DataManager.Instance.LastSearchTime = DateTime.Now;
