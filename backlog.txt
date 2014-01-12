@@ -1,3 +1,8 @@
 Filters
-CardPage
-WTF pixel
+Polish Search Box
+Make Keyboard go away
+Deal with the webrequest bug
+First tap even if drag registers as click
+
+Data page is missing if the item is collectable
+Missing Disenchant info
