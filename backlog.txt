@@ -3,7 +3,6 @@ Polish Search Box
 Make Keyboard go away
 Deal with the webrequest bug
 First tap even if drag registers as click
-Make cards that are not cards "Affected by spell damage" not show up in search result
 
 Data page is missing if the item is collectable
 Missing Disenchant info

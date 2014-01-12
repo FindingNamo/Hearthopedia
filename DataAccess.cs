@@ -130,7 +130,8 @@ namespace Hearthopedia
 
                         foreach (Card card in DataManager.Instance.Cards)
                         {
-                            DataManager.Instance.SearchedCards.Add(card);
+                            if (!(card.CardTypeString.Equals("Unknown")))
+                                DataManager.Instance.SearchedCards.Add(card);
                         }
                     }
                 }
@@ -158,7 +159,7 @@ namespace Hearthopedia
                             DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
-                                if (card.name.ToLower().Contains(searchString.ToLower()))
+                                if (card.name.ToLower().Contains(searchString.ToLower()) && !(card.CardTypeString.Equals("Unknown")))
                                     DataManager.Instance.SearchedCards.Add(card);
                             }
                         });
