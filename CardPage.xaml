@@ -67,7 +67,11 @@
                     </ContentPresenter>
                 </DataTemplate>
             </phone:Panorama.HeaderTemplate>
-            
+
+            <phone:PanoramaItem x:Name="mainItem" Header="Card">
+                <Image x:Name="imageCard" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform" Source="Assets\UnloadedCard.png" Margin="0,-100,0,0"/>
+            </phone:PanoramaItem>
+
             <phone:PanoramaItem Header="Basic Info">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -137,7 +141,7 @@
                     </Grid>
                     
                     <Grid Grid.Row="1">
-                        <TextBlock Style="{Binding BasicInfoValue}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="Roy would love to put the flavor text for the card here, but thats going to be a work item for another day.  But this sentence is long and should look cool." />
+                        <TextBlock Name="textBlockFlavourText" Style="{Binding BasicInfoValue}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="" />
                     </Grid>
                 </Grid>
             </phone:PanoramaItem>
@@ -169,9 +173,7 @@
                 </ListBox>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem x:Name="mainItem" Header="Card">
-                <Image x:Name="imageCard" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform" Source="Assets\UnloadedCard.png" Margin="0,-100,0,0"/>
-            </phone:PanoramaItem>
+            
 
         </phone:Panorama>
         <UI:AdControl Grid.Row="1" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="480"/>

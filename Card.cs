@@ -36,7 +36,14 @@ namespace Hearthopedia
         public int race { get; set; }
         public string description { get; set; }
         public List<int> mechanics { get; set; }
-
+        private string _flavourTextURL;
+        public string flavourTextURL
+        {
+            get
+            {
+                return _flavourTextURL ?? (_flavourTextURL = "http://www.hearthhead.com/card=" + id + "&power");
+            }
+        }
         private List<Mechanic> _mechanicData;
         public List<Mechanic> MechanicData
         {

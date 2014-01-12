@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Hearthopedia
 {
@@ -17,6 +18,12 @@ namespace Hearthopedia
             return card;
         }
 
+        public static string FilterHTML(string text)
+        {
+            string noHTML = Regex.Replace(text, @"<[^>]+>|&nbsp;", "").Trim();
+            string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
+            return noHTMLNormalised;
+        }
 
 
         

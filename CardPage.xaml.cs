@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Hearthopedia
 {
@@ -44,6 +45,7 @@ namespace Hearthopedia
             imageCard.Source = new BitmapImage(new Uri("\\Assets\\UnloadedCard.png", UriKind.Relative));
 
             DownloadImage(selectedCard.imageURL);
+            DownloadFlavourText(selectedCard.flavourTextURL);
         }
 
         private void  DownloadImage(string url)
@@ -62,6 +64,26 @@ namespace Hearthopedia
                 BitmapImage bmp = new BitmapImage();
                 bmp.SetSource(e.Result);
                 imageCard.Source = bmp;
+            }
+        }
+
+        private void DownloadFlavourText(string url)
+        {
+            WebClient webClient = new WebClient();
+            webClient.OpenReadCompleted += DownloadFlavourTextCompleted;
+            webClient.OpenReadAsync(new Uri(url));
+        }
+
+        private void DownloadFlavourTextCompleted(object sender, OpenReadCompletedEventArgs e)
+        {
+            if (!e.Cancelled && e.Error == null)
+            {
+               StreamReader reader =  new StreamReader(e.Result);
+               string responseBody = reader.ReadToEnd();
+               string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
+               flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
+               flavourText = Utilities.FilterHTML(flavourText);
+               textBlockFlavourText.Text = flavourText;
             }
         }
     }
