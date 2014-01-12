@@ -78,12 +78,19 @@ namespace Hearthopedia
         {
             if (!e.Cancelled && e.Error == null)
             {
-               StreamReader reader =  new StreamReader(e.Result);
-               string responseBody = reader.ReadToEnd();
-               string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
-               flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
-               flavourText = Utilities.FilterHTML(flavourText);
-               textBlockFlavourText.Text = flavourText;
+                try
+                {
+                    StreamReader reader = new StreamReader(e.Result);
+                    string responseBody = reader.ReadToEnd();
+                    string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
+                    flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
+                    flavourText = Utilities.FilterHTML(flavourText);
+                    textBlockFlavourText.Text = flavourText;
+                }
+                catch
+                {
+                    textBlockFlavourText.Text = "";
+                }
             }
         }
     }

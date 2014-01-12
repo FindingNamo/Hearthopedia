@@ -21,6 +21,7 @@ namespace Hearthopedia
         public static string FilterHTML(string text)
         {
             string noHTML = Regex.Replace(text, @"<[^>]+>|&nbsp;", "").Trim();
+            noHTML = noHTML.Replace(@"\", "");
             string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
             return noHTMLNormalised;
         }
