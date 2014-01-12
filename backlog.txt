@@ -3,6 +3,8 @@ Polish Search Box
 Make Keyboard go away
 Deal with the webrequest bug
 First tap even if drag registers as click
+Tile Logos
 
 Data page is missing if the item is collectable
 Missing Disenchant info
+Arena mode based on different sources (do we host our own file?)

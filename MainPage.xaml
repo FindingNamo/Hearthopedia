@@ -75,7 +75,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Image Height="144" Stretch="Fill" Grid.Row="0" Source="/Assets/searchbar.png" />
-            <TextBox BorderBrush="Transparent" Background="Transparent" VerticalAlignment="Center" x:Name="textBoxSearch" Grid.Row="0" Height="72" TextWrapping="Wrap" TextChanged="TextBoxSearch_TextChanged" Margin="100,15.5,100,20" GotFocus="TextBoxSearch_GotFocus" />
+            <TextBox BorderBrush="Transparent" Background="Transparent" VerticalAlignment="Center" x:Name="textBoxSearch" Grid.Row="0" Height="72" TextWrapping="Wrap" TextChanged="TextBoxSearch_TextChanged" Margin="100,15.5,100,20" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" />
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

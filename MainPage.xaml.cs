@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace Hearthopedia
 {
@@ -56,6 +57,12 @@ namespace Hearthopedia
             FrameworkElement clickedObject = (FrameworkElement)sender;
             Card selectedCard = (Card)clickedObject.DataContext;
             NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
+        }
+
+        private void textBoxSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                this.Focus();
         }
 
         // Sample code for building a localized ApplicationBar
