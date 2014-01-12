@@ -65,6 +65,31 @@ namespace Hearthopedia
             return newMechanics;
         }
 
+        public string CostIconPath
+        {
+            get { return "Assets\\Sprites\\blue32.png"; }
+        }
+
+        public string AttackIconPath
+        {
+            get { return type == 7 ? "Assets\\Sprites\\weapon32.png" : "Assets\\Sprites\\yellow32.png"; }
+        }
+
+        public string HealthIconPath
+        {
+            get { return type == 7 ? "Assets\\Sprites\\durability32.png" : "Assets\\Sprites\\red32.png"; }
+        }
+
+        public string AttackLabel
+        {
+            get { return type == 7 ? "Weapon Damage" : "Attack"; }
+        }
+
+        public string HealthLabel
+        {
+            get { return type == 7 ? "Durability" : "Health"; }
+        }
+
         public string Dump
         {
             get

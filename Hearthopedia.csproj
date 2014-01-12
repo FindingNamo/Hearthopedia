@@ -138,7 +138,6 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\blue32.png" />
     <Content Include="Assets\background.png" />
     <Content Include="Assets\ClassBanners\druid.jpg" />
     <Content Include="Assets\ClassBanners\hunter.jpg">
@@ -168,9 +167,13 @@
     </Content>
     <Content Include="Assets\ClassPortraits\everyone.png" />
     <Content Include="Assets\ClassPortraits\warrior.png" />
-    <Content Include="Assets\red32.png" />
+    <Content Include="Assets\Sprites\blue32.png" />
+    <Content Include="Assets\Sprites\disenchant32.png" />
+    <Content Include="Assets\Sprites\durability32.png" />
+    <Content Include="Assets\Sprites\red32.png" />
     <Content Include="Assets\searchbar.png" />
     <Content Include="Assets\ClassPortraits\druid.png" />
+    <Content Include="Assets\Sprites\weapon32.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -194,7 +197,7 @@
     <Content Include="Assets\ClassPortraits\shaman.png" />
     <Content Include="Assets\ClassPortraits\warlock.png" />
     <Content Include="Assets\unloadedcard.png" />
-    <Content Include="Assets\yellow32.png" />
+    <Content Include="Assets\Sprites\yellow32.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
