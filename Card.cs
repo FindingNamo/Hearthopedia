@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace Hearthopedia
 {
-    class Card
+    public class Card
     {
         public int id { get; set; }
         public string image { get; set; }
@@ -37,12 +37,40 @@ namespace Hearthopedia
         public string description { get; set; }
         public List<int> mechanics { get; set; }
 
+        private List<Mechanic> _mechanicData;
+        public List<Mechanic> MechanicData
+        {
+            get
+            {
+                return _mechanicData ?? (_mechanicData = ParseMechanics());
+            }
+        }
+
+        private List<Mechanic> ParseMechanics()
+        {
+            List<Mechanic> newMechanics = new List<Mechanic>();
+
+            if (mechanics != null)
+            {
+                foreach (int mechanicId in mechanics)
+                {
+                    newMechanics.Add(new Mechanic(mechanicId));
+                }
+            }
+            else
+            {
+                newMechanics.Add(new Mechanic(Mechanic.MechanicIdNone));
+            }
+
+            return newMechanics;
+        }
+
         public string Dump
         {
             get
             {
                 return string.Format("Set: {0}\nType: {2}\nFaction: {3}\nClass: {4}\nQuality: {5}\nCost: {6}\nAttack: {7}\nHealth: {8}\n, Collectible: {9}\n, Description: {10}\n, Mechanics: {11}\nRace: {12}",
-                    CardSetString, icon, CardTypeString, faction, classs, CardQualityString, cost, attack, health, collectible, description, mechanics, CardRaceString);
+                    CardSetString, icon, CardTypeString, faction, ClassNameString, CardQualityString, cost, attack, health, collectible, description, mechanics, CardRaceString);
             }
         }
 

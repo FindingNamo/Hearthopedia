@@ -55,17 +55,14 @@ namespace Hearthopedia
 
         private void DownloadImageCompleted(object sender, OpenReadCompletedEventArgs e)
         {
+            //TODO: Trigger a sweet flipping animation
+
             if (!e.Cancelled && e.Error == null)
             {
                 BitmapImage bmp = new BitmapImage();
                 bmp.SetSource(e.Result);
                 imageCard.Source = bmp;
             }
-        }
-
-        private void PanoramaObject_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Panorama pan = (Panorama)sender;
         }
     }
 }

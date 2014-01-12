@@ -15,9 +15,7 @@
     shell:SystemTray.IsVisible="False">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-
-
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -39,18 +37,39 @@
                 </DataTemplate>
             </phone:Panorama.HeaderTemplate>
             
-                <!--Panorama item one-->
-            <phone:PanoramaItem x:Name="mainItem">
-                <Image x:Name="imageCard" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform" Source="Assets\UnloadedCard.png"/>
-            </phone:PanoramaItem>
-
-            <!--Panorama item two-->
             <phone:PanoramaItem Header="Basic Info">
                 <TextBlock Foreground="Green"  Text="{Binding Dump}" />
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem Header="Advanced">
-                <TextBlock Text="{Binding Dump}" />
+            <phone:PanoramaItem Header="Mechanics">
+                <ListBox x:Name="listCards" ItemsSource="{Binding MechanicData}" HorizontalContentAlignment="Stretch">
+                    <ListBox.Template>
+                                <ControlTemplate TargetType="ListBox">
+                                </ControlTemplate>
+                    </ListBox.Template>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate >
+                        <DataTemplate>
+                            <Grid Margin="5,10,5,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Foreground="White" FontWeight="Medium" Text="{Binding MechanicName}" />
+                                <TextBlock Grid.Row="1" Foreground="White" TextWrapping="Wrap" Text="{Binding MechanicDescription}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="mainItem" Header="Card">
+                <Image x:Name="imageCard" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform" Source="Assets\UnloadedCard.png" Margin="0,-100,0,0"/>
             </phone:PanoramaItem>
 
         </phone:Panorama>
