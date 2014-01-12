@@ -36,6 +36,7 @@ namespace Hearthopedia
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
