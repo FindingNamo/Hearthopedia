@@ -198,6 +198,7 @@
     <Content Include="Assets\ClassPortraits\warlock.png" />
     <Content Include="Assets\unloadedcard.png" />
     <Content Include="Assets\Sprites\yellow32.png" />
+    <None Include="backlog.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
