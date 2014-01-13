@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-Filters
-Polish Search Box
-Make Keyboard go away
-Deal with the webrequest bug
-First tap even if drag registers as click
-Tile Logos
-
-Data page is missing if the item is collectable
-Missing Disenchant info
-Arena mode based on different sources (do we host our own file?)
-=======
 Must:
 [ ] Filters
 [ ] Polish Search Box
@@ -25,4 +13,3 @@ Like
 
 [ ] Missing Disenchant info
     - Need a new request to get this information.
->>>>>>> 7379a8b467ece3b723c1a2b56a8766c4818efcdd

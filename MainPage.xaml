@@ -50,10 +50,6 @@
             <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill" />
         </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
         <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
             keys in the app's neutral language resource file (AppResources.resx) then
@@ -73,20 +69,20 @@
             CurrentUICulture of the app at run time.
          -->
 
-        <Grid x:Name="ContentPanel" Grid.Row="1">
+        <Grid x:Name="ContentPanel">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image Stretch="UniformToFill" Grid.Row="0" Source="/Assets/searchbar.png" />
-            <toolkit:PhoneTextBox BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" Grid.Row="0" Height="72" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="100,15.5,100,20" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" />
+            <Image Grid.Row="0" Source="/Assets/searchbar.png"/>
+            <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" Height="72" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" />
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch">
+                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" ManipulationStarted="listCards_ManipulationStarted">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

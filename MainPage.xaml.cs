@@ -66,6 +66,11 @@ namespace Hearthopedia
                 this.Focus();
         }
 
+        private void listCards_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            this.Focus();
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
