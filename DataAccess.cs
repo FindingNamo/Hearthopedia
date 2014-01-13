@@ -42,54 +42,32 @@ namespace Hearthopedia
                         string responseString = streamRead.ReadToEnd();
 
                         // Compare to existing string
-                        try
+                        using (StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
                         {
-                            using (StreamReader reader = new StreamReader(
-                            await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
+                            string cachedResponseString = await reader.ReadToEndAsync();
+                            reader.Close();
+                            reader.Dispose();
+
+                            if (cachedResponseString != responseString)
                             {
-                                string cachedResponseString = await reader.ReadToEndAsync();
-                                if (cachedResponseString != responseString)
+                                // update local text file
+                                using (StreamWriter writer = new StreamWriter(
+                                await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
                                 {
-                                    // update local text file
-                                    using (StreamWriter writer = new StreamWriter(
-                                    await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
-                                    {
-                                        writer.Write(responseString);
-                                        writer.Flush();
-                                    }
-
-                                    // Tell the app that there has been updates and let user choose when to update
-                                    System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                                    {
-                                        MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);
-                                        if (result == MessageBoxResult.OK)
-                                        {
-                                            DataAccess.PopulateDataManagerCards(false);
-                                        }
-                                    });
+                                    writer.Write(responseString);
+                                    writer.Flush();
                                 }
-                            }
-                        }
-                        catch (FileNotFoundException e)
-                        {
-                            // first time
-                            firstRun = true;
-                        }
 
-                        if (firstRun)
-                        {
-                            using (StreamWriter writer = new StreamWriter(
-                            await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
-                            {
-                                writer.Write(responseString);
-                                writer.Flush();
+                                // Tell the app that there has been updates and let user choose when to update
+                                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                                {
+                                    MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);
+                                    if (result == MessageBoxResult.OK)
+                                    {
+                                        DataAccess.PopulateDataManagerCards(false);
+                                    }
+                                });
                             }
-
-                            // Populate the dataManager since it has nothing because we didn't have a cached version of the data before
-                            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                            {
-                                DataAccess.PopulateDataManagerCards(true);
-                            });
                         }
 
                         // Close the stream object
@@ -225,6 +203,33 @@ namespace Hearthopedia
                     });
                 });
                 thread.Start();
+            }
+        }
+
+        public static async Task FirstBootOperations()
+        {
+            // If the file doesn't exist it means it's our first run ever
+            bool firstRun = !(System.IO.File.Exists("cards.txt"));
+
+            string defaultCardsString ="";
+
+            Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
+
+            using (StreamReader reader = new StreamReader(Application.GetResourceStream(cardUri).Stream))
+            {
+                defaultCardsString = reader.ReadToEnd();
+                reader.Close();
+            }
+
+            if (firstRun)
+            {
+                using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
+                {
+                    writer.Write(defaultCardsString);
+                    writer.Flush();
+                    writer.Close();
+                    writer.Dispose();
+                }
             }
         }
     }

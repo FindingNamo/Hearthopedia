@@ -28,6 +28,9 @@ namespace Hearthopedia
             cardsBinding.Source = DataManager.Instance.SearchedCards;
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
+            // Check if it's the first boot ever an do the right thing
+            DataAccess.FirstBootOperations();
+
             // Populate the cards list
             DataAccess.PopulateDataManagerCards(true);
 

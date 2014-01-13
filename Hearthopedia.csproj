@@ -170,6 +170,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\background.png" />
+    <Resource Include="Assets\cards.txt" />
     <Content Include="Assets\ClassBanners\druid.jpg" />
     <Content Include="Assets\ClassBanners\hunter.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
