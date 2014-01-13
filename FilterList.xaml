@@ -32,7 +32,17 @@
             </ListBox>
         </Grid>
         
-        <Button x:Name="AddFilterButton" Grid.Row="2" Content="Add a filter" Click="AddFilterButton_Click"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="AddFilterButton" Grid.Column="0" Content="Add a filter" Click="AddFilterButton_Click"/>
+            <Button x:Name="ClearFiltersButton" Grid.Column="1" Content="Clear Filters" Click="ClearFiltersButton_Click"/>
+        </Grid>
+        
     </Grid>
 
 </phone:PhoneApplicationPage>
+    

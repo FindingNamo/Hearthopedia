@@ -1,10 +1,18 @@
 Must:
-[ ] Filters
 [ ] Weird margin around the searchbox
 [x] First tap even if drag registers as click
     - This only repros if launching from VS, if you click the app its fine.  I think its a focus issue with the emulator, Won't Fix.
 
-
+Roy
+[ ] - Filter Framework pisses Roy off, shouldn't need so many classes, would be nice to have just one for enums.
+[ ] - Filter Framework needs "mechanics" - CardMechanicFilter -> checks all filters for that one mechanic, slow but ez
+[ ] - Filters need a ToString method - for the list view.
+[ ] - Remove individual filters from FilterManager via the list view.
+[ ] - EnumUtils - CamelCase to string?
+[ ] - EnumUtils - TryCatches for unknowns enums? Maybe return Unknown for now?
+[ ] - NumberFilterPicker - Safeguard input.
+[ ] - Trigger new search on Filters changed.
+[ ] - Allow Search with no text (Scenario: I want to see all legendary cards)
 
 Like
 [ ] Data page is missing if the item is collectable

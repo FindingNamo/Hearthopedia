@@ -62,7 +62,6 @@ namespace Hearthopedia.Filters
         private ListPicker GenerateListPicker()
         {
             List<string> values = EnumUtilities.GetEnumNames<EnumType>();
-            //TODO format this for numbers only?
             ListPicker listPicker = new ListPicker();
             listPicker.ItemsSource = values;
             listPicker.ExpansionMode = ExpansionMode.FullScreenOnly;
@@ -73,11 +72,7 @@ namespace Hearthopedia.Filters
 
         protected void OnSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
-            // TODO: SafeGuard this.
             ListPicker valueListPicker = (ListPicker) sender;
-
-            if (valueListPicker.SelectedItem == null)
-                return;
 
             // Gross, but i dont want to learn how to properly handle this.
             // We know all these enums are ints anyways

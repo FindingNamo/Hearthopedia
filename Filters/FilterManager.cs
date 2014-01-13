@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,9 @@ namespace Hearthopedia.Filters
 {
     public class FilterManager
     {
-        private List<ICardFilter> _activeFilters;
+        // Is there a way I can stop people from calling methods on this directly?
+        // Not important for us, but I'd like to know for my own business with C#.
+        public readonly ObservableCollection<ICardFilter> ActiveFilters;
         
         private static FilterManager _instance;
         public static FilterManager Instance
@@ -21,7 +24,7 @@ namespace Hearthopedia.Filters
 
         private FilterManager()
         {
-            _activeFilters = new List<ICardFilter>();
+            ActiveFilters = new ObservableCollection<ICardFilter>();
         }
         
         /// <summary>
@@ -29,7 +32,7 @@ namespace Hearthopedia.Filters
         /// </summary>
         public bool Check(Card card)
         {
-            foreach (ICardFilter filter in _activeFilters)
+            foreach (ICardFilter filter in ActiveFilters)
             {
                 if (!filter.Check(card))
                     return false;
@@ -41,26 +44,16 @@ namespace Hearthopedia.Filters
 
         public void AddFilter(ICardFilter filter)
         {
-            _activeFilters.Add(filter);
+            ActiveFilters.Add(filter);
         }
 
         public void ClearFilters()
         {
             // Do i have to call dispose or does that happen?
-            foreach (ICardFilter filter in _activeFilters)
+            foreach (ICardFilter filter in ActiveFilters)
                 filter.Dispose();
 
-            _activeFilters.Clear();
+            ActiveFilters.Clear();
         }
-
-        /// <summary>
-        /// Gets the active filters
-        /// Is there a keyword for you can't edit this list, this should have that.
-        /// </summary>
-        public List<ICardFilter> GetActiveFilters()
-        {
-            return _activeFilters;
-        }
-
     }
 }

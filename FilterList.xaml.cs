@@ -17,12 +17,17 @@ namespace Hearthopedia
         public FilterList()
         {
             InitializeComponent();
-            ActiveFilters.ItemsSource = FilterManager.Instance.GetActiveFilters();
+            ActiveFilters.ItemsSource = FilterManager.Instance.ActiveFilters;
         }
 
         private void AddFilterButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/NewFilter.xaml", UriKind.Relative));
+        }
+
+        private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.Instance.ClearFilters();
         }
     }
 }
