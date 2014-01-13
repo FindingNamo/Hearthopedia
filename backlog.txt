@@ -1,7 +1,6 @@
 Must:
 [ ] Filters
 [ ] Weird margin around the searchbox
-[ ] Deal with the webrequest bug
 [x] First tap even if drag registers as click
     - This only repros if launching from VS, if you click the app its fine.  I think its a focus issue with the emulator, Won't Fix.
 
@@ -15,3 +14,7 @@ Like
     - Need a new request to get this information.
 
 [ ] Make an enum for card types, card sets and card quality because we use them in different places and they are hardcoded there in a duplicated way
+
+[ ] Arena Mode to make sure people keep using the app
+
+[ ] Clean up GetDataFromHeathHead.  It's nasty in there.

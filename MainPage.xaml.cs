@@ -31,7 +31,7 @@ namespace Hearthopedia
             // Populate the cards list
             DataAccess.PopulateDataManagerCards(true);
 
-            // Check for update (we still need to prompt for update, this simply tells the user theere has been updates but won't read from it until the next boot)
+            // Check for update
             DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar

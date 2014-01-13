@@ -11,6 +11,7 @@ using System.Threading;
 using System.Net;
 using System.Windows;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace Hearthopedia
 {
@@ -20,28 +21,61 @@ namespace Hearthopedia
         {
             bool firstRun = false;
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
+            int retriesLeft = 5;
 
-            HttpWebRequest request = WebRequest.CreateHttp(urlGetCardHH);
-            request.BeginGetResponse(async (asyncResult) =>
+            while (retriesLeft > 0)
             {
-                HttpWebRequest request2 = (HttpWebRequest)asyncResult.AsyncState;
-
-                // End the operation
-                HttpWebResponse response = (HttpWebResponse)request2.EndGetResponse(asyncResult);
-                Stream streamResponse = response.GetResponseStream();
-                StreamReader streamRead = new StreamReader(streamResponse);
-                string responseString = streamRead.ReadToEnd();
-
-                // Compare to existing string
+                // Wrap the entire thing in a try-catch due to that weird bug
                 try
                 {
-                    using (StreamReader reader = new StreamReader(
-                    await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
+                    HttpWebRequest request = WebRequest.CreateHttp(urlGetCardHH);
+                    request.BeginGetResponse(async (asyncResult) =>
                     {
-                        string cachedResponseString = await reader.ReadToEndAsync();
-                        if (cachedResponseString != responseString)
+                        HttpWebRequest request2 = (HttpWebRequest)asyncResult.AsyncState;
+
+                        // End the operation
+                        HttpWebResponse response = (HttpWebResponse)request2.EndGetResponse(asyncResult);
+                        Stream streamResponse = response.GetResponseStream();
+                        StreamReader streamRead = new StreamReader(streamResponse);
+                        string responseString = streamRead.ReadToEnd();
+
+                        // Compare to existing string
+                        try
                         {
-                            // update local text file
+                            using (StreamReader reader = new StreamReader(
+                            await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
+                            {
+                                string cachedResponseString = await reader.ReadToEndAsync();
+                                if (cachedResponseString != responseString)
+                                {
+                                    // update local text file
+                                    using (StreamWriter writer = new StreamWriter(
+                                    await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
+                                    {
+                                        writer.Write(responseString);
+                                        writer.Flush();
+                                    }
+
+                                    // Tell the app that there has been updates and let user choose when to update
+                                    System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                                    {
+                                        MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);
+                                        if (result == MessageBoxResult.OK)
+                                        {
+                                            DataAccess.PopulateDataManagerCards(false);
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                        catch (FileNotFoundException e)
+                        {
+                            // first time
+                            firstRun = true;
+                        }
+
+                        if (firstRun)
+                        {
                             using (StreamWriter writer = new StreamWriter(
                             await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
                             {
@@ -49,48 +83,37 @@ namespace Hearthopedia
                                 writer.Flush();
                             }
 
-                            // Tell the app that there has been updates and let user choose when to update
+                            // Populate the dataManager since it has nothing because we didn't have a cached version of the data before
                             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                             {
-                                MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);    
-                                if (result == MessageBoxResult.OK)
-                                {
-                                    DataAccess.PopulateDataManagerCards(false);
-                                }
+                                DataAccess.PopulateDataManagerCards(true);
                             });
                         }
-                    }
 
+                        // Close the stream object
+                        streamResponse.Close();
+                        streamRead.Close();
+
+                        // Release the HttpWebResponse
+                        response.Close();
+                    }, request);
+
+                    // No need to retry anymore since we've succeeded
+                    retriesLeft = 0;
                 }
-                catch (FileNotFoundException e)
+                catch
                 {
-                    // first time
-                    firstRun = true;
-                }
+                    retriesLeft--;
 
-                if (firstRun)
-                {
-                    using (StreamWriter writer = new StreamWriter(
-                    await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
+                    if (retriesLeft == 0)
                     {
-                        writer.Write(responseString);
-                        writer.Flush();
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            DataAccess.PopulateDataManagerCards(false);
+                        });
                     }
-
-                    // Populate the dataManager since it has nothing because we didn't have a cached version of the data before
-                    System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                    {
-                            DataAccess.PopulateDataManagerCards(true);
-                    });
                 }
-
-                // Close the stream object
-                streamResponse.Close();
-                streamRead.Close();
-
-                // Release the HttpWebResponse
-                response.Close();
-            }, request);
+            }
         }
 
         public static async Task DeleteFromLocalStorage(string fileName)
