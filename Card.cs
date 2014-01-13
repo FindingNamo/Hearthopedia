@@ -113,25 +113,7 @@ namespace Hearthopedia
         {
             get
             {
-                switch (race)
-                {
-                    case 0:
-                        return "None";
-                    case 20:
-                        return "Beast";
-                    case 15:
-                        return "Demon";
-                    case 24:
-                        return "Dragon";
-                    case 14:
-                        return "Murloc";
-                    case 23:
-                        return "Pirate";
-                    case 21:
-                        return "Totem";
-                    default:
-                        return "Unknown";
-                }
+                return EnumUtilities.GetName<CardRace>((CardRace)race);
             }
         }
 
@@ -142,21 +124,7 @@ namespace Hearthopedia
         {
             get
             {
-                switch (set)
-                {
-                    case 2:
-                        return "Basic";
-                    case 3:
-                        return "Expert";
-                    case 4:
-                        return "Reward";
-                    case 5:
-                        return "Missions";
-                    case 11:
-                        return "Promotions";
-                    default:
-                        return "Unknown";
-                }
+                return EnumUtilities.GetName<CardSet>((CardSet)set);
             }
         }
 
@@ -167,21 +135,7 @@ namespace Hearthopedia
         {
             get
             {
-                switch (type)
-                {
-                    case 3:
-                        return "Hero";
-                    case 4:
-                        return "Minion";
-                    case 5:
-                        return "Spell";
-                    case 7:
-                        return "Weapon";
-                    case 10:
-                        return "Hero Power";
-                    default:
-                        return "Unknown";
-                }
+                return EnumUtilities.GetName<CardTypes>((CardTypes)type);
             }
         }
 
@@ -227,23 +181,7 @@ namespace Hearthopedia
         {
             get
             {
-                switch (quality)
-                {
-                    case 0:
-                        return "Free";
-                    case 1:
-                        return "Common";
-                    case 2:
-                        return "Magic";
-                    case 3:
-                        return "Rare";
-                    case 4:
-                        return "Epic";
-                    case 5:
-                        return "Legendary";
-                    default:
-                        return "Unknown";
-                }
+                return EnumUtilities.GetName<CardQuality>((CardQuality)quality);
             }
         }
 
@@ -290,33 +228,7 @@ namespace Hearthopedia
         {
             get
             {
-                switch (classs)
-                {
-                    case 0:
-                        return "Everyone";
-                    case 1:
-                        return "Warrior";
-                    case 2:
-                        return "Paladin";
-                    case 3:
-                        return "Hunter";
-                    case 4:
-                        return "Rogue";
-                    case 5:
-                        return "Priest";
-                    // no 6
-                    case 7:
-                        return "Shaman";
-                    case 8:
-                        return "Mage";
-                    case 9:
-                        return "Warlock";
-                    // no 10;
-                    case 11:
-                        return "Druid";
-                    default:
-                        return "Unknown";
-                }   
+                return EnumUtilities.GetName<CardClass>((CardClass)classs);
             }
         }
     }

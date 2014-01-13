@@ -13,6 +13,8 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using System.Reflection;
 
+using Hearthopedia.Filters;
+
 namespace Hearthopedia
 {
     class DataAccess
@@ -182,8 +184,12 @@ namespace Hearthopedia
                             DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
-                                if (card.name.ToLower().Contains(searchString.ToLower()) && !(card.CardTypeString.Equals("Unknown")))
+                                if (card.name.ToLower().Contains(searchString.ToLower()) &&
+                                    !(card.CardTypeString.Equals("Unknown")) &&
+                                    FilterManager.Instance.Check(card))
+                                {
                                     DataManager.Instance.SearchedCards.Add(card);
+                                }
                             }
                         });
                     }

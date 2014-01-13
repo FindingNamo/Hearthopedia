@@ -75,7 +75,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="/Assets/searchbar.png"/>
+            <Image Grid.Row="0" Source="/Assets/searchbar.png" Tap="Image_Tap_1" />
             <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" />
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>

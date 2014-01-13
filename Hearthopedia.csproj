@@ -94,16 +94,39 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="CardEnumTypes.cs" />
     <Compile Include="CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="EnumUtilities.cs" />
+    <Compile Include="FilterList.xaml.cs">
+      <DependentUpon>FilterList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\ANumberFilter.cs" />
+    <Compile Include="Filters\CardAttackFilter.cs" />
+    <Compile Include="Filters\ANumberTextboxFilter.cs" />
+    <Compile Include="Filters\AEnumNumberFilter.cs" />
+    <Compile Include="Filters\CardCostFilter.cs" />
+    <Compile Include="Filters\CardSetFilter.cs" />
+    <Compile Include="Filters\CardRaceFilter.cs" />
+    <Compile Include="Filters\CardQualityFilter.cs" />
+    <Compile Include="Filters\CardClassFilter.cs" />
+    <Compile Include="Filters\FilterFactory.cs" />
+    <Compile Include="Filters\FilterManager.cs" />
+    <Compile Include="Filters\FilterTypes.cs" />
+    <Compile Include="Filters\CardHealthFilter.cs" />
+    <Compile Include="Filters\ICardFilter.cs" />
+    <Compile Include="Filters\CardTypeFilter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mechanic.cs" />
+    <Compile Include="NewFilter.xaml.cs">
+      <DependentUpon>NewFilter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,7 +144,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FilterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewFilter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

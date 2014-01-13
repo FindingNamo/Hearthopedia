@@ -71,6 +71,11 @@ namespace Hearthopedia
             this.Focus();
         }
 
+        private void Image_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/FilterList.xaml", UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
