@@ -1,10 +1,10 @@
 Must:
 [ ] Filters
-[ ] Polish Search Box
-[x] Make Keyboard go away
+[ ] Weird margin around the searchbox
 [ ] Deal with the webrequest bug
 [x] First tap even if drag registers as click
     - This only repros if launching from VS, if you click the app its fine.  I think its a focus issue with the emulator, Won't Fix.
+
 
 
 Like
