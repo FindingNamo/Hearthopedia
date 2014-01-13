@@ -21,14 +21,13 @@ namespace Hearthopedia
         {
             bool firstRun = false;
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
-            int retriesLeft = 1;
+            int retriesLeft = 5;
 
             while (retriesLeft > 0)
             {
                 // Wrap the entire thing in a try-catch due to that weird bug
                 try
                 {
-                    throw new Exception();
                     HttpWebRequest request = WebRequest.CreateHttp(urlGetCardHH);
                     request.BeginGetResponse(async (asyncResult) =>
                     {
