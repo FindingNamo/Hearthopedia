@@ -13,3 +13,5 @@ Like
 
 [ ] Missing Disenchant info
     - Need a new request to get this information.
+
+[ ] Make an enum for card types, card sets and card quality because we use them in different places and they are hardcoded there in a duplicated way
