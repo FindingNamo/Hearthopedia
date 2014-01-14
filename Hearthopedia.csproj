@@ -104,6 +104,9 @@
     <Compile Include="FilterList.xaml.cs">
       <DependentUpon>FilterList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Filters\ANumberFilter.cs" />
     <Compile Include="Filters\CardAttackFilter.cs" />
     <Compile Include="Filters\ANumberTextboxFilter.cs" />
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FilterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
