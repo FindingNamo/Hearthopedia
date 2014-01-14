@@ -7,11 +7,8 @@ using System.Windows;
 
 namespace Hearthopedia.Filters
 {
-    public interface ICardFilter : IDisposable
+    public interface ICardFilter
     {
-        FrameworkElement GetFilterValueXamlElement();
-        List<string> SupportedOperators { get; }
         bool Check(Card card);
-        void SetOperationIndex(int selectedIndex);
     }
 }

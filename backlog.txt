@@ -4,14 +4,24 @@ Must:
     - This only repros if launching from VS, if you click the app its fine.  I think its a focus issue with the emulator, Won't Fix.
 
 Roy
-[ ] - Filter Framework pisses Roy off, shouldn't need so many classes, would be nice to have just one for enums.
-[ ] - Filter Framework needs "mechanics" - CardMechanicFilter -> checks all filters for that one mechanic, slow but ez
-[ ] - Filters need a ToString method - for the list view.
-[ ] - Remove individual filters from FilterManager via the list view.
-[ ] - EnumUtils - CamelCase to string?
+[ ] - Filter Framework needs Numerical filters (Cost,Attack,Mana)
+[ ] - Filter Framework needs Mechanics Filters.
+[ ] - Need to make enums for Mechanics.
+[ ] - Be clever and decorate Enums to get "friendly" names to put into text boxes.  (HeroPower shows up atm).
+
+Somethig like:
+
+public enum Mechanic
+{
+	[FriendlyName("Affected by spell damage");
+    [Description("Damage increased by spell damage.")]
+	AffectedBySpellDamage = 71,
+}
+
+If all enums have Friendly names we can put that string into the UI everywhere except the actual enum name.
+(Basically allows us to have spaces, and loc if you want.
+
 [ ] - EnumUtils - TryCatches for unknowns enums? Maybe return Unknown for now?
-[ ] - NumberFilterPicker - Safeguard input.
-[ ] - Trigger new search on Filters changed.
 [ ] - Allow Search with no text (Scenario: I want to see all legendary cards)
 
 Like

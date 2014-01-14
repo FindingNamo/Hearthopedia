@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Hearthopedia.Filters;
+
 namespace Hearthopedia
 {
     public static class EnumUtilities
@@ -37,6 +39,39 @@ namespace Hearthopedia
         public static List<string> GetEnumNames<TEnum>() where TEnum : struct
         {
             return new List<string>(Enum.GetNames(typeof(TEnum)));
+        }
+
+        /// <summary>
+        /// Gets an enumeration of all the enums
+        /// </summary>
+        public static List<TEnum> GetEnums<TEnum>() where TEnum : struct
+        {
+            return new List<TEnum>((TEnum[])Enum.GetValues(typeof(TEnum)));
+        }
+
+        /// <summary>
+        /// Creates a list of the "Options" for this enumeration.
+        /// </summary>
+        public static List<EnumerableOption<TEnum>> AssembleEnumerableOptionList<TEnum>() where TEnum : struct
+        {
+            List<EnumerableOption<TEnum>> optionsList = new List<EnumerableOption<TEnum>>();
+
+            foreach (TEnum cardClass in EnumUtilities.GetEnums<TEnum>())
+            {
+                EnumerableOption<TEnum> option = new EnumerableOption<TEnum>
+                {
+                    Name = EnumUtilities.GetName<TEnum>(cardClass),
+                    EnumValue = cardClass,
+
+                    //TODO: Make this true?
+                    Value = false,
+                };
+                optionsList.Add(option);
+            }
+
+            // Sort the list?
+            optionsList.Sort((x, y) => x.Name.CompareTo(y.Name));
+            return optionsList;
         }
     }
 }

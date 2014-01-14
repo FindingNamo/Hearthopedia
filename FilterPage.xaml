@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:filters="clr-namespace:Hearthopedia.Filters"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -15,16 +17,103 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="my application">
+        <phone:Panorama Title="Filter">
+            <phone:Panorama.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="\Assets\filterbackground.jpg" Opacity="0.3"/>
+            </phone:Panorama.Background>
+
+            <phone:Panorama.TitleTemplate>
+                <DataTemplate>
+                    <ContentPresenter>
+                        <TextBlock Margin="0,70,0,0" Text="{Binding}" FontSize="72" FontFamily="Segoe WP SemiLight" />
+                    </ContentPresenter>
+                </DataTemplate>
+            </phone:Panorama.TitleTemplate>
+
+            <phone:Panorama.HeaderTemplate>
+                <DataTemplate>
+                    <ContentPresenter>
+                        <TextBlock Foreground="White" Text="{Binding}" FontSize="48" />
+                    </ContentPresenter>
+                </DataTemplate>
+            </phone:Panorama.HeaderTemplate>
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="item1">
-                <Grid/>
+            <phone:PanoramaItem x:Name="ClassPanorama"  Header="Class">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </phone:PanoramaItem>
 
-            <!--Panorama item two-->
-            <phone:PanoramaItem Header="item2">
-                <Grid/>
+            <phone:PanoramaItem x:Name="QualityPanorama"  Header="Quality">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="RacePanorama"  Header="Race">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="SetPanorama"  Header="Set">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="TypePanorama"  Header="Type">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="HealthPanorama"  Header="Health, Cost, Attack">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem x:Name="MechanicPanorama"  Header="Mechanics">
+                <ListBox ItemsSource="{Binding FilterOptions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
+                                      Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

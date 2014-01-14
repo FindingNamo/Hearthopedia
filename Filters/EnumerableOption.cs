@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Hearthopedia.Filters
 {
-    public class CardCostFilter : ANumberTextboxFilter
+    public class EnumerableOption<TEnum>
     {
-        public override bool Check(Card card)
-        {
-            return CheckInt(card.cost);
-        }
+        public string Name { get; set; }
+        public TEnum EnumValue { get; set; }
+        public bool Value { get; set; }
     }
 }

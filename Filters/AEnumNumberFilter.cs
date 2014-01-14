@@ -10,108 +10,42 @@ using System.Windows.Input;
 
 namespace Hearthopedia.Filters
 {
-    public abstract class AEnumNumberFilter<EnumType> : ANumberFilter where EnumType : struct, IConvertible
+    public abstract class AEnumNumberFilter<EnumType> : ICardFilter where EnumType : struct
     {
-        /// <summary>
-        /// The supported operators for number typed filters.
-        /// </summary>
-        public List<string> SupportedOperators
+        protected List<EnumerableOption<EnumType>> _FilterOptions;
+        public List<EnumerableOption<EnumType>> FilterOptions
         {
             get
             {
-                return new List<string>()
-                    {
-                        "equal to",
-                        "not equal to ",
-                     };
+                return _FilterOptions;
             }
-        }
-
-        protected enum NumberFilterOperation
-        {
-            Equal,
-            NotEqual,
-        }
-
-        /// <summary>
-        /// The operation the user has chosen.
-        /// </summary>
-        protected NumberFilterOperation ChosenOperation;
-
-        /// <summary>
-        /// The value the user has chosen.
-        /// </summary>
-        protected int ChosenValue;
-
-        /// <summary>
-        /// The textbox the user has typed into.
-        /// </summary>
-        private ListPicker _filterListPicker;
-
-        /// <summary>
-        /// Gets a textbox to type in.
-        /// </summary>
-        public override FrameworkElement GetFilterValueXamlElement()
-        {
-            return _filterListPicker ?? (_filterListPicker = GenerateListPicker());
-        }
-
-        /// <summary>
-        /// Setup and create the special textbox
-        /// </summary>
-        private ListPicker GenerateListPicker()
-        {
-            List<string> values = EnumUtilities.GetEnumNames<EnumType>();
-            ListPicker listPicker = new ListPicker();
-            listPicker.ItemsSource = values;
-            listPicker.ExpansionMode = ExpansionMode.FullScreenOnly;
-            listPicker.SelectionChanged += OnSelectionChanged;
-
-            return listPicker;
-        }
-
-        protected void OnSelectionChanged(object sender, SelectionChangedEventArgs args)
-        {
-            ListPicker valueListPicker = (ListPicker) sender;
-
-            // Gross, but i dont want to learn how to properly handle this.
-            // We know all these enums are ints anyways
-            ChosenValue = (int)((object)EnumUtilities.GetEnumValueFromEnumName<EnumType>((string)valueListPicker.SelectedItem));
-        }
-
-        /// <summary>
-        /// Sets the operation index
-        /// </summary>
-        public override void SetOperationIndex(int selectedIndex)
-        {
-            ChosenOperation = (NumberFilterOperation) selectedIndex;
         }
 
         /// <summary>
         /// Simply call this with your number.
         /// </summary>
         /// <returns></returns>
-        protected bool CheckEnum(int i)
+        protected bool CheckEnum(int enumValue)
         {
-            switch(ChosenOperation)
+            foreach (EnumerableOption<EnumType> enumOption in _FilterOptions)
             {
-                case NumberFilterOperation.Equal:
-                    return i == ChosenValue;
-                case NumberFilterOperation.NotEqual:
-                    return i != ChosenValue;
+                // This is really bad... but hey, they're all ints... right?
+                if (enumOption.Value && enumValue == (int)(object)enumOption.EnumValue)
+                    return true;
 
-                default:
-                    // Didn't set a valud operation?
-                    throw new ArgumentException();
+            }
+            return false;
+        }
+
+        public abstract bool Check(Card card);
+
+        public void Disable()
+        {
+            foreach (EnumerableOption<EnumType> option in _FilterOptions)
+            {
+                option.Value = false;
             }
         }
 
-        /// <summary>
-        /// Unregister any events.
-        /// </summary>
-        public override void Dispose()
-        {
-            _filterListPicker.SelectionChanged -= OnSelectionChanged;
-        }
     }
 }

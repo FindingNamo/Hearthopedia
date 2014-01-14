@@ -35,7 +35,7 @@ namespace Hearthopedia
             DataAccess.PopulateDataManagerCards(true);
 
             // Check for update
-            DataAccess.GetDataFromHearthHead();
+        //    DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -76,7 +76,7 @@ namespace Hearthopedia
 
         private void Image_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/FilterList.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/FilterPage.xaml", UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar

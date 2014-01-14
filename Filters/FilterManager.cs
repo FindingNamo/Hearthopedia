@@ -9,9 +9,7 @@ namespace Hearthopedia.Filters
 {
     public class FilterManager
     {
-        // Is there a way I can stop people from calling methods on this directly?
-        // Not important for us, but I'd like to know for my own business with C#.
-        public readonly ObservableCollection<ICardFilter> ActiveFilters;
+        private List<ICardFilter> _ActiveFilters;
         
         private static FilterManager _instance;
         public static FilterManager Instance
@@ -24,36 +22,30 @@ namespace Hearthopedia.Filters
 
         private FilterManager()
         {
-            ActiveFilters = new ObservableCollection<ICardFilter>();
+            _ActiveFilters = new List<ICardFilter>()
+            {
+                CardClassFilter.Instance,
+                CardQualityFilter.Instance, 
+                CardRaceFilter.Instance,
+                CardSetFilter.Instance,
+                CardTypeFilter.Instance,
+            };
         }
         
         /// <summary>
-        /// Tests the passed in card against all active filters.
+        /// Filters describe values which are acceptable to show.
         /// </summary>
         public bool Check(Card card)
         {
-            foreach (ICardFilter filter in ActiveFilters)
+            foreach (ICardFilter filter in _ActiveFilters)
             {
-                if (!filter.Check(card))
-                    return false;
+                if (filter.Check(card))
+                    return true;
             }
 
-            // None of the filters failed, so it passes.
-            return true;
+            // None of the filters succeeded, don't show this card.
+            return false;
         }
 
-        public void AddFilter(ICardFilter filter)
-        {
-            ActiveFilters.Add(filter);
-        }
-
-        public void ClearFilters()
-        {
-            // Do i have to call dispose or does that happen?
-            foreach (ICardFilter filter in ActiveFilters)
-                filter.Dispose();
-
-            ActiveFilters.Clear();
-        }
     }
 }

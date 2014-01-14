@@ -8,6 +8,8 @@ using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
 
+using Hearthopedia.Filters;
+
 namespace Hearthopedia
 {
     class Utilities
@@ -24,9 +26,6 @@ namespace Hearthopedia
             noHTML = noHTML.Replace(@"\", "");
             string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
             return noHTMLNormalised;
-        }
-
-
-        
+        }        
     }
 }

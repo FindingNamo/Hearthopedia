@@ -101,25 +101,17 @@
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="EnumUtilities.cs" />
-    <Compile Include="FilterList.xaml.cs">
-      <DependentUpon>FilterList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Filters\ANumberFilter.cs" />
-    <Compile Include="Filters\CardAttackFilter.cs" />
-    <Compile Include="Filters\ANumberTextboxFilter.cs" />
     <Compile Include="Filters\AEnumNumberFilter.cs" />
-    <Compile Include="Filters\CardCostFilter.cs" />
     <Compile Include="Filters\CardSetFilter.cs" />
     <Compile Include="Filters\CardRaceFilter.cs" />
     <Compile Include="Filters\CardQualityFilter.cs" />
     <Compile Include="Filters\CardClassFilter.cs" />
-    <Compile Include="Filters\FilterFactory.cs" />
+    <Compile Include="Filters\EnumerableOption.cs" />
     <Compile Include="Filters\FilterManager.cs" />
     <Compile Include="Filters\FilterTypes.cs" />
-    <Compile Include="Filters\CardHealthFilter.cs" />
     <Compile Include="Filters\ICardFilter.cs" />
     <Compile Include="Filters\CardTypeFilter.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -127,9 +119,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mechanic.cs" />
-    <Compile Include="NewFilter.xaml.cs">
-      <DependentUpon>NewFilter.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,19 +136,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FilterList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FilterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NewFilter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +187,7 @@
     </Content>
     <Content Include="Assets\ClassPortraits\everyone.png" />
     <Content Include="Assets\ClassPortraits\warrior.png" />
+    <Content Include="Assets\filterbackground.jpg" />
     <Content Include="Assets\Sprites\blue32.png" />
     <Content Include="Assets\Sprites\disenchant32.png" />
     <Content Include="Assets\Sprites\durability32.png" />
