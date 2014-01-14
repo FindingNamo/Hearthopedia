@@ -176,6 +176,29 @@ namespace Hearthopedia
             }
         }
 
+        public static async Task ApplyFilterOnDisplayedSearch()
+        {
+            List<Card> reSearchedCards = new List<Card>();
+            
+            foreach (Card card in DataManager.Instance.SearchedCards)
+            {
+                if (FilterManager.Instance.Check(card))
+                {
+                    reSearchedCards.Add(card);
+                }
+            }
+
+            DataManager.Instance.SearchedCards.Clear();
+
+            foreach (Card card in reSearchedCards)
+            {
+                if (FilterManager.Instance.Check(card))
+                {
+                    DataManager.Instance.SearchedCards.Add(card);
+                }
+            }
+        }
+
         public static async Task SearchCardsLINQ(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
