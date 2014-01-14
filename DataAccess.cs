@@ -176,7 +176,7 @@ namespace Hearthopedia
             }
         }
 
-        public static async Task ApplyFilterOnDisplayedSearch()
+        public static async Task SearchCards()
         {
             List<Card> reSearchedCards = new List<Card>();
             

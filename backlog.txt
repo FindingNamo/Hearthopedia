@@ -1,7 +1,5 @@
 Must:
 [ ] Weird margin around the searchbox
-[x] First tap even if drag registers as click
-    - This only repros if launching from VS, if you click the app its fine.  I think its a focus issue with the emulator, Won't Fix.
 
 Roy
 [ ] - Filter Framework needs Numerical filters (Cost,Attack,Mana)

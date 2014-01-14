@@ -28,7 +28,7 @@ namespace Hearthopedia
         {
             base.OnNavigatedFrom(e);
 
-            DataAccess.ApplyFilterOnDisplayedSearch();
+            DataAccess.SearchCards();
         }
     }
 }
