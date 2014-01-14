@@ -192,10 +192,7 @@ namespace Hearthopedia
 
             foreach (Card card in reSearchedCards)
             {
-                if (FilterManager.Instance.Check(card))
-                {
-                    DataManager.Instance.SearchedCards.Add(card);
-                }
+                DataManager.Instance.SearchedCards.Add(card);
             }
         }
 
