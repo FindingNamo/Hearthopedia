@@ -76,7 +76,7 @@ namespace Hearthopedia
 
         private void Image_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/FilterPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/FilterPage.xaml?search=" + textBoxSearch.Text, UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar

@@ -14,6 +14,8 @@ namespace Hearthopedia
 {
     public partial class FilterPage : PhoneApplicationPage
     {
+        private string _searchString ="";
+
         public FilterPage()
         {
             InitializeComponent();
@@ -26,11 +28,18 @@ namespace Hearthopedia
             MechanicPanorama.DataContext = CardMechanicFilter.Instance;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            NavigationContext.QueryString.TryGetValue("search", out _searchString);
+        }
+
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
 
-            DataAccess.SearchCards();
+            DataAccess.SearchCards(_searchString);
         }
 
         private void UncheckAllButton_Click(object sender, RoutedEventArgs e)
