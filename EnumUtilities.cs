@@ -62,9 +62,7 @@ namespace Hearthopedia
                 {
                     Name = EnumUtilities.GetName<TEnum>(cardClass),
                     EnumValue = cardClass,
-
-                    //TODO: Make this true?
-                    Value = false,
+                    Value = true,
                 };
                 optionsList.Add(option);
             }

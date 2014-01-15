@@ -38,14 +38,14 @@ namespace Hearthopedia.Filters
         /// </summary>
         public bool Check(Card card)
         {
+
+            // If any filter fails, don't show.
             foreach (ICardFilter filter in _ActiveFilters)
             {
-                if (filter.Check(card))
-                    return true;
+                if (!filter.Check(card))
+                    return false;
             }
-
-            // None of the filters succeeded, don't show this card.
-            return false;
+            return true;
         }
 
     }

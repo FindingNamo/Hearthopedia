@@ -24,7 +24,7 @@ namespace Hearthopedia.Filters
 
         public override bool Check(Card card)
         {
-            return CheckEnum(card.classs);
+            return CheckEnum(card.type);
         }
     }
 }

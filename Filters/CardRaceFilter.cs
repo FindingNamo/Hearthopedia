@@ -21,9 +21,10 @@ namespace Hearthopedia.Filters
                 return _instance ?? (_instance = new CardRaceFilter());
             }
         }
+
         public override bool Check(Card card)
         {
-            return CheckEnum(card.classs);
+            return CheckEnum(card.race);
         }
     }
 }
