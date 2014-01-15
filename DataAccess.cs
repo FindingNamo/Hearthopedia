@@ -148,7 +148,7 @@ namespace Hearthopedia
             int searchNumMinChar = 2;
 
             // only do the search if there are this many characters
-            if (searchString.Length >= searchNumMinChar)
+            if ((searchString.Length >= searchNumMinChar) || (searchString.Length == 0))
             {
                 Thread thread = new Thread((ThreadStart)delegate
                 {
