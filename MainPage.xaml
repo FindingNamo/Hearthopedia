@@ -96,7 +96,7 @@
                             <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
                             <Grid HorizontalAlignment="Stretch" Tap="OnListItemClick" >
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="93" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
