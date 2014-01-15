@@ -34,6 +34,7 @@ namespace Hearthopedia.Filters
                     return true;
 
             }
+
             return false;
         }
 

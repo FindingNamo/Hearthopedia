@@ -109,6 +109,7 @@
     <Compile Include="Filters\CardRaceFilter.cs" />
     <Compile Include="Filters\CardQualityFilter.cs" />
     <Compile Include="Filters\CardClassFilter.cs" />
+    <Compile Include="Filters\NumberFilter.cs" />
     <Compile Include="Filters\EnumerableOption.cs" />
     <Compile Include="Filters\FilterManager.cs" />
     <Compile Include="Filters\FilterTypes.cs" />

@@ -29,6 +29,7 @@ namespace Hearthopedia.Filters
                 CardRaceFilter.Instance,
                 CardSetFilter.Instance,
                 CardTypeFilter.Instance,
+                NumberFilter.Instance,
             };
         }
         

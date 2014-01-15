@@ -94,15 +94,71 @@
                 </ListBox>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem x:Name="HealthPanorama"  Header="Health, Cost, Attack">
-                <ListBox ItemsSource="{Binding FilterOptions}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}"
-                                      Content="{Binding Name}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+            <phone:PanoramaItem x:Name="NumberPanorama"  Header="Health, Cost, Attack">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Text="Health:"/>
+
+                        <toolkit:PhoneTextBox Text="{Binding MinHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Text="{Binding MaxHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Cost:"/>
+
+                        <toolkit:PhoneTextBox Text="{Binding MinCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Text="{Binding MaxCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Attack:"/>
+
+                        <toolkit:PhoneTextBox Text="{Binding MinAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Text="{Binding MaxAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
             </phone:PanoramaItem>
 
             <phone:PanoramaItem x:Name="MechanicPanorama"  Header="Mechanics">

@@ -22,6 +22,7 @@ namespace Hearthopedia
             RacePanorama.DataContext = CardRaceFilter.Instance;
             SetPanorama.DataContext = CardSetFilter.Instance;
             TypePanorama.DataContext = CardTypeFilter.Instance;
+            NumberPanorama.DataContext = NumberFilter.Instance;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
