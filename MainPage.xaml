@@ -14,6 +14,9 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -76,12 +79,11 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="/Assets/searchbar.png" Tap="Image_Tap_1" />
-            <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" />
+            <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
                 <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" ManipulationStarted="listCards_ManipulationStarted">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
