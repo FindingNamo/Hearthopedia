@@ -3,7 +3,6 @@ Must:
 
 Roy
 [ ] - Be clever and decorate Enums to get "friendly" names to put into text boxes.  (HeroPower shows up atm).
-[ ] - Uncheck/Check all - doesn't seem to work.  I believe its updating the model, but the view isn't.  EnumerationOption probably needs to be IObservable, or force a layout chenge
 
 Something like:
 public enum Mechanic
@@ -25,8 +24,6 @@ Like
 
 [ ] Missing Disenchant info
     - Need a new request to get this information.
-
-[ ] Make an enum for card types, card sets and card quality because we use them in different places and they are hardcoded there in a duplicated way
 
 [ ] Arena Mode to make sure people keep using the app
 

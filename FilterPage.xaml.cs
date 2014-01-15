@@ -35,13 +35,15 @@ namespace Hearthopedia
 
         private void UncheckAllButton_Click(object sender, RoutedEventArgs e)
         {
-            ICardFilter filter = (ICardFilter)((PanoramaItem)(EntirePanorama.SelectedItem)).DataContext;
+            PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);   
+            ICardFilter filter = (ICardFilter)(currentItem).DataContext;
             filter.SetUncheckedAll();
         }
 
         private void CheckAllButton_Click_1(object sender, RoutedEventArgs e)
         {
-            ICardFilter filter = (ICardFilter)((PanoramaItem)(EntirePanorama.SelectedItem)).DataContext;
+            PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);
+            ICardFilter filter = (ICardFilter)(currentItem).DataContext;
             filter.SetCheckedAll();
         }
 
