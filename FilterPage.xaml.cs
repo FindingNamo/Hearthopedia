@@ -35,38 +35,16 @@ namespace Hearthopedia
 
         private void UncheckAllButton_Click(object sender, RoutedEventArgs e)
         {
-            PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);
-
-            // For some reason its not a real-time databinding.
-            // Likely because the bool isn't observable.
-
-            // But, if we remove the data context from the list, and attach it again.
-            // Even if they're 1 line apart, it fixes that.
-
-            // I want to put a few lines in between though, just
-            // so the hack doesn't get optimized away in ship.
-            object hack = currentItem.DataContext;
-            currentItem.DataContext = null;
-            
+            PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);   
             ICardFilter filter = (ICardFilter)(currentItem).DataContext;
             filter.SetUncheckedAll();
-
-            currentItem.DataContext = hack;
         }
 
         private void CheckAllButton_Click_1(object sender, RoutedEventArgs e)
         {
             PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);
-
-            // Hack (See above)
-            object hack = currentItem.DataContext;
-            currentItem.DataContext = null;
-
             ICardFilter filter = (ICardFilter)(currentItem).DataContext;
             filter.SetCheckedAll();
-
-
-            currentItem.DataContext = hack;
         }
 
     }
