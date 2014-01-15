@@ -32,7 +32,6 @@ namespace Hearthopedia.Filters
                 // This is really bad... but hey, they're all ints... right?
                 if (enumOption.Value && enumValue == (int)(object)enumOption.EnumValue)
                     return true;
-
             }
 
             return false;
@@ -40,13 +39,16 @@ namespace Hearthopedia.Filters
 
         public abstract bool Check(Card card);
 
-        public void Disable()
+        public virtual void SetUncheckedAll()
         {
             foreach (EnumerableOption<EnumType> option in _FilterOptions)
-            {
                 option.Value = false;
-            }
         }
 
+        public virtual void SetCheckedAll()
+        {
+            foreach (EnumerableOption<EnumType> option in _FilterOptions)
+                option.Value = true;
+        }
     }
 }

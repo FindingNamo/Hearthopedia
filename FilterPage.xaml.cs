@@ -23,6 +23,7 @@ namespace Hearthopedia
             SetPanorama.DataContext = CardSetFilter.Instance;
             TypePanorama.DataContext = CardTypeFilter.Instance;
             NumberPanorama.DataContext = NumberFilter.Instance;
+            MechanicPanorama.DataContext = CardMechanicFilter.Instance;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -31,5 +32,18 @@ namespace Hearthopedia
 
             DataAccess.SearchCards();
         }
+
+        private void UncheckAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            ICardFilter filter = (ICardFilter)((PanoramaItem)(EntirePanorama.SelectedItem)).DataContext;
+            filter.SetUncheckedAll();
+        }
+
+        private void CheckAllButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            ICardFilter filter = (ICardFilter)((PanoramaItem)(EntirePanorama.SelectedItem)).DataContext;
+            filter.SetCheckedAll();
+        }
+
     }
 }

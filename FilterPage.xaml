@@ -17,7 +17,12 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="Filter">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <phone:Panorama x:Name="EntirePanorama" Grid.Row="0" Title="Filter">
             <phone:Panorama.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="\Assets\filterbackground.jpg" Opacity="0.3"/>
             </phone:Panorama.Background>
@@ -172,6 +177,19 @@
                 </ListBox>
             </phone:PanoramaItem>
         </phone:Panorama>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="UncheckAllButton" Grid.Column="0" Content="Uncheck All" Click="UncheckAllButton_Click"/>
+            <Button x:Name="CheckAllButton" Grid.Column="1" Content="Check All" Click="CheckAllButton_Click_1" />
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

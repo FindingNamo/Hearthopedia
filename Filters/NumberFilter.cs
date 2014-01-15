@@ -58,5 +58,26 @@ namespace Hearthopedia.Filters
 
             return passesFilter;
         }
+
+        /// <summary>
+        /// Clear the filter.
+        /// </summary>
+        public void SetUncheckedAll()
+        {
+            MinAttack = null;
+            MinCost = null;
+            MinHealth = null;
+
+            MaxAttack = null;
+            MaxCost = null;
+            MaxHealth = null;
+        }
+
+        /// <summary>
+        /// What would that even mean?
+        /// </summary>
+        public void SetCheckedAll()
+        {
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace Hearthopedia.Filters
     public interface ICardFilter
     {
         bool Check(Card card);
+        void SetUncheckedAll();
+        void SetCheckedAll();
     }
 }

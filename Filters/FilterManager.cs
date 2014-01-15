@@ -30,6 +30,7 @@ namespace Hearthopedia.Filters
                 CardSetFilter.Instance,
                 CardTypeFilter.Instance,
                 NumberFilter.Instance,
+                CardMechanicFilter.Instance, 
             };
         }
         
