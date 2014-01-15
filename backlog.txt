@@ -2,13 +2,10 @@ Must:
 [ ] Weird margin around the searchbox
 
 Roy
-[ ] - Filter Framework needs Numerical filters (Cost,Attack,Mana)
-[ ] - Filter Framework needs Mechanics Filters.
-[ ] - Need to make enums for Mechanics.
 [ ] - Be clever and decorate Enums to get "friendly" names to put into text boxes.  (HeroPower shows up atm).
+[ ] - Uncheck/Check all - doesn't seem to work.  I believe its updating the model, but the view isn't.  EnumerationOption probably needs to be IObservable, or force a layout chenge
 
-Somethig like:
-
+Something like:
 public enum Mechanic
 {
 	[FriendlyName("Affected by spell damage");
