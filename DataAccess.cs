@@ -148,7 +148,7 @@ namespace Hearthopedia
             int searchNumMinChar = 2;
 
             // only do the search if there are this many characters
-            if ((searchString.Length >= searchNumMinChar) || (searchString.Length == 0))
+            if ((searchString.Length >= searchNumMinChar))
             {
                 Thread thread = new Thread((ThreadStart)delegate
                 {
@@ -165,6 +165,30 @@ namespace Hearthopedia
                                 if (card.name.ToLower().Contains(searchString.ToLower()) &&
                                     !(card.CardTypeString.Equals("Unknown")) &&
                                     FilterManager.Instance.Check(card))
+                                {
+                                    DataManager.Instance.SearchedCards.Add(card);
+                                }
+                            }
+                        });
+                    }
+                });
+                thread.Start();
+            }
+            else if (searchString.Length == 0)
+            {
+                Thread thread = new Thread((ThreadStart)delegate
+                {
+                    Thread.Sleep(searchDelaySec * 1000);
+
+                    // if it's been long enough and no new search has been requested, actually do the search
+                    if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
+                    {
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            DataManager.Instance.SearchedCards.Clear();
+                            foreach (Card card in DataManager.Instance.Cards)
+                            {
+                                if (FilterManager.Instance.Check(card))
                                 {
                                     DataManager.Instance.SearchedCards.Add(card);
                                 }
