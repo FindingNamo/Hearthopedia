@@ -110,6 +110,7 @@ namespace Hearthopedia
         {
             DataManager.Instance.Cards.Clear();
 
+            // populate from disk
             using (StreamReader reader = new StreamReader(
             await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
             {
@@ -122,20 +123,23 @@ namespace Hearthopedia
                         Card currentCard = Utilities.GetCardFromJson(jsonString);
                         DataManager.Instance.Cards.Add(currentCard);
                     }
+                }
+            }
 
-                    // Sort
-                    DataManager.Instance.SortCards();
+            // Sort
+            DataManager.Instance.SortCards();
 
-                    // Display cards if we just booted
-                    if (onBoot)
+            // Display cards if we just booted
+            if (onBoot)
+            {
+                DataManager.Instance.SearchedCards.Clear();
+
+                foreach (Card card in DataManager.Instance.Cards)
+                {
+                    if (card.CardTypeString != null)
                     {
-                        DataManager.Instance.SearchedCards.Clear();
-
-                        foreach (Card card in DataManager.Instance.Cards)
-                        {
-                            if (!(card.CardTypeString.Equals("Unknown")))
-                                DataManager.Instance.SearchedCards.Add(card);
-                        }
+                        if (!(card.CardTypeString.Equals("Unknown")))
+                            DataManager.Instance.SearchedCards.Add(card);
                     }
                 }
             }
@@ -162,11 +166,14 @@ namespace Hearthopedia
                             DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
-                                if (card.name.ToLower().Contains(searchString.ToLower()) &&
-                                    !(card.CardTypeString.Equals("Unknown")) &&
-                                    FilterManager.Instance.Check(card))
+                                if (card.CardTypeString != null)
                                 {
-                                    DataManager.Instance.SearchedCards.Add(card);
+                                    if (card.name.ToLower().Contains(searchString.ToLower()) &&
+                                        !(card.CardTypeString.Equals("Unknown")) &&
+                                        FilterManager.Instance.Check(card))
+                                    {
+                                        DataManager.Instance.SearchedCards.Add(card);
+                                    }
                                 }
                             }
                         });
