@@ -78,8 +78,10 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="/Assets/searchbar.png" Tap="Image_Tap_1" />
+            
+            <Image Grid.Row="0" Source="/Assets/searchbar.png"  />
             <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+            <Image Grid.Row="0"  Source="/Assets/filter.png" Tap="Image_Tap_1" Width="40" Height="40" Margin="420,16,10,16" />
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -145,12 +147,12 @@
 
                                     <!-- Health -->
                                     <Image Grid.Column="3" Source="{Binding HealthIconPath}" />
-                                    <TextBlock Grid.Column="3" Margin="2,0,0,0" Text="{Binding  health}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="0,2,0,0" Text="{Binding  health}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="-2,0,0,0" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="0,-2,0,0" Text="{Binding  health}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                    <TextBlock Grid.Column="3" Margin="2,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                    <TextBlock Grid.Column="3" Margin="0,2,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                    <TextBlock Grid.Column="3" Margin="-2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                    <TextBlock Grid.Column="3" Margin="0,-2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
 
-                                    <TextBlock Grid.Column="3" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverType}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}"/>
                                 </Grid>
                             </Grid>
                         </DataTemplate>
