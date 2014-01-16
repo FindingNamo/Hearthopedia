@@ -52,8 +52,6 @@ namespace Hearthopedia
 
         private void CheckAllButton_Click_1(object sender, RoutedEventArgs e)
         {
-            string friendlyname = EnumUtilities.GetFriendlyName<CardTypes>(CardTypes.HeroPower);
-            MessageBox.Show(friendlyname);
             PanoramaItem currentItem = (PanoramaItem)(EntirePanorama.SelectedItem);
             ICardFilter filter = (ICardFilter)(currentItem).DataContext;
             filter.SetCheckedAll();

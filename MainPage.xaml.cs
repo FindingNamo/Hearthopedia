@@ -60,7 +60,7 @@ namespace Hearthopedia
         {
             FrameworkElement clickedObject = (FrameworkElement)sender;
             Card selectedCard = (Card)clickedObject.DataContext;
-            NavigationService.Navigate(new Uri("/CardPage.xaml?name=" + selectedCard.name, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/CardPage.xaml?id=" + selectedCard.id, UriKind.Relative));
         }
 
         private void textBoxSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
