@@ -22,6 +22,18 @@ namespace Hearthopedia
             }
         }
 
+        public int HealthOrDurability
+        {
+            get
+            {
+                if (type == (int)CardTypes.Weapon)
+                    return durability;
+
+                return health;
+            }
+        }
+
+        public int durability { get; set; }
         public int set { get; set; }
         public string icon { get; set; }
         public int type { get; set; }

@@ -121,22 +121,21 @@
                         <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Margin="0,-2,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
                         <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
 
-                        <Image     Grid.Column="0" Grid.Row="8" Height="32" Width="32" HorizontalAlignment="Center" Source="{Binding HealthIconPath}" />
-                        <TextBlock Grid.Column="0" Grid.Row="7" Text="{Binding HealthLabel}" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="2,0,0,0" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,2,0,0" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="-2,0,0,0" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,-2,0,0" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Text="{Binding health}" Style="{StaticResource SmallCardStatsOverType}" />
+                        <Image     Grid.Column="1" Grid.Row="8" Height="32" Width="32" HorizontalAlignment="Center" Source="{Binding HealthIconPath}" />
+                        <TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding HealthLabel}" Style="{StaticResource BasicInfoLabel}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="-2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,-2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}" />
 
-                        <Image     Grid.Column="1" Grid.Row="8" Height="32" Width="32" HorizontalAlignment="Center" Source="{Binding AttackIconPath}" />
-                        <TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding AttackLabel}" Style="{StaticResource BasicInfoLabel}"/>
-
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}" />
+                        <Image     Grid.Column="0" Grid.Row="8" Height="32" Width="32" HorizontalAlignment="Center" Source="{Binding AttackIconPath}" />
+                        <TextBlock Grid.Column="0" Grid.Row="7" Text="{Binding AttackLabel}" Style="{StaticResource BasicInfoLabel}"/>
+                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="0" Grid.Row="8" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}" />
                         
                     </Grid>
                     
