@@ -72,11 +72,11 @@ namespace Hearthopedia
             foreach (TEnum enumVal in EnumUtilities.GetEnums<TEnum>())
             {
                 EnumerableOption<TEnum> option = new EnumerableOption<TEnum>
-                {
-                    Name = EnumUtilities.GetFriendlyName<TEnum>(enumVal),
-                    EnumValue = enumVal,
-                    Value = true,
-                };
+                (
+                    EnumUtilities.GetFriendlyName<TEnum>(enumVal),
+                    enumVal,
+                    true
+                );
                 optionsList.Add(option);
             }
 
