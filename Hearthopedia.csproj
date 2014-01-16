@@ -189,6 +189,7 @@
     </Content>
     <Content Include="Assets\ClassPortraits\everyone.png" />
     <Content Include="Assets\ClassPortraits\warrior.png" />
+    <Content Include="Assets\filter.png" />
     <Content Include="Assets\filterbackground.jpg" />
     <Content Include="Assets\Sprites\blue32.png" />
     <Content Include="Assets\Sprites\disenchant32.png" />
