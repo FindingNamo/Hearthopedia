@@ -1,6 +1,7 @@
 ﻿using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace Hearthopedia.Filters
 {
-    public class NumberFilter : ICardFilter
+    public class NumberFilter : ICardFilter, INotifyPropertyChanged
     {
         private NumberFilter()
         {
@@ -25,14 +26,107 @@ namespace Hearthopedia.Filters
             }
         }
 
-        public int? MinHealth { set; get; }
-        public int? MaxHealth { set; get; }
+        private int? _minHealth;
+        public int? MinHealth
+        {
+            get
+            {
+                return _minHealth;
+            }
+            set
+            {
+                if (_minHealth != value)
+                {
+                    _minHealth = value;
+                    OnPropertyChanged("MinHealth");
+                }
+            }
+        }
 
-        public int? MinCost { set; get; }
-        public int? MaxCost { set; get; }
+        private int? _maxHealth;
+        public int? MaxHealth
+        {
+            get
+            {
+                return _maxHealth;
+            }
+            set
+            {
+                if (_maxHealth != value)
+                {
+                    _maxHealth = value;
+                    OnPropertyChanged("MaxHealth");
+                }
+            }
+        }
 
-        public int? MinAttack { set; get; }
-        public int? MaxAttack { set; get; }
+        private int? _minCost;
+        public int? MinCost
+        {
+            get
+            {
+                return _minCost;
+            }
+            set
+            {
+                if (_minCost != value)
+                {
+                    _minCost = value;
+                    OnPropertyChanged("MinCost");
+                }
+            }
+        }
+
+        private int? _maxCost;
+        public int? MaxCost
+        {
+            get
+            {
+                return _maxCost;
+            }
+            set
+            {
+                if (_maxCost != value)
+                {
+                    _maxCost = value;
+                    OnPropertyChanged("MaxCost");
+                }
+            }
+        }
+
+        private int? _minAttack;
+        public int? MinAttack
+        {
+            get
+            {
+                return _minAttack;
+            }
+            set
+            {
+                if (_minAttack != value)
+                {
+                    _minAttack = value;
+                    OnPropertyChanged("MinAttack");
+                }
+            }
+        }
+
+        private int? _maxAttack;
+        public int? MaxAttack
+        {
+            get
+            {
+                return _maxAttack;
+            }
+            set
+            {
+                if (_maxAttack != value)
+                {
+                    _maxAttack = value;
+                    OnPropertyChanged("MaxAttack");
+                }
+            }
+        }
 
         public bool Check(Card card)
         {
@@ -79,5 +173,16 @@ namespace Hearthopedia.Filters
         public void SetCheckedAll()
         {
         }
+
+        private void OnPropertyChanged(string property)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(property));
+
+            FilterManager.Instance.Dirty = true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

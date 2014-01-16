@@ -34,6 +34,8 @@ namespace Hearthopedia.Filters
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(property));
+
+            FilterManager.Instance.Dirty = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

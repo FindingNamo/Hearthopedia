@@ -9,6 +9,11 @@ namespace Hearthopedia.Filters
 {
     public class FilterManager
     {
+        /// <summary>
+        /// Filters have been changed.
+        /// </summary>
+        public bool Dirty { get; set; }
+
         private List<ICardFilter> _ActiveFilters;
         
         private static FilterManager _instance;

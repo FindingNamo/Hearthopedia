@@ -205,6 +205,7 @@ namespace Hearthopedia
                 });
                 thread.Start();
             }
+            FilterManager.Instance.Dirty = false;
         }
 
         public static async Task SearchCardsLINQ(string searchString)
