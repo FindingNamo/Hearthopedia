@@ -114,6 +114,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     
                     <Grid Grid.Row="0">
@@ -171,6 +172,25 @@
                         <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MinAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" />
                         <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
                         <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MaxAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" />
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Durability:" FontSize="25"/>
+
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MinDurability, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" />
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MaxDurability, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" />
                     </Grid>
                 </Grid>
             </phone:PanoramaItem>

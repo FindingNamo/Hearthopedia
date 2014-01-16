@@ -128,6 +128,41 @@ namespace Hearthopedia.Filters
             }
         }
 
+
+        private int? _minDurability;
+        public int? MinDurability
+        {
+            get
+            {
+                return _minDurability;
+            }
+            set
+            {
+                if (_minDurability != value)
+                {
+                    _minDurability = value;
+                    OnPropertyChanged("MinDurability");
+                }
+            }
+        }
+
+        private int? _maxDurability;
+        public int? MaxDurability
+        {
+            get
+            {
+                return _maxDurability;
+            }
+            set
+            {
+                if (_maxDurability != value)
+                {
+                    _maxDurability = value;
+                    OnPropertyChanged("MaxDurability");
+                }
+            }
+        }
+
         public bool Check(Card card)
         {
             bool passesFilter = true;
@@ -150,6 +185,13 @@ namespace Hearthopedia.Filters
             if (MaxAttack.HasValue)
                 passesFilter = passesFilter && card.health <= MaxAttack;
 
+            // Durability
+            if (MinDurability.HasValue)
+                passesFilter = passesFilter && card.durability >= MinDurability;
+            if (MaxDurability.HasValue)
+                passesFilter = passesFilter && card.health <= MaxDurability;
+
+
             return passesFilter;
         }
 
@@ -165,6 +207,9 @@ namespace Hearthopedia.Filters
             MaxAttack = null;
             MaxCost = null;
             MaxHealth = null;
+
+            MinDurability = null;
+            MaxDurability = null;
         }
 
         /// <summary>
