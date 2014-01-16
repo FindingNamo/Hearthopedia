@@ -175,7 +175,6 @@
             
 
         </phone:Panorama>
-        <UI:AdControl Grid.Row="1" ApplicationId="test_client" AdUnitId="Image480_80" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="480"/>
+        <UI:AdControl Grid.Row="2" ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
     </Grid>
-
 </phone:PhoneApplicationPage>

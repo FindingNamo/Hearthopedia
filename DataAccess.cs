@@ -153,7 +153,7 @@ namespace Hearthopedia
         public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
-            int searchDelaySec = 1;
+            double searchDelaySec = System.Convert.ToDouble("0.2");
             int searchNumMinChar = 2;
 
             // only do the search if there are this many characters
@@ -161,7 +161,7 @@ namespace Hearthopedia
             {
                 Thread thread = new Thread((ThreadStart)delegate
                 {
-                    Thread.Sleep(searchDelaySec * 1000);
+                    Thread.Sleep(System.Convert.ToInt16(searchDelaySec * 1000));
 
                     // if it's been long enough and no new search has been requested, actually do the search
                     if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
@@ -190,7 +190,7 @@ namespace Hearthopedia
             {
                 Thread thread = new Thread((ThreadStart)delegate
                 {
-                    Thread.Sleep(searchDelaySec * 1000);
+                    Thread.Sleep(System.Convert.ToInt16(searchDelaySec * 1000));
 
                     // if it's been long enough and no new search has been requested, actually do the search
                     if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
