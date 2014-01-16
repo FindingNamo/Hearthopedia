@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 using Hearthopedia.Filters;
+using System.Reflection;
 
 namespace Hearthopedia
 {
+    /// <summary>
+    /// In a C# world this class doesn't make too much sense, and we should use extension methods on the Enum class.
+    /// as in, with exention methods you cuold say
+    /// 
+    /// CardType.Warrior.GetName();
+    /// 
+    /// rather than what we have now
+    /// EnumUtilities.GetName<CardType>(CardType.Warrior)
+    /// 
+    /// Next time!
+    /// </summary>
     public static class EnumUtilities
     {
         /// <summary>
@@ -56,20 +69,64 @@ namespace Hearthopedia
         {
             List<EnumerableOption<TEnum>> optionsList = new List<EnumerableOption<TEnum>>();
 
-            foreach (TEnum cardClass in EnumUtilities.GetEnums<TEnum>())
+            foreach (TEnum enumVal in EnumUtilities.GetEnums<TEnum>())
             {
                 EnumerableOption<TEnum> option = new EnumerableOption<TEnum>
-                {
-                    Name = EnumUtilities.GetName<TEnum>(cardClass),
-                    EnumValue = cardClass,
-                    Value = true,
-                };
+                (
+                    EnumUtilities.GetFriendlyName<TEnum>(enumVal),
+                    enumVal,
+                    true
+                );
                 optionsList.Add(option);
             }
 
             // Sort the list?
             optionsList.Sort((x, y) => x.Name.CompareTo(y.Name));
             return optionsList;
+        }
+
+        /// <summary>
+        /// Get the description attribute of an enum.
+        /// </summary>
+        public static string GetDescription<TEnum>(TEnum enumVal) where TEnum : struct
+        {
+            Type enumType = enumVal.GetType();
+            string enumName = Enum.GetName(enumType, enumVal);
+
+            if (enumName != null)
+            {
+                FieldInfo field = enumType.GetField(enumName);
+                if (field != null)
+                {
+                    DescriptionAttribute descAttr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+                    if (descAttr != null)
+                        return descAttr.Description;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Get the friendly name attribute from the enum passed in.
+        /// Returns the Name of the enum if one isn't specified.
+        /// </summary>
+        public static string GetFriendlyName<TEnum>(TEnum enumVal) where TEnum : struct
+        {
+            Type enumType = enumVal.GetType();
+            string enumName = Enum.GetName(enumType, enumVal);
+
+            if (enumName != null)
+            {
+                FieldInfo field = enumType.GetField(enumName);
+                if (field != null)
+                {
+                    FriendlyNameAttribute descAttr = Attribute.GetCustomAttribute(field, typeof(FriendlyNameAttribute)) as FriendlyNameAttribute;
+                    if (descAttr != null)
+                        return descAttr.FriendlyName;
+                }
+            }
+
+            return GetName<TEnum>(enumVal);
         }
     }
 }

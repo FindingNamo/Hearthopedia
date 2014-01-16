@@ -28,16 +28,18 @@ namespace Hearthopedia
         {
             base.OnNavigatedTo(e);
 
-            string name = "";
+            string idString = "";
+            int idVal;
 
-            if (NavigationContext.QueryString.TryGetValue("name", out name))
+            if (NavigationContext.QueryString.TryGetValue("id", out idString))
             {
+                if (!int.TryParse(idString, out idVal))
+                    throw new ArgumentException();
+
                 foreach (Card card in DataManager.Instance.Cards)
                 {
-                    if (card.name.Equals(name))
-                    {
+                    if (card.id == idVal)
                         selectedCard = card;
-                    }
                 }
             }
             this.DataContext = selectedCard;

@@ -17,6 +17,15 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <Style x:Name="NumberFilterTextBox" TargetType="toolkit:PhoneTextBox">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="InputScope" Value="Number" />
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+            
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -119,11 +128,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
-                        <TextBlock Grid.Row="0" Text="Health:"/>
+                        <TextBlock Grid.Row="0" Text="Health:" FontSize="25"/>
 
-                        <toolkit:PhoneTextBox Text="{Binding MinHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <toolkit:PhoneTextBox Text="{Binding MaxHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MinHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" />
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MaxHealth, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" />
                     </Grid>
 
                     <Grid Grid.Row="1">
@@ -138,11 +147,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="Cost:"/>
+                        <TextBlock Grid.Row="0" Text="Cost:" FontSize="25"/>
 
-                        <toolkit:PhoneTextBox Text="{Binding MinCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <toolkit:PhoneTextBox Text="{Binding MaxCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MinCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" />
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MaxCost, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" />
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -157,11 +166,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="Attack:"/>
+                        <TextBlock Grid.Row="0" Text="Attack:" FontSize="25"/>
 
-                        <toolkit:PhoneTextBox Text="{Binding MinAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <toolkit:PhoneTextBox Text="{Binding MaxAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MinAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="0" />
+                        <TextBlock            Grid.Row="1" Grid.Column="1" Text="To" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                        <toolkit:PhoneTextBox Style="{StaticResource NumberFilterTextBox}" Text="{Binding MaxAttack, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" />
                     </Grid>
                 </Grid>
             </phone:PanoramaItem>

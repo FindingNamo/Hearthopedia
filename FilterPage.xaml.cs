@@ -39,7 +39,8 @@ namespace Hearthopedia
         {
             base.OnNavigatedFrom(e);
 
-            DataAccess.SearchCards(_searchString);
+            if (FilterManager.Instance.Dirty)
+                DataAccess.SearchCards(_searchString);
         }
 
         private void UncheckAllButton_Click(object sender, RoutedEventArgs e)

@@ -1,22 +1,7 @@
 Must:
 [ ] Weird margin around the searchbox
 
-Roy
-[ ] - Be clever and decorate Enums to get "friendly" names to put into text boxes.  (HeroPower shows up atm).
-
-Something like:
-public enum Mechanic
-{
-	[FriendlyName("Affected by spell damage");
-    [Description("Damage increased by spell damage.")]
-	AffectedBySpellDamage = 71,
-}
-
-If all enums have Friendly names we can put that string into the UI everywhere except the actual enum name.
-(Basically allows us to have spaces, and loc if you want.
-
 [ ] - EnumUtils - TryCatches for unknowns enums? Maybe return Unknown for now?
-[ ] - Allow Search with no text (Scenario: I want to see all legendary cards)
 
 Like
 [ ] Data page is missing if the item is collectable

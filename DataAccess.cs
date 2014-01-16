@@ -117,6 +117,11 @@ namespace Hearthopedia
                 while (reader.Peek() >= 0)
                 {
                     string currentLine = reader.ReadLine();
+
+                    if (currentLine.Contains("\"g_hearthstone_mechanics\""))
+                        break;
+                    
+
                     if (currentLine.Contains("\"id\""))
                     {
                         string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
@@ -205,6 +210,7 @@ namespace Hearthopedia
                 });
                 thread.Start();
             }
+            FilterManager.Instance.Dirty = false;
         }
 
         public static async Task SearchCardsLINQ(string searchString)
