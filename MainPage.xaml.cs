@@ -35,7 +35,7 @@ namespace Hearthopedia
             DataAccess.PopulateDataManagerCards(true);
 
             // Check for update
-        //    DataAccess.GetDataFromHearthHead();
+            DataAccess.GetDataFromHearthHead();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
