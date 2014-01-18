@@ -12,8 +12,15 @@ using System.Net;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.Reflection;
-
 using Hearthopedia.Filters;
+
+#if NETFX_CORE
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel.Resources;
+#endif
 
 namespace Hearthopedia
 {
@@ -24,6 +31,8 @@ namespace Hearthopedia
             bool firstRun = false;
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
             int retriesLeft = 5;
+            string responseString = "";
+            string cachedResponseString = "";
 
             while (retriesLeft > 0)
             {
@@ -39,43 +48,68 @@ namespace Hearthopedia
                         HttpWebResponse response = (HttpWebResponse)request2.EndGetResponse(asyncResult);
                         Stream streamResponse = response.GetResponseStream();
                         StreamReader streamRead = new StreamReader(streamResponse);
-                        string responseString = streamRead.ReadToEnd();
+                        responseString = streamRead.ReadToEnd();
 
                         // Compare to existing string
                         using (StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
                         {
-                            string cachedResponseString = await reader.ReadToEndAsync();
+                            cachedResponseString = await reader.ReadToEndAsync();
+#if NETFX_CORE
+#else
                             reader.Close();
+#endif
                             reader.Dispose();
-
-                            if (cachedResponseString != responseString)
-                            {
-                                // update local text file
-                                using (StreamWriter writer = new StreamWriter(
-                                await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
-                                {
-                                    writer.Write(responseString);
-                                    writer.Flush();
-                                }
-
-                                // Tell the app that there has been updates and let user choose when to update
-                                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                                {
-                                    MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Use new cards?", "Updates Available!", MessageBoxButton.OKCancel);
-                                    if (result == MessageBoxResult.OK)
-                                    {
-                                        DataAccess.PopulateDataManagerCards(false);
-                                    }
-                                });
-                            }
                         }
 
+                        if (cachedResponseString != responseString)
+                        {
+                            // update local text file
+                            using (StreamWriter writer = new StreamWriter(
+                            await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
+                            {
+                                // writer.Write(responseString);
+                                writer.Write(responseString);
+                                writer.Flush();
+                                writer.Close();
+                                writer.Dispose();                                    
+                            }
+
+                            // Tell the app that there has been updates and let user choose when to update
+#if NETFX_CORE
+                            MessageDialog dialog = new MessageDialog("Updates Available");
+
+                            //OK Button
+                            UICommand okBtn = new UICommand("OK");
+                            dialog.Commands.Add(okBtn);
+
+                            //Cancel Button
+                            UICommand cancelBtn = new UICommand("Cancel");
+                            dialog.Commands.Add(cancelBtn);
+
+                            //Show message
+                            dialog.ShowAsync();
+
+                            //Still need to create the handlers for what happens after they click yes.
+#else
+                            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+
+                            {
+                                MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Next time you start the Hearthopedia, the cards will be available ^_^!");
+                                DataAccess.PopulateDataManagerCards(false);
+                            });
+#endif
+                        }
+                        
+                               
+#if NETFX_CORE
+#else
                         // Close the stream object
                         streamResponse.Close();
                         streamRead.Close();
 
                         // Release the HttpWebResponse
                         response.Close();
+#endif
                     }, request);
 
                     // No need to retry anymore since we've succeeded
@@ -87,10 +121,13 @@ namespace Hearthopedia
 
                     if (retriesLeft == 0)
                     {
+#if NETFX_CORE
+#else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
                             DataAccess.PopulateDataManagerCards(false);
                         });
+#endif
                     }
                 }
             }
@@ -150,6 +187,8 @@ namespace Hearthopedia
             }
         }
 
+#if NETFX_CORE
+#else
         public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
@@ -213,6 +252,7 @@ namespace Hearthopedia
             FilterManager.Instance.Dirty = false;
         }
 
+
         public static async Task SearchCardsLINQ(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
@@ -242,29 +282,46 @@ namespace Hearthopedia
                 thread.Start();
             }
         }
+#endif
 
         public static async Task FirstBootOperations()
         {
+            string defaultCardsString = "";
+
             // If the file doesn't exist it means it's our first run ever
-            bool firstRun = !(System.IO.File.Exists("cards.txt"));
+            bool firstRun = false;
+            try
+            {
+                 StorageFile file = await ApplicationData.Current.LocalFolder.GetFileAsync("cards.txt");
+                //no exception means file exists
+            }
+            catch (FileNotFoundException ex)
+            {
+                firstRun = true;
+            }
 
-            string defaultCardsString ="";
-
+#if NETFX_CORE
+#else
             Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
 
             using (StreamReader reader = new StreamReader(Application.GetResourceStream(cardUri).Stream))
             {
                 defaultCardsString = reader.ReadToEnd();
-                reader.Close();
-            }
 
+                reader.Close();
+
+            }
+#endif
             if (firstRun)
             {
                 using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
                 {
                     writer.Write(defaultCardsString);
                     writer.Flush();
+#if NETFX_CORE
+#else
                     writer.Close();
+#endif
                     writer.Dispose();
                 }
             }
