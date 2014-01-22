@@ -52,9 +52,15 @@ namespace Hearthopedia
 
         private void  DownloadImage(string url)
         {
-            WebClient webClient = new WebClient();
-            webClient.OpenReadCompleted += DownloadImageCompleted;
-            webClient.OpenReadAsync(new Uri(url));
+            try
+            {
+                WebClient webClient = new WebClient();
+                webClient.OpenReadCompleted += DownloadImageCompleted;
+                webClient.OpenReadAsync(new Uri(url));
+            }
+            catch
+            {
+            }
         }
 
         private void DownloadImageCompleted(object sender, OpenReadCompletedEventArgs e)
@@ -71,9 +77,15 @@ namespace Hearthopedia
 
         private void DownloadFlavourText(string url)
         {
-            WebClient webClient = new WebClient();
-            webClient.OpenReadCompleted += DownloadFlavourTextCompleted;
-            webClient.OpenReadAsync(new Uri(url));
+            try
+            {
+                WebClient webClient = new WebClient();
+                webClient.OpenReadCompleted += DownloadFlavourTextCompleted;
+                webClient.OpenReadAsync(new Uri(url));
+            }
+            catch 
+            {
+            }
         }
 
         private void DownloadFlavourTextCompleted(object sender, OpenReadCompletedEventArgs e)
