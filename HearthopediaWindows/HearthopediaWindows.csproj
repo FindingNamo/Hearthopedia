@@ -151,6 +151,9 @@
     <Compile Include="..\Filters\NumberFilter.cs">
       <Link>Filters\NumberFilter.cs</Link>
     </Compile>
+    <Compile Include="..\Mechanic.cs">
+      <Link>Mechanic.cs</Link>
+    </Compile>
     <Compile Include="..\Utilities.cs">
       <Link>Utilities.cs</Link>
     </Compile>

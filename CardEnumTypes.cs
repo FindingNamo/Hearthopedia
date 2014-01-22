@@ -12,6 +12,19 @@ public class FriendlyNameAttribute : Attribute
     }
 }
 
+#if NETFX_CORE
+public class DescriptionAttribute : Attribute
+{
+    public string Description;
+
+    public DescriptionAttribute(string description)
+    {
+        this.Description = description;
+    }
+}
+#else
+#endif
+
 public enum CardTypes
 {
     Hero = 3,

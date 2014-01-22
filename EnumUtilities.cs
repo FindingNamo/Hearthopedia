@@ -95,10 +95,20 @@ namespace Hearthopedia
 
             if (enumName != null)
             {
+#if NETFX_CORE
+                PropertyInfo field = enumType.GetTypeInfo().GetDeclaredProperty(enumName);
+#else
                 FieldInfo field = enumType.GetField(enumName);
+#endif
+
                 if (field != null)
                 {
+#if NETFX_CORE
+                    DescriptionAttribute descAttr = enumType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>();
+#else
                     DescriptionAttribute descAttr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+#endif
+
                     if (descAttr != null)
                         return descAttr.Description;
                 }
@@ -117,10 +127,20 @@ namespace Hearthopedia
 
             if (enumName != null)
             {
+#if NETFX_CORE
+                PropertyInfo field = enumType.GetTypeInfo().GetDeclaredProperty(enumName);
+#else
                 FieldInfo field = enumType.GetField(enumName);
+#endif
+
                 if (field != null)
                 {
+#if NETFX_CORE
+                    FriendlyNameAttribute descAttr = enumType.GetTypeInfo().GetCustomAttribute<FriendlyNameAttribute>();
+#else
                     FriendlyNameAttribute descAttr = Attribute.GetCustomAttribute(field, typeof(FriendlyNameAttribute)) as FriendlyNameAttribute;
+#endif
+
                     if (descAttr != null)
                         return descAttr.FriendlyName;
                 }

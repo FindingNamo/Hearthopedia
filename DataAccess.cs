@@ -20,6 +20,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Resources;
+using Windows.UI.Core;
 #endif
 
 namespace Hearthopedia
@@ -98,7 +99,16 @@ namespace Hearthopedia
                     if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)))
                     {
                         // update local text file
-
+#if NETFX_CORE
+                        CoreDispatcher dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
+                        dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                        {
+                            StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
+                            writer.Write(responseString);
+                            writer.Flush();
+                            writer.Dispose();
+                        });
+#else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(async () =>
                         {
                             StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
@@ -107,6 +117,8 @@ namespace Hearthopedia
                             writer.Close();
                             writer.Dispose();
                         });
+#endif
+
 
                         // Tell the app that there has been updates and let user choose when to update
 #if NETFX_CORE
@@ -124,6 +136,11 @@ namespace Hearthopedia
                         dialog.ShowAsync();
 
                         //Still need to create the handlers for what happens after they click yes.
+                        dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
+                        dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                throw new NotImplementedException("Need to implement this part");
+                            });
 #else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
 
