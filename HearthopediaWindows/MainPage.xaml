@@ -49,21 +49,29 @@
                 Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{Binding Title}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
-
-        <!-- Vertical scrolling item list -->
-        <ListView
-            x:Name="itemListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
-            TabIndex="1"
-            Grid.Column="0"
-            Grid.Row="1"
-            Margin="-10,-10,0,0"
-            Padding="120,0,0,60"
-            IsSwipeEnabled="False"
-            SelectionChanged="ItemListView_SelectionChanged"
-            ItemTemplate="{StaticResource Standard130ItemTemplate}"/>
-
+        <Grid Grid.Row="1"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" 
+                    x:Name="TextBoxSearch" Width="Auto"
+                     Margin="120,0,0,0" TextChanged="TextBoxSearch_TextChanged" />
+            
+            <!-- Vertical scrolling item list -->
+            <ListView
+                Grid.Row="1"
+                x:Name="itemListView"
+                AutomationProperties.AutomationId="ItemsListView"
+                AutomationProperties.Name="Items"
+                TabIndex="1"
+                Margin="0,10,0,0"
+                Padding="120,0,0,60"
+                IsSwipeEnabled="False"
+                SelectionChanged="ItemListView_SelectionChanged"
+                ItemTemplate="{StaticResource Standard130ItemTemplate}"/>
+        </Grid>
         <!-- Details for selected item -->
         <ScrollViewer
             x:Name="itemDetail"

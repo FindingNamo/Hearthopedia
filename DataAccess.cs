@@ -23,6 +23,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
+using Windows.System.Threading;
 
 #endif
 
@@ -75,8 +76,8 @@ namespace Hearthopedia
                             if (retriesLeft == 0)
                             {
 #if NETFX_CORE
-                                CoreDispatcher dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
-                                dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                                CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+                                dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                                 {
                                     DataAccess.PopulateDataManagerCards(false);
                                 });
@@ -198,8 +199,8 @@ namespace Hearthopedia
             }
         }
 
-#if NETFX_CORE
-#else
+
+
         public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
@@ -209,15 +210,29 @@ namespace Hearthopedia
             // only do the search if there are this many characters
             if ((searchString.Length >= searchNumMinChar))
             {
+#if NETFX_CORE
+                TimeSpan delay = TimeSpan.FromSeconds(searchDelaySec);
+                ThreadPoolTimer DelayTimer = ThreadPoolTimer.CreateTimer(
+                    (source) =>
+                    {
+#else
                 Thread thread = new Thread((ThreadStart)delegate
                 {
                     Thread.Sleep(System.Convert.ToInt16(searchDelaySec * 1000));
+#endif
+
 
                     // if it's been long enough and no new search has been requested, actually do the search
                     if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
                     {
+#if NETFX_CORE
+                        CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+                        dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+#else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
+#endif
                             DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
@@ -233,20 +248,38 @@ namespace Hearthopedia
                             }
                         });
                     }
+#if NETFX_CORE
+                }, delay);
+#else
                 });
                 thread.Start();
+#endif
             }
             else if (searchString.Length == 0)
             {
+#if NETFX_CORE
+                TimeSpan delay = TimeSpan.FromSeconds(searchDelaySec);
+                ThreadPoolTimer DelayTimer = ThreadPoolTimer.CreateTimer(
+                    (source) =>
+                    {
+#else
                 Thread thread = new Thread((ThreadStart)delegate
                 {
                     Thread.Sleep(System.Convert.ToInt16(searchDelaySec * 1000));
+#endif
 
                     // if it's been long enough and no new search has been requested, actually do the search
                     if (DateTime.Now > DataManager.Instance.LastSearchTime.AddSeconds(searchDelaySec))
                     {
+#if NETFX_CORE
+                        CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+
+                        dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+#else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                         {
+#endif
                             DataManager.Instance.SearchedCards.Clear();
                             foreach (Card card in DataManager.Instance.Cards)
                             {
@@ -257,13 +290,17 @@ namespace Hearthopedia
                             }
                         });
                     }
+#if NETFX_CORE
+                }, delay);
+#else
                 });
                 thread.Start();
+#endif
             }
             FilterManager.Instance.Dirty = false;
         }
-
-
+#if NETFX_CORE
+#else
         public static async Task SearchCardsLINQ(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed

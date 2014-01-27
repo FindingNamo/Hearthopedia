@@ -180,5 +180,13 @@ namespace HearthopediaWindows
         }
 
         #endregion
+
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Update search time
+            DataManager.Instance.LastSearchTime = DateTime.Now;
+            
+            DataAccess.SearchCards(TextBoxSearch.Text);
+        }
     }
 }
