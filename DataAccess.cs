@@ -15,12 +15,15 @@ using System.Reflection;
 using Hearthopedia.Filters;
 
 #if NETFX_CORE
+using Windows.Storage.Streams;
+using Windows.Foundation;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
+
 #endif
 
 namespace Hearthopedia
@@ -29,7 +32,6 @@ namespace Hearthopedia
     {
         public static async Task GetDataFromHearthHead()
         {
-            bool firstRun = false;
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
             int retriesLeft = 5;
             string responseString = "";
@@ -73,6 +75,11 @@ namespace Hearthopedia
                             if (retriesLeft == 0)
                             {
 #if NETFX_CORE
+                                CoreDispatcher dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
+                                dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                                {
+                                    DataAccess.PopulateDataManagerCards(false);
+                                });
 #else
                                 System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                                 {
@@ -96,18 +103,14 @@ namespace Hearthopedia
                         reader.Dispose();
                     }
 
-                    if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)))
+                    if ((cachedResponseString == responseString) && !(String.IsNullOrEmpty(responseString)))
                     {
                         // update local text file
 #if NETFX_CORE
-                        CoreDispatcher dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
-                        dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-                        {
-                            StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
-                            writer.Write(responseString);
-                            writer.Flush();
-                            writer.Dispose();
-                        });
+                        StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
+                        writer.Write(responseString);
+                        writer.Flush();
+                        writer.Dispose();
 #else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(async () =>
                         {
@@ -122,25 +125,15 @@ namespace Hearthopedia
 
                         // Tell the app that there has been updates and let user choose when to update
 #if NETFX_CORE
-                        MessageDialog dialog = new MessageDialog("Updates Available");
+                        CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
 
-                        //OK Button
-                        UICommand okBtn = new UICommand("OK");
-                        dialog.Commands.Add(okBtn);
+                        await dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+                            MessageDialog dialog = new MessageDialog("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
 
-                        //Cancel Button
-                        UICommand cancelBtn = new UICommand("Cancel");
-                        dialog.Commands.Add(cancelBtn);
-
-                        //Show message
-                        dialog.ShowAsync();
-
-                        //Still need to create the handlers for what happens after they click yes.
-                        dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
-                        dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-                            {
-                                throw new NotImplementedException("Need to implement this part");
-                            });
+                            //Show message
+                            dialog.ShowAsync();
+                        });
 #else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
 
@@ -168,23 +161,21 @@ namespace Hearthopedia
             DataManager.Instance.Cards.Clear();
 
             // populate from disk
-            using (StreamReader reader = new StreamReader(
-            await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
-            {
-                while (reader.Peek() >= 0)
-                {
-                    string currentLine = reader.ReadLine();
+            StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
 
-                    if (currentLine.Contains("\"g_hearthstone_mechanics\""))
-                        break;
+            while (reader.Peek() >= 0)
+            {
+                string currentLine = reader.ReadLine();
+
+                if (currentLine.Contains("\"g_hearthstone_mechanics\""))
+                    break;
                     
 
-                    if (currentLine.Contains("\"id\""))
-                    {
-                        string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
-                        Card currentCard = Utilities.GetCardFromJson(jsonString);
-                        DataManager.Instance.Cards.Add(currentCard);
-                    }
+                if (currentLine.Contains("\"id\""))
+                {
+                    string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    Card currentCard = Utilities.GetCardFromJson(jsonString);
+                    DataManager.Instance.Cards.Add(currentCard);
                 }
             }
 
@@ -321,6 +312,14 @@ namespace Hearthopedia
             }
 
 #if NETFX_CORE
+            StorageFile storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(@"Assets\cards.txt");
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+            StreamReader reader = new StreamReader(stream);
+            await Task.Run(() =>
+            {
+                defaultCardsString = reader.ReadToEnd();
+            });
+
 #else
             Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
 
