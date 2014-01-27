@@ -91,17 +91,29 @@ namespace Hearthopedia
 
         public string CostIconPath
         {
+#if NETFX_CORE
+            get { return "Assets/Sprites/blue32.png"; }
+#else
             get { return "Assets\\Sprites\\blue32.png"; }
+#endif
         }
 
         public string AttackIconPath
         {
+ #if NETFX_CORE
+            get { return type == 7 ? "Assets/Sprites/weapon32.png" : "Assets/Sprites/yellow32.png"; }
+#else
             get { return type == 7 ? "Assets\\Sprites\\weapon32.png" : "Assets\\Sprites\\yellow32.png"; }
+#endif
         }
 
         public string HealthIconPath
         {
+#if NETFX_CORE
+            get { return type == 7 ? "Assets/Sprites/durability32.png" : "Assets/Sprites/red32.png"; }
+#else
             get { return type == 7 ? "Assets\\Sprites\\durability32.png" : "Assets\\Sprites\\red32.png"; }
+#endif
         }
 
         public string AttackLabel
@@ -163,7 +175,11 @@ namespace Hearthopedia
         {
             get
             {
+#if NETFX_CORE
+                return "Assets/ClassPortraits/" + ClassNameString + ".png";
+#else
                return "Assets\\ClassPortraits\\" + ClassNameString + ".png";
+#endif
             }
         }
 
@@ -174,7 +190,11 @@ namespace Hearthopedia
         {
             get
             {
+#if NETFX_CORE
+                return "Assets/ClassBanners/" + ClassNameString + ".png";
+#else
                 return "Assets\\ClassBanners\\" + ClassNameString + ".jpg";
+#endif
             }
         }
 

@@ -184,6 +184,94 @@
       <Link>Assets\cards.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Assets\ClassBanners\druid.jpg">
+      <Link>Assets\ClassBanners\druid.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\everyone.jpg">
+      <Link>Assets\ClassBanners\everyone.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\hunter.jpg">
+      <Link>Assets\ClassBanners\hunter.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\mage.jpg">
+      <Link>Assets\ClassBanners\mage.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\paladin.jpg">
+      <Link>Assets\ClassBanners\paladin.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\priest.jpg">
+      <Link>Assets\ClassBanners\priest.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\rogue.jpg">
+      <Link>Assets\ClassBanners\rogue.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\shaman.jpg">
+      <Link>Assets\ClassBanners\shaman.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\warlock.jpg">
+      <Link>Assets\ClassBanners\warlock.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassBanners\warrior.jpg">
+      <Link>Assets\ClassBanners\warrior.jpg</Link>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\druid.png">
+      <Link>Assets\ClassPortraits\druid.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\everyone.png">
+      <Link>Assets\ClassPortraits\everyone.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\hunter.png">
+      <Link>Assets\ClassPortraits\hunter.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\mage.png">
+      <Link>Assets\ClassPortraits\mage.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\paladin.png">
+      <Link>Assets\ClassPortraits\paladin.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\priest.png">
+      <Link>Assets\ClassPortraits\priest.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\rogue.png">
+      <Link>Assets\ClassPortraits\rogue.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\shaman.png">
+      <Link>Assets\ClassPortraits\shaman.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\warlock.png">
+      <Link>Assets\ClassPortraits\warlock.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\ClassPortraits\warrior.png">
+      <Link>Assets\ClassPortraits\warrior.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assets\Sprites\blue32.png">
+      <Link>Assets\Sprites\blue32.png</Link>
+    </Content>
+    <Content Include="..\Assets\Sprites\disenchant32.png">
+      <Link>Assets\Sprites\disenchant32.png</Link>
+    </Content>
+    <Content Include="..\Assets\Sprites\durability32.png">
+      <Link>Assets\Sprites\durability32.png</Link>
+    </Content>
+    <Content Include="..\Assets\Sprites\red32.png">
+      <Link>Assets\Sprites\red32.png</Link>
+    </Content>
+    <Content Include="..\Assets\Sprites\weapon32.png">
+      <Link>Assets\Sprites\weapon32.png</Link>
+    </Content>
+    <Content Include="..\Assets\Sprites\yellow32.png">
+      <Link>Assets\Sprites\yellow32.png</Link>
+    </Content>
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
@@ -211,6 +299,7 @@
       <HintPath>packages\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>

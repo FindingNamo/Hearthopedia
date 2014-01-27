@@ -103,7 +103,7 @@ namespace Hearthopedia
                         reader.Dispose();
                     }
 
-                    if ((cachedResponseString == responseString) && !(String.IsNullOrEmpty(responseString)))
+                    if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)))
                     {
                         // update local text file
 #if NETFX_CORE
