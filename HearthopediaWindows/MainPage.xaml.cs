@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
@@ -14,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Hearthopedia;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.Networking.BackgroundTransfer;
+using Windows.Storage;
 
 // The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
@@ -121,6 +125,8 @@ namespace HearthopediaWindows
             // to showing the selected item's details.  When the selection is cleared this has the
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
+            DownloadFlavourText(((Card)e.AddedItems[0]).flavourTextURL);
+            DownloadImage(((Card)e.AddedItems[0]).imageURL);
         }
 
         /// <summary>
@@ -187,6 +193,62 @@ namespace HearthopediaWindows
             DataManager.Instance.LastSearchTime = DateTime.Now;
             
             DataAccess.SearchCards(TextBoxSearch.Text);
+        }
+
+        private async void DownloadImage(string url)
+        {
+            try
+            {
+                Uri uri = new Uri(url);
+                StorageFile destinationFile;
+                try
+                {
+                    destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(
+                        "tempimage.jpg", CreationCollisionOption.GenerateUniqueName);
+                }
+                catch (FileNotFoundException ex)
+                {
+
+                    return;
+                }
+
+                BackgroundDownloader downloader = new BackgroundDownloader();
+                DownloadOperation download = downloader.CreateDownload(uri, destinationFile);
+                await download.StartAsync();
+                ResponseInformation response = download.GetResponseInformation();
+                Uri imageUri;
+                BitmapImage image = null;
+
+                if (Uri.TryCreate(destinationFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
+                {
+                    image = new BitmapImage(imageUri);
+                }
+                
+                imageCard.Source = image;
+            }
+            catch
+            {
+            }
+        }
+
+
+        private async void DownloadFlavourText(string url)
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                HttpResponseMessage response = await httpClient.GetAsync(url);
+
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
+                flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
+                flavourText = Utilities.FilterHTML(flavourText);
+                textBlockFlavourText.Text = flavourText;
+            }
+            catch
+            {
+            }
         }
     }
 }
