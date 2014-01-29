@@ -29,6 +29,9 @@ namespace HearthopediaWindows
     /// </summary>
     public sealed partial class MainPage : HearthopediaWindows.Common.LayoutAwarePage
     {
+        // damn son!
+        private Card selectedCard;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -46,6 +49,7 @@ namespace HearthopediaWindows
 
             // Check for update
             DataAccess.GetDataFromHearthHead();
+
         }
 
         #region Page state management
@@ -125,8 +129,14 @@ namespace HearthopediaWindows
             // to showing the selected item's details.  When the selection is cleared this has the
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
-            DownloadFlavourText(((Card)e.AddedItems[0]).flavourTextURL);
-            DownloadImage(((Card)e.AddedItems[0]).imageURL);
+            if (e.AddedItems.Count == 1)
+            {
+                DownloadFlavourText(((Card)e.AddedItems[0]).flavourTextURL);
+                DownloadImage(((Card)e.AddedItems[0]).imageURL);
+
+                selectedCard = (Card)e.AddedItems[0];
+                this.DataContext = selectedCard;
+            }
         }
 
         /// <summary>
