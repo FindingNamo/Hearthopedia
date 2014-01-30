@@ -78,12 +78,12 @@ namespace Hearthopedia
             {
                 foreach (int mechanicId in mechanics)
                 {
-                    newMechanics.Add(new Mechanic(mechanicId));
+                    newMechanics.Add(DataManager.Instance.Mechanics.Find( m => m.Id == mechanicId));
                 }
             }
             else
             {
-                newMechanics.Add(new Mechanic(Mechanic.MechanicIdNone));
+                newMechanics.Add(Mechanic.None);
             }
 
             return newMechanics;

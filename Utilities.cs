@@ -20,6 +20,12 @@ namespace Hearthopedia
             return card;
         }
 
+        public static Mechanic GetMechanicFromJson(string json)
+        {
+            Mechanic mechanic = JsonConvert.DeserializeObject<Mechanic>(json);
+            return mechanic;
+        }
+
         public static string FilterHTML(string text)
         {
             string noHTML = Regex.Replace(text, @"<[^>]+>|&nbsp;", "").Trim();

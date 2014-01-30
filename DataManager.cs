@@ -26,6 +26,15 @@ namespace Hearthopedia
 
         public DateTime LastSearchTime { get; set; }
 
+        private Lazy<List<Mechanic>> _mechanics = new Lazy<List<Mechanic>>(() => new List<Mechanic>());
+        public List<Mechanic> Mechanics
+        {
+            get
+            {
+                return _mechanics.Value;
+            }
+        }
+
         public ObservableCollection<Card> Cards
         {
             get

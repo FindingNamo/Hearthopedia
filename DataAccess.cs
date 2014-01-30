@@ -160,23 +160,35 @@ namespace Hearthopedia
         public static async Task PopulateDataManagerCards(bool onBoot)
         {
             DataManager.Instance.Cards.Clear();
+            DataManager.Instance.Mechanics.Clear();
 
             // populate from disk
             StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
+
+            bool parsingMechanics = false;
 
             while (reader.Peek() >= 0)
             {
                 string currentLine = reader.ReadLine();
 
-                if (currentLine.Contains("\"g_hearthstone_mechanics\""))
-                    break;
-                    
+                if (currentLine.Contains("g_hearthstone_mechanics"))
+                {
+                    parsingMechanics = true;
+                    continue;
+                }   
 
-                if (currentLine.Contains("\"id\""))
+                if (!parsingMechanics && currentLine.Contains("\"id\""))
                 {
                     string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
                     Card currentCard = Utilities.GetCardFromJson(jsonString);
                     DataManager.Instance.Cards.Add(currentCard);
+                }
+
+                if (parsingMechanics && currentLine.Contains("\"id\""))
+                {
+                    string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    Mechanic newMechanic = Utilities.GetMechanicFromJson(jsonString);
+                    DataManager.Instance.Mechanics.Add(newMechanic);
                 }
             }
 

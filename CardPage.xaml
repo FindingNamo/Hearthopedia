@@ -164,8 +164,8 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Foreground="White" FontWeight="Medium" Text="{Binding MechanicName}" />
-                                <TextBlock Margin="8,0,0,0" Grid.Row="1" Foreground="White" TextWrapping="Wrap" Text="{Binding MechanicDescription}" />
+                                <TextBlock Grid.Row="0" Foreground="White" FontWeight="Medium" Text="{Binding name}" />
+                                <TextBlock Margin="8,0,0,0" Grid.Row="1" Foreground="White" TextWrapping="Wrap" Text="{Binding description}" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

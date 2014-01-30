@@ -47,4 +47,46 @@ namespace Hearthopedia.Filters
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
+
+
+    public class MechanicOption : INotifyPropertyChanged
+    {
+        public MechanicOption(string name, int mechanicId, bool defaultvalue)
+        {
+            Name = name;
+            MechanicId = mechanicId;
+            _value = defaultvalue;
+        }
+
+        public string Name { get; set; }
+        public int MechanicId { get; set; }
+
+        private bool _value;
+        public bool Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                if (_value != value)
+                {
+                    _value = value;
+                    OnPropertyChanged("Value");
+                }
+            }
+        }
+
+        private void OnPropertyChanged(string property)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(property));
+
+            FilterManager.Instance.Dirty = true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
 }
