@@ -72,56 +72,32 @@ namespace Hearthopedia
                         catch
                         {
                             retriesLeft--;
-
-                            if (retriesLeft == 0)
-                            {
-#if NETFX_CORE
-                                CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
-                                dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                                {
-                                    DataAccess.PopulateDataManagerCards(false);
-                                });
-#else
-                                System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                                {
-                                    DataAccess.PopulateDataManagerCards(false);
-                                });
-#endif
-                            }
                         }
                     }
 
 
 
                     // Compare to existing string
-                    using (StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
-                    {
-                        cachedResponseString = await reader.ReadToEndAsync();
+                    StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
+                    cachedResponseString = await reader.ReadToEndAsync();
 #if NETFX_CORE
 #else
-                        reader.Close();
+                    reader.Close();
 #endif
-                        reader.Dispose();
-                    }
-
+                    reader.Dispose();
+                    
                     if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)))
                     {
                         // update local text file
-#if NETFX_CORE
                         StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
                         writer.Write(responseString);
                         writer.Flush();
-                        writer.Dispose();
+#if NETFX_CORE
 #else
-                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(async () =>
-                        {
-                            StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
-                            writer.Write(responseString);
-                            writer.Flush();
-                            writer.Close();
-                            writer.Dispose();
-                        });
+                        writer.Close();
 #endif
+                        writer.Dispose();
+
 
 
                         // Tell the app that there has been updates and let user choose when to update
@@ -137,10 +113,8 @@ namespace Hearthopedia
                         });
 #else
                         System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-
                         {
                             MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
-                            DataAccess.PopulateDataManagerCards(false);
                         });
 #endif
                     }
@@ -157,56 +131,59 @@ namespace Hearthopedia
             await file.DeleteAsync();
         }
 
-        public static async Task PopulateDataManagerCards(bool onBoot)
+        public static async Task PopulateDataManagerCards()
         {
             DataManager.Instance.Cards.Clear();
             DataManager.Instance.Mechanics.Clear();
 
             // populate from disk
             StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
-
+            
             bool parsingMechanics = false;
+            string currentLine = "";
+            string jsonString = "";
+            Card currentCard = null;
 
             while (reader.Peek() >= 0)
             {
-                string currentLine = reader.ReadLine();
+                currentLine = reader.ReadLine();
 
                 if (currentLine.Contains("g_hearthstone_mechanics"))
                 {
                     parsingMechanics = true;
                     continue;
-                }   
+                }
 
                 if (!parsingMechanics && currentLine.Contains("\"id\""))
                 {
-                    string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
-                    Card currentCard = Utilities.GetCardFromJson(jsonString);
+                    jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    currentCard = Utilities.GetCardFromJson(jsonString);
                     DataManager.Instance.Cards.Add(currentCard);
                 }
 
                 if (parsingMechanics && currentLine.Contains("\"id\""))
                 {
-                    string jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
                     Mechanic newMechanic = Utilities.GetMechanicFromJson(jsonString);
                     DataManager.Instance.Mechanics.Add(newMechanic);
                 }
             }
 
+            reader.Close();
+            reader.Dispose();
+
             // Sort
             DataManager.Instance.SortCards();
 
             // Display cards if we just booted
-            if (onBoot)
-            {
-                DataManager.Instance.SearchedCards.Clear();
+            DataManager.Instance.SearchedCards.Clear();
 
-                foreach (Card card in DataManager.Instance.Cards)
+            foreach (Card card in DataManager.Instance.Cards)
+            {
+                if (card.CardTypeString != null)
                 {
-                    if (card.CardTypeString != null)
-                    {
-                        if (!(card.CardTypeString.Equals("Unknown")))
-                            DataManager.Instance.SearchedCards.Add(card);
-                    }
+                    if (!(card.CardTypeString.Equals("Unknown")))
+                        DataManager.Instance.SearchedCards.Add(card);
                 }
             }
         }
@@ -344,7 +321,7 @@ namespace Hearthopedia
         }
 #endif
 
-        public static async Task FirstBootOperations()
+        public static async Task OnBootOperations()
         {
             string defaultCardsString = "";
 
@@ -352,7 +329,7 @@ namespace Hearthopedia
             bool firstRun = false;
             try
             {
-                 StorageFile file = await ApplicationData.Current.LocalFolder.GetFileAsync("cards.txt");
+                StorageFile file = await ApplicationData.Current.LocalFolder.GetFileAsync("cards.txt");
                 //no exception means file exists
             }
             catch (FileNotFoundException ex)
@@ -376,8 +353,8 @@ namespace Hearthopedia
             {
                 defaultCardsString = reader.ReadToEnd();
 
-                reader.Close();
-
+                // reader.Close();
+                // reader.Dispose();
             }
 #endif
             if (firstRun)
@@ -393,6 +370,10 @@ namespace Hearthopedia
                     writer.Dispose();
                 }
             }
+
+            await DataAccess.PopulateDataManagerCards();
+
+            await DataAccess.GetDataFromHearthHead();
         }
     }
 }
