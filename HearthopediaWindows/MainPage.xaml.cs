@@ -42,14 +42,7 @@ namespace HearthopediaWindows
             itemListView.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
 
             // Check if it's the first boot ever an do the right thing
-            DataAccess.FirstBootOperations();
-
-            // Populate the cards list
-            DataAccess.PopulateDataManagerCards(true);
-
-            // Check for update
-            DataAccess.GetDataFromHearthHead();
-
+            DataAccess.OnBootOperations();
         }
 
         #region Page state management

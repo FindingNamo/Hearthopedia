@@ -169,7 +169,10 @@ namespace Hearthopedia
                 }
             }
 
+#if NETFX_CORE
+#else
             reader.Close();
+#endif
             reader.Dispose();
 
             // Sort
