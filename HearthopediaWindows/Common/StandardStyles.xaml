@@ -31,6 +31,7 @@
     <!-- RichTextBlock styles -->
     <Style x:Key="SmallCardLabel" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="36" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Margin" Value="100,0,0,0" />
     </Style>
@@ -39,7 +40,7 @@
         <Setter Property="Foreground" Value="#FFFFFFFF" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="36" />
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
@@ -47,7 +48,7 @@
         <Setter Property="Foreground" Value="#FF000000" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontSize" Value="36" />
         <Setter Property="FontWeight" Value="ExtraBold"/>
     </Style>
 
@@ -1698,31 +1699,30 @@
 
     <!-- List-appropriate 130 pixel high item template as seen in the SplitPage -->
     <DataTemplate x:Key="Standard130ItemTemplate">
-        <Grid>
-
-
+        <Grid >
             <Image Grid.Row="0" 
                    HorizontalAlignment="Left" 
                    Source="{Binding ClassPortraitImagePath}" 
                    Stretch="None" 
-                   RenderTransformOrigin="0,0"/>
+                   RenderTransformOrigin="0,0" 
+                   Canvas.ZIndex="-1"/>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Canvas.ZIndex="1">
                 <Grid.Background>
-                    <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0,0.5" MappingMode="RelativeToBoundingBox">
-                        <GradientStop Color="#FF000000"/>
-                        <GradientStop Color="#00000000" Offset="1"/>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0.15,0.5" MappingMode="RelativeToBoundingBox">
+                        <GradientStop Color="#00000000"/>
+                        <GradientStop Color="#FF000000" Offset="1"/>
                     </LinearGradientBrush>
                 </Grid.Background>
             </Grid>
 
             <!-- A grid for the label, and stats of the card -->
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Canvas.ZIndex="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="32"/>
-                    <ColumnDefinition Width="32"/>
-                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="48"/>
                     <ColumnDefinition Width="32"/>
                 </Grid.ColumnDefinitions>
 
@@ -1730,28 +1730,28 @@
                 <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
 
                 <!-- Cost -->
-                <Image Grid.Column="1" Source="{Binding CostIconPath}" />
-                <TextBlock Grid.Column="1" Margin="2,0,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="1" Margin="0,2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="1" Margin="-2,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="1" Margin="0,-2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <Image Grid.Column="1" Width="48" Height="48" Source="{Binding CostIconPath}" />
+                <TextBlock Grid.Column="1" Margin="6,0,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="0,6,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="-6,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="0,-6,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
                 <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
 
 
                 <!-- Attack -->
-                <Image Grid.Column="2" Source="{Binding AttackIconPath}" />
-                <TextBlock Grid.Column="2" Margin="2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="2" Margin="0,2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="2" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="2" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <Image Grid.Column="2" Width="48" Height="48" Source="{Binding AttackIconPath}" />
+                <TextBlock Grid.Column="2" Margin="6,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="0,6,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="-6,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="0,-6,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
                 <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}"/>
 
                 <!-- Health -->
-                <Image Grid.Column="3" Source="{Binding HealthIconPath}" />
-                <TextBlock Grid.Column="3" Margin="2,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="3" Margin="0,2,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="3" Margin="-2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                <TextBlock Grid.Column="3" Margin="0,-2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <Image Grid.Column="3" Width="48" Height="48" Source="{Binding HealthIconPath}" />
+                <TextBlock Grid.Column="3" Margin="6,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="0,6,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="-6,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="0,-6,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
                 <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}"/>
             </Grid>
         </Grid>
