@@ -23,11 +23,18 @@
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0, 15, 0, 0"/>
+            <Setter Property="FontSize" Value="27" />
         </Style>
 
         <Style x:Key="BasicInfoValue" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style x:Key="InfoHeading" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="ExtraBold" />
+            <Setter Property="FontSize" Value="36" />
         </Style>
     </Page.Resources>
 
@@ -37,6 +44,10 @@
         * Row 1 contains the rest of the page layout
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/CardInfo/background.jpg" Stretch="Uniform" Opacity="0.3">
+            </ImageBrush>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -58,15 +69,23 @@
             <Button Content="Button" HorizontalAlignment="Left" Height="69" Margin="440,43,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click_1"/>
         </Grid>
         <Grid Grid.Row="1"
-              Grid.Column="0">
+              Grid.Column="0"
+              Margin="120,0,0,50">
+            <Grid.Background>
+                <SolidColorBrush 
+                    Color="Black" 
+                    Opacity="0.7" />
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBox Grid.Row="0" 
-                    x:Name="TextBoxSearch" Width="Auto"
-                     Margin="120,0,0,0" TextChanged="TextBoxSearch_TextChanged" />
-            
+                    x:Name="TextBoxSearch"
+                    Width="Auto"
+                    TextChanged="TextBoxSearch_TextChanged"
+                     IsTextPredictionEnabled="False" />
+
             <!-- Vertical scrolling item list -->
             <ListView
                 Grid.Row="1"
@@ -75,7 +94,7 @@
                 AutomationProperties.Name="Items"
                 TabIndex="1"
                 Margin="0,10,0,0"
-                Padding="120,0,0,60"
+                Padding="0,0,0,60"
                 IsSwipeEnabled="False"
                 SelectionChanged="ItemListView_SelectionChanged"
                 ItemTemplate="{StaticResource Standard130ItemTemplate}" >
@@ -87,41 +106,50 @@
                 </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
-        <!-- Details for selected item -->
-        <ScrollViewer
-            x:Name="itemDetail"
-            AutomationProperties.AutomationId="ItemDetailScrollViewer"
-            Grid.Column="1"
-            Grid.RowSpan="2"
-            Padding="70,0,120,0"
-            DataContext="{Binding SelectedItem, ElementName=itemListView}"
-            d:DataContext="{Binding AllGroups[0].Items[0]}"
-            Style="{StaticResource VerticalScrollViewerStyle}">
-
-            <Grid x:Name="itemDetailGrid" Margin="0,60,0,50">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="465"/>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                 </Grid.RowDefinitions>
-
-                <Image 
-                    x:Name="imageCard" 
-                    Grid.Row="0" 
-                    HorizontalAlignment="Center" 
-                    Source="{Binding Image}" 
-                    Stretch="Uniform" 
-                    AutomationProperties.Name="{Binding Title}"/>
- 
-                <Grid 
-                    Grid.Row="1">
+        
+        <!-- Details for selected card -->
+        <Grid Grid.RowSpan="2"
+              Grid.Column="1"
+              Margin="0,70,0,0">
+            <ScrollViewer
+                x:Name="itemDetail"
+                DataContext="{Binding SelectedItem, ElementName=itemListView}">
+                
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height=".7*" />
-                        <RowDefinition Height=".3*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <Image 
+                        Grid.Row="0"
+                        Height="465"
+                        x:Name="imageCard" 
+                        HorizontalAlignment="Center" 
+                        Source="{Binding Image}"
+                        Stretch="Uniform" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Name="textBlockFlavourText"
+                        HorizontalAlignment="Center"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap"
+                        FontStyle="Italic"
+                        FontSize="14"
+                        Text="" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Basic Information"
+                        Style="{StaticResource InfoHeading}"
+                        FontSize="28"
+                        Margin="0, 70, 0, 0" 
+                        Padding="20,0,0,0"/>
 
-                    <!-- A Grid to describe the text stats -->
-                    <Grid Grid.Row="0">
+                    <!-- Basic Info Grid -->
+                    <Grid Grid.Row="3">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -135,62 +163,91 @@
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="212*"/>
+                            <ColumnDefinition Width="246*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Type" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding CardTypeString}" Style="{StaticResource BasicInfoValue}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Type" Style="{StaticResource BasicInfoLabel}" Margin="60,15,94,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding CardTypeString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>
 
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Subtype" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding CardRaceString}" Style="{StaticResource BasicInfoValue}"/>
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Subtype" Style="{StaticResource BasicInfoLabel}" Margin="73,15,72,0"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding CardRaceString}" Style="{StaticResource BasicInfoValue}" Margin="123,0"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Class" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding ClassNameString}" Style="{StaticResource BasicInfoValue}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="Class" Style="{StaticResource BasicInfoLabel}" Margin="58,15,92,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ClassNameString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>
 
-                        <TextBlock Grid.Column="1" Grid.Row="2" Text="Quality" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding CardQualityString}" Style="{StaticResource BasicInfoValue}" Foreground="{Binding QualityColourHexString}"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Quality" Style="{StaticResource BasicInfoLabel}" Margin="79,15,79,0"/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding CardQualityString}" Style="{StaticResource BasicInfoValue}" Foreground="{Binding QualityColourHexString}" Margin="123,0"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="5" Text="Set" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="0" Grid.Row="6" Text="{Binding CardSetString}" Style="{StaticResource BasicInfoValue}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="5" Text="Set" Style="{StaticResource BasicInfoLabel}" Margin="69,15,104,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding CardSetString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>
 
-                        <Image     Grid.Column="1" Grid.Row="6" Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding CostIconPath}" />
-                        <TextBlock Grid.Column="1" Grid.Row="5" Text="Cost" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Margin="6,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Margin="0,6,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Margin="-6,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Margin="0,-6,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
+                        <Image     Grid.Column="2" Grid.Row="6" Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding CostIconPath}" Margin="99,1" />
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text="Cost" Style="{StaticResource BasicInfoLabel}" Margin="96,15,95,0"/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Foreground="Black" Margin="126,3,120,3" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="6" Foreground="Black" Margin="123,6,123,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="6" Foreground="Black" Margin="120,3,126,3" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="6" Foreground="Black" Margin="123,0,123,6" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}" Margin="123,3"/>
 
-                        <Image     Grid.Column="1" Grid.Row="8" Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding HealthIconPath}" />
-                        <TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding HealthLabel}" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="6,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,6,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="-6,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="0,-6,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}" />
+                        <Image     Grid.Column="2" Grid.Row="8" Height="72" Width="72" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding HealthIconPath}" Margin="99,1" />
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text="{Binding HealthLabel}" Style="{StaticResource BasicInfoLabel}" Margin="123,15,123,0"/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Foreground="Black" Margin="126,3,120,3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="8" Foreground="Black" Margin="123,6,123,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="8" Foreground="Black" Margin="120,3,126,3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="8" Foreground="Black" Margin="123,0,123,6" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}" Margin="123,3" />
 
-                        <Image     Grid.Column="0" Grid.Row="8" Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding AttackIconPath}" />
-                        <TextBlock Grid.Column="0" Grid.Row="7" Text="{Binding AttackLabel}" Style="{StaticResource BasicInfoLabel}"/>
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="6,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,6,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="-6,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,-6,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
-                        <TextBlock Grid.Column="0" Grid.Row="8" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}" />
+                        <Image     Grid.Column="1" Grid.Row="8" Height="72" Width="72" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding AttackIconPath}" Margin="65,1,99,1" />
+                        <TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding AttackLabel}" Style="{StaticResource BasicInfoLabel}" Margin="89,15,123,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="92,3,120,3" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="89,6,123,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="86,3,126,3" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Margin="89,0,123,6" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
+                        <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}" Margin="89,3,123,3" />
                     </Grid>
-                </Grid>
 
-                <TextBlock
-                    Grid.Row="2"
-                    Name="textBlockFlavourText"
-                    Style="{Binding BasicInfoValue}"
-                    HorizontalAlignment="Center"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap"
-                    FontStyle="Italic"
-                    Text="" />
-            </Grid>
-        </ScrollViewer>
+                    <TextBlock
+                        Grid.Row="4"
+                        Text="Mechanics"
+                        Style="{StaticResource InfoHeading}"
+                        FontSize="28"
+                        Margin="0, 70, 0, 0" 
+                        Padding="20,0,0,0"/>
+                    <ListBox 
+                        Grid.Row="5"
+                        x:Name="listCards" 
+                        ItemsSource="{Binding MechanicData}" 
+                        HorizontalContentAlignment="Stretch">
+                        <ListBox.Template>
+                            <ControlTemplate TargetType="ListBox">
+                            </ControlTemplate>
+                        </ListBox.Template>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                <Setter Property="Padding" Value="40,0,0,0" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate >
+                            <DataTemplate>
+                                <Grid Margin="5,10,5,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Style="{StaticResource BasicInfoLabel}" HorizontalAlignment="Left" Text="{Binding name}" />
+                                    <TextBlock Margin="8,0,0,0" Grid.Row="1" Style="{StaticResource BasicInfoValue}" HorizontalAlignment="Left"  Text="{Binding description}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        
 
         <VisualStateManager.VisualStateGroups>
 
