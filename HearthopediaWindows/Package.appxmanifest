@@ -17,7 +17,10 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="HearthopediaWindows.App">
       <VisualElements DisplayName="Hearthopedia" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="HearthopediaWindows" ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="Assets\SplashScreen.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="black" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+        </InitialRotationPreference>
       </VisualElements>
     </Application>
   </Applications>
