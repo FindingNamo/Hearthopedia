@@ -5,12 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Hearthopedia;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Hearthopedia.Arena
 {
 
-    public class Arena
+    public class Arena : INotifyPropertyChanged
     {
+        private int[] _manaCurve = new int[8];
+
+        public int ManaCost0 { get { return _manaCurve[0]; } }
+        public int ManaCost1 { get { return _manaCurve[1]; } }
+        public int ManaCost2 { get { return _manaCurve[2]; } }
+        public int ManaCost3 { get { return _manaCurve[3]; } }
+        public int ManaCost4 { get { return _manaCurve[4]; } }
+        public int ManaCost5 { get { return _manaCurve[5]; } }
+        public int ManaCost6 { get { return _manaCurve[6]; } }
+        public int ManaCost7 { get { return _manaCurve[7]; } }
+
         /// <summary>
         /// The mapping of quality to odds for normal rounds.
         /// </summary>
@@ -61,7 +74,33 @@ namespace Hearthopedia.Arena
         /// </summary>
         public Dictionary<CardQuality, List<Card>> NeutralCardBucket;
 
+        /// <summary>
+        /// Random number generator.
+        /// </summary>
         private Random _random;
+
+        /// <summary>
+        /// The list of current cards.
+        /// </summary>
+        public ObservableCollection<Card> CurrentRoundCards 
+        { 
+            get; 
+            set; 
+        }
+        
+        /// <summary>
+        /// The list of cards chosen.
+        /// </summary>
+        public ObservableCollection<Card> ChosenCards 
+        { 
+            get; 
+            set; 
+        }
+
+        /// <summary>
+        /// The Current Round number
+        /// </summary>
+        public int RoundNumber { get; set; }
 
         /// <summary>
         /// Creates an arena instance.
@@ -69,12 +108,65 @@ namespace Hearthopedia.Arena
         /// <param name="classId"></param>
         public Arena(int classId)
         {
+            _random = new Random();
+            ChosenCards = new ObservableCollection<Card>();
+            CurrentRoundCards = new ObservableCollection<Card>();
+
             SetupCommonRoundOdds();
             SetupUncommonRoundOdds();
             SetupUncommonRoundNumbers();
             SetupValidTypes();
+            SetupValidCardSets();
 
             SetupCardBuckets(classId);
+
+            RoundNumber = 0;
+            AdvanceRound();
+        }
+
+        /// <summary>
+        /// Advances to the next round and updates the observable lists.
+        /// </summary>
+        public void AdvanceRound()
+        {
+            CurrentRoundCards.Clear();
+            List<Card> nextRoundCards = GetCardsForRound(++RoundNumber);
+            foreach (Card c in nextRoundCards)
+                CurrentRoundCards.Add(c);
+        }
+
+        /// <summary>
+        /// Choose a card and advance to the next round.
+        /// </summary>
+        /// <param name="c"></param>
+        public void ChooseCard(Card chosenCard)
+        {
+            AdvanceRound();
+
+            int i = 0;
+            for (i = 0; i < ChosenCards.Count; i++)
+            {
+                if (chosenCard.cost <= ChosenCards[i].cost)
+                    break;
+            }
+            ChosenCards.Insert(i, chosenCard);
+
+
+            int clampedMana = ClampInt(chosenCard.cost, 0, 7);
+            _manaCurve[clampedMana] += 10;
+            OnPropertyChanged(string.Format("ManaCost{0}", clampedMana));
+        }
+
+
+        private int ClampInt(int num, int min, int max)
+        {
+            if (num < min)
+                return min;
+
+            if (num > max)
+                return max;
+
+            return num;
         }
 
         /// <summary>
@@ -82,7 +174,7 @@ namespace Hearthopedia.Arena
         /// </summary>
         public void SetupCommonRoundOdds()
         {
-            CommonRoundOdds = new Dictionary<CardQuality,int>();
+            CommonRoundOdds = new Dictionary<CardQuality, int>();
             CommonRoundOdds[CardQuality.Common] = 241 + 186;
             CommonRoundOdds[CardQuality.Rare] = 17 + 17;
             CommonRoundOdds[CardQuality.Epic] = 1 + 2;
@@ -172,8 +264,10 @@ namespace Hearthopedia.Arena
 
                 if (c.classs != null && c.classs == classId)
                     bucket = ClassSpecificCardBucket;
-                else
+                else if (c.classs != null && c.classs == (int)CardClass.Everyone)
                     bucket = NeutralCardBucket;
+                else
+                    continue;
 
                 // Bucket free cards in with Common cards.
                 if ((CardQuality) c.quality == CardQuality.Free)
@@ -192,7 +286,7 @@ namespace Hearthopedia.Arena
             foreach (int odds in qualityOdds.Values)
                 totalOdds += odds;
 
-            int chosenVal = (int) (new Random().NextDouble() * totalOdds);
+            int chosenVal = (int)(_random.NextDouble() * totalOdds);
 
             CardQuality chosenQuality = CardQuality.Common;
             foreach (CardQuality currentQuality in qualityOdds.Keys)
@@ -216,9 +310,9 @@ namespace Hearthopedia.Arena
             
             Dictionary<CardQuality, int> roundOdds;
             if (UncommonRoundNumbers.Contains(roundNumber))
-                roundOdds = CommonRoundOdds;
-            else
                 roundOdds = UncommonRoundOdds;
+            else
+                roundOdds = CommonRoundOdds;
 
             // Keep choosing a round quality until we have enough cards.
             CardQuality roundQuality;
@@ -236,12 +330,12 @@ namespace Hearthopedia.Arena
                 // Make sure we don't draw the same card multiple times in the same round
                 do
                 {
-                    if ((ClassSpecificCardBucket[roundQuality].Count > 0) && (new Random().NextDouble() < ClassOdds))
+                    if ((ClassSpecificCardBucket[roundQuality].Count > 0) && (_random.NextDouble() < ClassOdds))
                         bucket = ClassSpecificCardBucket;
                     else
                         bucket = NeutralCardBucket;
 
-                    chosenCard= bucket[roundQuality][new Random().Next(bucket[roundQuality].Count)];
+                    chosenCard = bucket[roundQuality][_random.Next(bucket[roundQuality].Count)];
                 } while (chosenCardsForRound.Contains(chosenCard));
                 
                 chosenCardsForRound.Add(chosenCard);
@@ -249,5 +343,15 @@ namespace Hearthopedia.Arena
 
             return chosenCardsForRound;
         }
+
+
+        private void OnPropertyChanged(string property)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(property));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

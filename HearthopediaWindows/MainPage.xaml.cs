@@ -20,6 +20,8 @@ using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
 
 // The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
+using Hearthopedia.Arena;
+
 
 namespace HearthopediaWindows
 {
@@ -246,12 +248,17 @@ namespace HearthopediaWindows
                 string responseBody = await response.Content.ReadAsStringAsync();
                 string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
                 flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
-                flavourText = Utilities.FilterHTML(flavourText);
                 textBlockFlavourText.Text = flavourText;
+                flavourText = Utilities.FilterHTML(flavourText);
             }
             catch
             {
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ArenaPage));
         }
     }
 }

@@ -52,6 +52,29 @@
         <Setter Property="FontWeight" Value="ExtraBold"/>
     </Style>
 
+    <Style x:Key="ArenaSmallCardLabel" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="20,0,0,0" />
+    </Style>
+
+    <Style x:Key="ArenaSmallCardStatsOverTypeOutline" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FF000000" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
+
+    <Style x:Key="ArenaSmallCardStatsOverType" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+    
     <Style x:Key="HintCustomStyle" TargetType="ContentControl">
         <Setter Property="Foreground" Value="Wheat" />
     </Style>
@@ -1757,6 +1780,66 @@
         </Grid>
     </DataTemplate>
 
+
+    <!-- List-appropriate 130 pixel high item template as seen in the SplitPage -->
+    <DataTemplate x:Key="ArenaCardList">
+        <Grid Height="50">
+            <Image Grid.Row="0" 
+                   HorizontalAlignment="Left" 
+                   Source="{Binding ClassPortraitImagePath}" 
+                   Stretch="Uniform" 
+                   RenderTransformOrigin="0,0" 
+                   Canvas.ZIndex="-1"/>
+
+            <Grid Grid.Row="0" Canvas.ZIndex="1">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0.2, 0.5" MappingMode="RelativeToBoundingBox">
+                        <GradientStop Color="#30000000"/>
+                        <GradientStop Color="#FF000000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+
+            <!-- A grid for the label, and stats of the card -->
+            <Grid Grid.Row="0" Canvas.ZIndex="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Card name -->
+                <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource ArenaSmallCardLabel}"/>
+
+                <!-- Cost -->
+                <Image Grid.Column="1" Width="24" Height="24" Source="{Binding CostIconPath}" />
+                <TextBlock Grid.Column="1" Margin="6,0,0,0" Text="{Binding  cost}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="0,6,0,0" Text="{Binding  cost}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="-6,0,0,0" Text="{Binding cost}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Margin="0,-6,0,0" Text="{Binding  cost}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource ArenaSmallCardStatsOverType}"/>
+
+                <!-- Attack -->
+                <Image Grid.Column="2" Width="24" Height="24" Source="{Binding AttackIconPath}" />
+                <TextBlock Grid.Column="2" Margin="6,0,0,0" Text="{Binding attack}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="0,6,0,0" Text="{Binding attack}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="-6,0,0,0" Text="{Binding attack}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Margin="0,-6,0,0" Text="{Binding attack}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource ArenaSmallCardStatsOverType}"/>
+
+                <!-- Health -->
+                <Image Grid.Column="3" Width="24" Height="24" Source="{Binding HealthIconPath}" />
+                <TextBlock Grid.Column="3" Margin="6,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="0,6,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="-6,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Margin="0,-6,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource ArenaSmallCardStatsOverTypeOutline}"/>
+                <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource ArenaSmallCardStatsOverType}"/>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+    
     <!--
         List-appropriate 80 pixel high item template as seen in the SplitPage when Filled, and
         the following pages when snapped: GroupedItemsPage, GroupDetailPage, and ItemsPage

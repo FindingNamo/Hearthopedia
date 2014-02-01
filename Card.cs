@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+
+
+
 #if NETFX_CORE
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Networking.BackgroundTransfer;
+using Windows.Storage;
+using System.IO;
 #else
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
