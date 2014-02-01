@@ -126,6 +126,9 @@ namespace HearthopediaWindows
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
             if (e.AddedItems.Count == 1)
             {
+                if (gridCardInfo.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
+                    gridCardInfo.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
                 DownloadFlavourText(((Card)e.AddedItems[0]).flavourTextURL);
                 DownloadImage(((Card)e.AddedItems[0]).imageURL);
 

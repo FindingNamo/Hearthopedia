@@ -108,9 +108,10 @@
         </Grid>
         
         <!-- Details for selected card -->
-        <Grid Grid.RowSpan="2"
+        <Grid x:Name="gridCardInfo" Grid.RowSpan="2"
               Grid.Column="1"
-              Margin="0,70,0,0">
+              Margin="0,70,0,0"
+              Visibility="Collapsed">
             <ScrollViewer
                 x:Name="itemDetail"
                 DataContext="{Binding SelectedItem, ElementName=itemListView}">
