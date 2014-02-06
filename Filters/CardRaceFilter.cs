@@ -8,6 +8,16 @@ namespace Hearthopedia.Filters
 {
     public class CardRaceFilter : AEnumNumberFilter<CardRace>
     {
+        private string _name = "Race";
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
         private CardRaceFilter()
         {
             _FilterOptions = EnumUtilities.AssembleEnumerableOptionList<CardRace>();

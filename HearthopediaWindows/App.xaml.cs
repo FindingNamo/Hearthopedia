@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Hearthopedia;
+
 // The Split App template is documented at http://go.microsoft.com/fwlink/?LinkId=234228
 
 namespace HearthopediaWindows
@@ -33,6 +35,8 @@ namespace HearthopediaWindows
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            
         }
 
         /// <summary>

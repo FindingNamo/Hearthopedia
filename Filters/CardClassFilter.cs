@@ -8,6 +8,8 @@ namespace Hearthopedia.Filters
 {
     public class CardClassFilter : AEnumNumberFilter<CardClass>
     {
+        private string _name = "Class";
+
         private CardClassFilter()
         {
             _FilterOptions = EnumUtilities.AssembleEnumerableOptionList<CardClass>();
@@ -24,6 +26,14 @@ namespace Hearthopedia.Filters
         public override bool Check(Card card)
         {
             return CheckEnum(card.classs);
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
         }
     }
 }

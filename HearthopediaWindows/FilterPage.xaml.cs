@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -14,40 +12,44 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+using Hearthopedia.Filters;
 using Hearthopedia;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.Networking.BackgroundTransfer;
-using Windows.Storage;
 
 // The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
-using Hearthopedia.Arena;
-
 
 namespace HearthopediaWindows
 {
     /// <summary>
-    /// A page that displays a group title, a list of items within the group, and details for the
-    /// currently selected item.
+    /// A page that displays a group title, a list of items within the group, and details for
+    /// the currently selected item.
     /// </summary>
-    public sealed partial class MainPage : HearthopediaWindows.Common.LayoutAwarePage
+    public sealed partial class FilterPage : HearthopediaWindows.Common.LayoutAwarePage
     {
-        // damn son!
-        private Card selectedCard;
+        private string _currentSearchString;
 
-        public MainPage()
+        public FilterPage()
         {
             this.InitializeComponent();
+            this.itemListView.Items.Add(CardClassFilter.Instance);
+            this.itemListView.Items.Add(CardQualityFilter.Instance);
+            this.itemListView.Items.Add(CardRaceFilter.Instance);
+            this.itemListView.Items.Add(CardSetFilter.Instance);
+            this.itemListView.Items.Add(CardTypeFilter.Instance);
+            this.itemListView.Items.Add(CardMechanicFilter.Instance);
+        }
 
-            // Bind the listbox to the cards list
-            Binding cardsBinding = new Binding();
-            cardsBinding.Source = DataManager.Instance.SearchedCards;
-            itemListView.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-            // Check if it's the first boot ever an do the right thing
-            if (DataManager.Instance.Cards.Count == 0)
-            {
-                DataAccess.OnBootOperations();
-            }
+            _currentSearchString = e.Parameter.ToString();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            DataAccess.SearchCards(_currentSearchString);
+            base.OnNavigatedFrom(e);
         }
 
         #region Page state management
@@ -63,26 +65,43 @@ namespace HearthopediaWindows
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
-            if (pageState == null)
-            {
-                this.itemListView.SelectedItem = null;
-                // When this is a new page, select the first item automatically unless logical page
-                // navigation is being used (see the logical page navigation #region below.)
-                if (!this.UsingLogicalPageNavigation() && this.itemsViewSource.View != null)
-                {
-                    this.itemsViewSource.View.MoveCurrentToFirst();
-                }
-            }
-            else
-            {
-                // Restore the previously saved state associated with this page
-                if (pageState.ContainsKey("SelectedItem") && this.itemsViewSource.View != null)
-                {
-                    // var selectedItem = SampleDataSource.GetItem((String)pageState["SelectedItem"]);
-                    // this.itemsViewSource.View.MoveCurrentTo(selectedItem);
-                    throw new NotImplementedException("Need to implement previously saved state");
-                }
-            }
+            // TODO: Assign a bindable group to this.DefaultViewModel["Group"]
+            // TODO: Assign a collection of bindable items to this.DefaultViewModel["Items"]
+
+            //if (pageState == null)
+            //{
+            //    // When this is a new page, select the first item automatically unless logical page
+            //    // navigation is being used (see the logical page navigation #region below.)
+            //    if (!this.UsingLogicalPageNavigation() && this.itemsViewSource.View != null)
+            //    {
+            //        this.itemsViewSource.View.MoveCurrentToFirst();
+            //    }
+            //}
+            //else
+            //{
+            //    // Restore the previously saved state associated with this page
+            //    if (pageState.ContainsKey("SelectedItem") && this.itemsViewSource.View != null)
+            //    {
+            //        // TODO: Invoke this.itemsViewSource.View.MoveCurrentTo() with the selected
+            //        //       item as specified by the value of pageState["SelectedItem"]
+            //    }
+            //}
+        }
+
+        /// <summary>
+        /// Preserves state associated with this page in case the application is suspended or the
+        /// page is discarded from the navigation cache.  Values must conform to the serialization
+        /// requirements of <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
+        protected override void SaveState(Dictionary<String, Object> pageState)
+        {
+            //if (this.itemsViewSource.View != null)
+            //{
+            //    var selectedItem = this.itemsViewSource.View.CurrentItem;
+            //    // TODO: Derive a serializable navigation parameter and assign it to
+            //    //       pageState["SelectedItem"]
+            //}
         }
 
         #endregion
@@ -127,17 +146,6 @@ namespace HearthopediaWindows
             // to showing the selected item's details.  When the selection is cleared this has the
             // opposite effect.
             if (this.UsingLogicalPageNavigation()) this.InvalidateVisualState();
-            if (e.AddedItems.Count == 1)
-            {
-                if (gridCardInfo.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
-                    gridCardInfo.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-                DownloadFlavourText(((Card)e.AddedItems[0]).flavourTextURL);
-                DownloadImage(((Card)e.AddedItems[0]));
-
-                selectedCard = (Card)e.AddedItems[0];
-                this.DataContext = selectedCard;
-            }
         }
 
         /// <summary>
@@ -150,8 +158,8 @@ namespace HearthopediaWindows
             if (this.UsingLogicalPageNavigation() && itemListView.SelectedItem != null)
             {
                 // When logical page navigation is in effect and there's a selected item that
-                // item's details are currently displayed.  Clearing the selection will return
-                // to the item list.  From the user's point of view this is a logical backward
+                // item's details are currently displayed.  Clearing the selection will return to
+                // the item list.  From the user's point of view this is a logical backward
                 // navigation.
                 this.itemListView.SelectedItem = null;
             }
@@ -197,79 +205,5 @@ namespace HearthopediaWindows
         }
 
         #endregion
-
-        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Update search time
-            DataManager.Instance.LastSearchTime = DateTime.Now;
-            
-            DataAccess.SearchCards(TextBoxSearch.Text);
-        }
-
-        private async void DownloadImage(Card card)
-        {
-            try
-            {
-                Uri uri = new Uri(card.imageURL);
-                StorageFile destinationFile;
-                try
-                {
-                    destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(
-                        card.image + ".png", CreationCollisionOption.GenerateUniqueName);
-                }
-                catch (FileNotFoundException ex)
-                {
-
-                    return;
-                }
-
-                BackgroundDownloader downloader = new BackgroundDownloader();
-                DownloadOperation download = downloader.CreateDownload(uri, destinationFile);
-                await download.StartAsync();
-                ResponseInformation response = download.GetResponseInformation();
-                Uri imageUri;
-                BitmapImage image = null;
-
-                if (Uri.TryCreate(destinationFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
-                {
-                    image = new BitmapImage(imageUri);
-                }
-                
-                imageCard.Source = image;
-            }
-            catch
-            {
-            }
-        }
-
-
-        private async void DownloadFlavourText(string url)
-        {
-            try
-            {
-                HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = await httpClient.GetAsync(url);
-
-
-                string responseBody = await response.Content.ReadAsStringAsync();
-                string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
-                flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
-                textBlockFlavourText.Text = flavourText;
-                flavourText = Utilities.FilterHTML(flavourText);
-            }
-            catch
-            {
-            }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(ArenaPage));
-        }
-
-        private void ImageFilter_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(FilterPage), TextBoxSearch.Text);
-        }
     }
 }

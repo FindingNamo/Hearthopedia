@@ -10,6 +10,16 @@ namespace Hearthopedia.Filters
     {
         public List<MechanicOption> FilterOptions { get; set; }
 
+        private string _name = "Mechanic";
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+
 
         private CardMechanicFilter()
         {

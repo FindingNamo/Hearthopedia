@@ -1720,8 +1720,8 @@
         </Grid>
     </DataTemplate>
 
-    <!-- List-appropriate 130 pixel high item template as seen in the SplitPage -->
-    <DataTemplate x:Key="Standard130ItemTemplate">
+    <!-- List-appropriate card lists -->
+    <DataTemplate x:Key="CardListItemTemplate">
         <Grid >
             <Image Grid.Row="0" 
                    HorizontalAlignment="Left" 
@@ -1777,6 +1777,29 @@
                 <TextBlock Grid.Column="3" Margin="0,-6,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
                 <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}"/>
             </Grid>
+        </Grid>
+    </DataTemplate>
+    
+    <!--List Filters-->
+    <DataTemplate x:Key="FilterListItemTemplate">
+        <Grid>
+            <TextBlock Text="{Binding Name}" />
+        </Grid>
+    </DataTemplate>
+
+    <!--List Filters-->
+    <DataTemplate x:Key="FilterOptionsListItemTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Text="{Binding Name}" />
+            <ToggleButton 
+                Grid.Row="1"
+                IsChecked="{Binding Value, Mode=TwoWay}" />
         </Grid>
     </DataTemplate>
 

@@ -1,5 +1,7 @@
 Must:
-[ ] Weird margin around the searchbox
+[ ] - Filters for Windows
+
+[ ] - Image Caching
 
 [ ] - EnumUtils - TryCatches for unknowns enums? Maybe return Unknown for now?
 
