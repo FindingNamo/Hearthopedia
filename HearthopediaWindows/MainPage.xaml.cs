@@ -250,7 +250,6 @@ namespace HearthopediaWindows
                 HttpClient httpClient = new HttpClient();
                 HttpResponseMessage response = await httpClient.GetAsync(url);
 
-
                 string responseBody = await response.Content.ReadAsStringAsync();
                 string flavourText = responseBody.Substring(responseBody.IndexOf("<i>") + 3);
                 flavourText = flavourText.Substring(0, flavourText.IndexOf("</i>"));
@@ -264,7 +263,7 @@ namespace HearthopediaWindows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ArenaPage));
+            this.Frame.Navigate(typeof(ArenaClassPicker));
         }
 
         private void ImageFilter_Tapped(object sender, TappedRoutedEventArgs e)

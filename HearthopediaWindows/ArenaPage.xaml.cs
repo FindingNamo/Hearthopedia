@@ -28,8 +28,11 @@ namespace Hearthopedia.Arena
 
         public ArenaPage()
         {
-            ArenaInstance = new Arena((int)CardClass.Shaman);
             this.InitializeComponent();
+        }
+
+        private void SetupDataContexts()
+        {
             ChosenCards.ItemsSource = ArenaInstance.ChosenCards;
 
             CostBar0.DataContext = ArenaInstance;
@@ -40,7 +43,6 @@ namespace Hearthopedia.Arena
             CostBar5.DataContext = ArenaInstance;
             CostBar6.DataContext = ArenaInstance;
             CostBar7.DataContext = ArenaInstance;
-
 
             UpdateCardImages();
         }
@@ -73,7 +75,10 @@ namespace Hearthopedia.Arena
                 {
                     image = new BitmapImage(imageUri);
                 }
-
+                else
+                {
+                    throw new Exception();
+                }
                 cardImage.Source = image;
             }
             catch
@@ -103,6 +108,16 @@ namespace Hearthopedia.Arena
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            int classId = (int)e.Parameter;
+
+            ArenaInstance = new Arena(classId);
+            SetupDataContexts();
+
+            var parameter = e.Parameter as string;
         }
 
         private void UpdateCardImages()

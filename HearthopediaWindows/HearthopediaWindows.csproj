@@ -160,6 +160,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ArenaClassPicker.xaml.cs">
+      <DependentUpon>ArenaClassPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Arena\Arena.cs" />
     <Compile Include="ArenaPage.xaml.cs">
       <DependentUpon>ArenaPage.xaml</DependentUpon>
@@ -287,6 +290,15 @@
       <Link>Assets\unloadedcard.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Arena\druid.png" />
+    <Content Include="Assets\Arena\hunter.png" />
+    <Content Include="Assets\Arena\mage.png" />
+    <Content Include="Assets\Arena\paladin.png" />
+    <Content Include="Assets\Arena\priest.png" />
+    <Content Include="Assets\Arena\rogue.png" />
+    <Content Include="Assets\Arena\shaman.png" />
+    <Content Include="Assets\Arena\warlock.png" />
+    <Content Include="Assets\Arena\warrior.png" />
     <Content Include="Assets\CardInfo\background.jpg" />
     <Content Include="Assets\CardInfo\filter.png" />
     <Content Include="Assets\Logo.png" />
@@ -296,12 +308,17 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\DarkGray.png" />
+    <Content Include="background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ArenaClassPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ArenaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

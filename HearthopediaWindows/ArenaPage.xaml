@@ -80,6 +80,11 @@
                         <Image Grid.Column="1" x:Name="CardImage1" Margin="20" Stretch="Uniform"></Image>
                     </Button>
                     <Button Grid.Column="2" x:Name="CardButton2" Click="ChoosableCard_Clicked">
+                        <Button.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </Button.Transitions>
                         <Image Grid.Column="2" x:Name="CardImage2" Margin="20" Stretch="Uniform"></Image>
                     </Button>
                 </Grid> 
