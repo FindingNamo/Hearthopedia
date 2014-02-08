@@ -66,22 +66,28 @@ namespace HearthopediaWindows
     public sealed partial class ArenaClassPicker : HearthopediaWindows.Common.LayoutAwarePage
     {
         public ObservableCollection<ArenaClassIcon> ArenaClassIconList{ get; set; }
+
+        private List<ArenaClassIcon> _classList;
+        private Random _random = new Random();
         public ArenaClassPicker()
         {
             ArenaClassIconList = new ObservableCollection<ArenaClassIcon>();
+            _classList = new List<ArenaClassIcon>();
 
             Array classes = Enum.GetValues(typeof(CardClass));
             foreach (CardClass c in classes)
             {
                 if (c != CardClass.Everyone)
-                    ArenaClassIconList.Add(new ArenaClassIcon() { Class = c, Visible = Visibility.Collapsed} );
+                    _classList.Add(new ArenaClassIcon() { Class = c, Visible = Visibility.Visible});
             }
 
             // Shuffle the list
+            for(int i = 0; i < 5; i++)
+                _classList.Sort((u, v) => { return _random.Next(-1,1); });
 
             // Show the first 3
-            for (int i = 0; i < 3; i++)
-                ArenaClassIconList[i].Visible = Visibility.Visible;
+            for(int i = 0; i < 3; i ++)
+                ArenaClassIconList.Add(_classList[i]);
 
             this.InitializeComponent();
             PickerGrid.DataContext = ArenaClassIconList;
@@ -112,8 +118,8 @@ namespace HearthopediaWindows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach(ArenaClassIcon a in ArenaClassIconList)
-                a.Visible = Visibility.Visible;
+            for (int i = 3; i < _classList.Count; i++)
+                ArenaClassIconList.Add(_classList[i]);
 
             ((FrameworkElement)sender).Visibility = Visibility.Collapsed;
         }
