@@ -61,7 +61,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Image Source="{Binding ClassIconPath}" Margin="6" Width="250" Height="185" Stretch="Uniform" Visibility="{Binding Visible}" Tapped="Image_Tapped" />
+                            <Image Source="{Binding ClassIconPath}" Margin="6" Width="250" Height="185" Stretch="Uniform" Tapped="Image_Tapped" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

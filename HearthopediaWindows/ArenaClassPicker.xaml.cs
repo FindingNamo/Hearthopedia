@@ -33,23 +33,6 @@ namespace HearthopediaWindows
             }
         }
 
-        private Visibility _visible = Visibility.Collapsed;
-        public Visibility Visible
-        {
-            get
-            {
-                return _visible;
-            }
-            set
-            {
-                if (_visible != value)
-                {
-                    _visible = value;
-                    OnPropertyChanged("Visible");
-                }
-            }
-        }
-
         private void OnPropertyChanged(string property)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -78,7 +61,7 @@ namespace HearthopediaWindows
             foreach (CardClass c in classes)
             {
                 if (c != CardClass.Everyone)
-                    _classList.Add(new ArenaClassIcon() { Class = c, Visible = Visibility.Visible});
+                    _classList.Add(new ArenaClassIcon() { Class = c });
             }
 
             // Shuffle the list
