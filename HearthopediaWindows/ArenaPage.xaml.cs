@@ -118,6 +118,7 @@ namespace Hearthopedia.Arena
             SetupDataContexts();
 
             var parameter = e.Parameter as string;
+            base.OnNavigatedTo(e);
         }
 
         private void UpdateCardImages()
