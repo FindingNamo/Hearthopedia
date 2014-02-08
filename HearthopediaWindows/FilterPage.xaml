@@ -10,12 +10,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+
+        <!-- Collection of items displayed by this page -->
+        <CollectionViewSource
+            x:Name="itemsViewSource"
+            Source="{Binding Items}"
+            d:Source="{Binding AllGroups[0].Items}"/>
+    </Page.Resources>
+
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Filters/background.jpg" Opacity="0.3"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -42,31 +54,67 @@
         <!-- Vertical scrolling item list -->
         <ListView
             x:Name="itemListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
             TabIndex="1"
             Grid.Row="1"
-            Margin="-10,-10,0,0"
-            Padding="120,0,0,60"
+            Margin="120,0,0,50"
+            Padding="10"
             IsSwipeEnabled="False"
             SelectionChanged="ItemListView_SelectionChanged"
-            ItemTemplate="{StaticResource FilterListItemTemplate}"/>
+            ItemTemplate="{StaticResource FilterListItemTemplate}">
+            <ListView.Background>
+                <SolidColorBrush 
+                    Color="Black" 
+                    Opacity="0.8" />
+            </ListView.Background>
+        </ListView>
+
+
+        <Grid
+            Grid.Column="1"
+            Grid.Row="0"
+            Margin="0,0,120,0"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Stretch">
+            <Grid.Background>
+                <SolidColorBrush 
+                    Color="Black" 
+                    Opacity="0.8" />
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Check or Uncheck All" 
+                Style="{StaticResource FilterListLabel}" />
+            <CheckBox x:Name="CheckBoxAll" 
+                Grid.Column="1"
+                IsChecked="True"
+                Padding="20" 
+                HorizontalAlignment="Right" Tapped="CheckBoxAll_Tapped" />
+        </Grid>
 
         <!-- Details for selected item -->
         <ListView
             x:Name="itemDetail"
-            AutomationProperties.AutomationId="ItemDetailScrollViewer"
             Grid.Column="1"
             Grid.Row="1"
-            Padding="70,0,120,0"
+            Margin="0,0,120,50"
             ItemsSource="{Binding SelectedItem.FilterOptions, ElementName=itemListView}"
             ItemTemplate="{StaticResource FilterOptionsListItemTemplate}" 
             SelectionMode="None">
-            <!--<ListView.ItemContainerStyle>
+            <ListView.Background>
+                <SolidColorBrush 
+                    Color="Black" 
+                    Opacity="0.8" />
+            </ListView.Background>
+            <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="IsSelected" Value="{Binding Value, Mode=TwoWay}" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
                 </Style>
-            </ListView.ItemContainerStyle>-->
+            </ListView.ItemContainerStyle>
         </ListView>
 
         <VisualStateManager.VisualStateGroups>

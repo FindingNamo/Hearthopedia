@@ -301,6 +301,7 @@
     <Content Include="Assets\Arena\warrior.png" />
     <Content Include="Assets\CardInfo\background.jpg" />
     <Content Include="Assets\CardInfo\filter.png" />
+    <Content Include="Assets\Filters\background.jpg" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />

@@ -68,24 +68,24 @@ namespace HearthopediaWindows
             // TODO: Assign a bindable group to this.DefaultViewModel["Group"]
             // TODO: Assign a collection of bindable items to this.DefaultViewModel["Items"]
 
-            //if (pageState == null)
-            //{
-            //    // When this is a new page, select the first item automatically unless logical page
-            //    // navigation is being used (see the logical page navigation #region below.)
-            //    if (!this.UsingLogicalPageNavigation() && this.itemsViewSource.View != null)
-            //    {
-            //        this.itemsViewSource.View.MoveCurrentToFirst();
-            //    }
-            //}
-            //else
-            //{
-            //    // Restore the previously saved state associated with this page
-            //    if (pageState.ContainsKey("SelectedItem") && this.itemsViewSource.View != null)
-            //    {
-            //        // TODO: Invoke this.itemsViewSource.View.MoveCurrentTo() with the selected
-            //        //       item as specified by the value of pageState["SelectedItem"]
-            //    }
-            //}
+            if (pageState == null)
+            {
+                // When this is a new page, select the first item automatically unless logical page
+                // navigation is being used (see the logical page navigation #region below.)
+                if (!this.UsingLogicalPageNavigation() && this.itemsViewSource.View != null)
+                {
+                    this.itemsViewSource.View.MoveCurrentToFirst();
+                }
+            }
+            else
+            {
+                // Restore the previously saved state associated with this page
+                if (pageState.ContainsKey("SelectedItem") && this.itemsViewSource.View != null)
+                {
+                    // TODO: Invoke this.itemsViewSource.View.MoveCurrentTo() with the selected
+                    //       item as specified by the value of pageState["SelectedItem"]
+                }
+            }
         }
 
         /// <summary>
@@ -205,5 +205,20 @@ namespace HearthopediaWindows
         }
 
         #endregion
+
+        private void CheckBoxAll_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (itemListView.SelectedItem != null)
+            {
+                if (CheckBoxAll.IsChecked.Value)
+                {
+                    ((ICardFilter)itemListView.SelectedItem).SetCheckedAll();
+                }
+                else
+                {
+                    ((ICardFilter)itemListView.SelectedItem).SetUncheckedAll();
+                }
+            }
+        }
     }
 }
