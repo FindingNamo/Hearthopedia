@@ -1788,16 +1788,21 @@
         </Grid>
     </DataTemplate>
     
-    <!--List Filters-->
+    <!--ListItem Template Filters-->
     <DataTemplate x:Key="FilterListItemTemplate">
         <Grid>
+            <Grid.Background>
+                <SolidColorBrush 
+                    Color="Black" 
+                    Opacity="0.7" />
+            </Grid.Background>
             <TextBlock Text="{Binding Name}" Style="{StaticResource FilterListLabel}" />
         </Grid>
     </DataTemplate>
 
-    <!--List Filters-->
+    <!--ListItem Template Filter Options-->
     <DataTemplate x:Key="FilterOptionsListItemTemplate">
-        <Grid>
+        <Grid Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />

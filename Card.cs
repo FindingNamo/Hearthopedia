@@ -25,12 +25,34 @@ namespace Hearthopedia
         public int id { get; set; }
         public string image { get; set; }
 
+
+        // net url
         private string _imageUrl;
         public string imageURL
         {
             get
             {
                 return _imageUrl ?? (_imageUrl = "http://wow.zamimg.com/images/hearthstone/cards/enus/medium/" + image + ".png");
+            }
+        }
+
+        // backup uri of the file that we saved last time local uri
+        private string _localFilename;
+        public string localFilename
+        {
+            get
+            {
+                return _localFilename ?? (_localFilename = image + ".old.png");
+            }
+        }
+
+        // last resort local uri
+        private string _backupURI;
+        public string backupURI
+        {
+            get
+            {
+                return _backupURI ?? (_backupURI = "ms-appx:///Assets/CardImages/" + image + ".png");
             }
         }
 

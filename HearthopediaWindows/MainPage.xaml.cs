@@ -208,36 +208,54 @@ namespace HearthopediaWindows
 
         private async void DownloadImage(Card card)
         {
+            // use local copy first
+            try
+            {
+                StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(card.localFilename);
+                Uri imageUri; BitmapImage image = null;
+                if (Uri.TryCreate(localFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
+                {
+                    image = new BitmapImage(imageUri);
+                }
+                imageCard.Source = image;
+            }
+            // if things go horribly wrong or if it's the first time and we don't have a local copy, use backup
+            catch
+            {
+                Uri imageUri = new Uri(card.backupURI, UriKind.Absolute);
+                BitmapImage image = new BitmapImage(imageUri);
+                imageCard.Source = image;
+            }
+
+            // try to download to have an updated local copy
             try
             {
                 Uri uri = new Uri(card.imageURL);
                 StorageFile destinationFile;
                 try
                 {
-                    destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(
-                        card.image + ".png", CreationCollisionOption.GenerateUniqueName);
+                    destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("temp" + ".png", CreationCollisionOption.GenerateUniqueName);
                 }
                 catch (FileNotFoundException ex)
                 {
-
                     return;
                 }
 
                 BackgroundDownloader downloader = new BackgroundDownloader();
                 DownloadOperation download = downloader.CreateDownload(uri, destinationFile);
                 await download.StartAsync();
-                ResponseInformation response = download.GetResponseInformation();
-                Uri imageUri;
-                BitmapImage image = null;
-
-                if (Uri.TryCreate(destinationFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
+                await destinationFile.CopyAsync(ApplicationData.Current.LocalFolder, card.localFilename, NameCollisionOption.ReplaceExisting);
+                
+                StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(card.localFilename);
+                Uri imageUri; BitmapImage image = null;
+                if (Uri.TryCreate(localFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
                 {
                     image = new BitmapImage(imageUri);
                 }
-                
                 imageCard.Source = image;
+
             }
-            catch
+            catch (Exception e)
             {
             }
         }

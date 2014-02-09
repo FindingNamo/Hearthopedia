@@ -208,6 +208,7 @@ namespace HearthopediaWindows
 
         private void CheckBoxAll_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            // make the checkbox apply to all listed options
             if (itemListView.SelectedItem != null)
             {
                 if (CheckBoxAll.IsChecked.Value)
@@ -217,6 +218,22 @@ namespace HearthopediaWindows
                 else
                 {
                     ((ICardFilter)itemListView.SelectedItem).SetUncheckedAll();
+                }
+            }
+
+            // if nothing is selected, apply to ALL options
+            else
+            {
+                foreach(ICardFilter filter in itemListView.Items)
+                {
+                    if (CheckBoxAll.IsChecked.Value)
+                    {
+                        (filter).SetCheckedAll();
+                    }
+                    else
+                    {
+                        (filter).SetUncheckedAll();
+                    }
                 }
             }
         }

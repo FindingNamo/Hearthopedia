@@ -64,8 +64,14 @@
             <ListView.Background>
                 <SolidColorBrush 
                     Color="Black" 
-                    Opacity="0.8" />
+                    Opacity="0.9" />
             </ListView.Background>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
 
@@ -78,7 +84,7 @@
             <Grid.Background>
                 <SolidColorBrush 
                     Color="Black" 
-                    Opacity="0.8" />
+                    Opacity="0.9" />
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -87,7 +93,8 @@
             <TextBlock
                 Grid.Column="0"
                 Text="Check or Uncheck All" 
-                Style="{StaticResource FilterListLabel}" />
+                Style="{StaticResource FilterListLabel}"
+                FontWeight="Medium" />
             <CheckBox x:Name="CheckBoxAll" 
                 Grid.Column="1"
                 IsChecked="True"
@@ -103,11 +110,12 @@
             Margin="0,0,120,50"
             ItemsSource="{Binding SelectedItem.FilterOptions, ElementName=itemListView}"
             ItemTemplate="{StaticResource FilterOptionsListItemTemplate}" 
-            SelectionMode="None">
+            SelectionMode="None"
+            IsSwipeEnabled="False">
             <ListView.Background>
                 <SolidColorBrush 
                     Color="Black" 
-                    Opacity="0.8" />
+                    Opacity="0.7" />
             </ListView.Background>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
