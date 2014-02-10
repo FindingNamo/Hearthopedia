@@ -8,6 +8,7 @@
     xmlns:common="using:HearthopediaWindows.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -53,24 +54,27 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.Background>
-            <ImageBrush ImageSource="Assets/CardInfo/background.jpg" Stretch="Uniform" Opacity="0.3">
-            </ImageBrush>
+            <ImageBrush 
+                ImageSource="Assets/CardInfo/background.jpg" 
+                Stretch="Uniform" 
+                Opacity="0.3" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition x:Name="titleRow" Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="primaryColumn" Width="0.5*"/>
-            <ColumnDefinition x:Name="secondaryColumn" Width="0.5*"/>
+            <ColumnDefinition x:Name="primaryColumn" Width="*"/>
+            <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
+            <ColumnDefinition x:Name="adColumn" Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <!-- Back button and page title -->
         <Grid x:Name="titlePanel"
               Grid.Row="0"
               Grid.Column="0">
-              <Button Content="Button" HorizontalAlignment="Left" Height="69" Margin="440,43,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click_1"/>
+              <!--<Button Content="Button" HorizontalAlignment="Left" Height="69" Margin="440,43,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click_1"/>-->
         </Grid>
         <Grid Grid.Row="1"
               Grid.Column="0"
@@ -104,7 +108,7 @@
                     Source="/Assets/CardInfo/filter.png" Tapped="ImageFilter_Tapped" />
             </Grid>
             
-            <!-- Vertical scrolling item list -->
+            <!-- Card list -->
             <ListView
                 Grid.Row="1"
                 x:Name="itemListView"
@@ -124,8 +128,8 @@
                 </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
-        
-        <!-- Details for selected card -->
+
+        <!-- Card Details -->
         <Grid x:Name="gridCardInfo" Grid.Row="1"
               Grid.Column="1"
               Margin="0,0,0,50"
@@ -250,24 +254,38 @@
             </ScrollViewer>
         </Grid>
         
+        <!-- Ad Control -->
+        <UI:AdControl 
+            Grid.Column="2"
+            Grid.RowSpan="2"
+            ApplicationId="f908ece7-cf89-4050-a255-6e22f29e7fbd" 
+            AdUnitId="10711614" 
+            HorizontalAlignment="Right" 
+            Height="600" 
+            Margin="0,0,0,0" 
+            VerticalAlignment="Center" 
+            Width="160"/>
+        
 
         <VisualStateManager.VisualStateGroups>
 
             <!-- Visual states reflect the application's view state -->
             <VisualStateGroup x:Name="ApplicationViewStates">
                 <VisualState x:Name="FullScreenLandscapeOrWide"/>
-
                 <!-- Filled uses a simpler list format in a narrower column -->
                 <VisualState x:Name="FilledOrNarrow">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="primaryColumn" Storyboard.TargetProperty="Width">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="420"/>
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
                         </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListView" Storyboard.TargetProperty="ItemTemplate">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Standard80ItemTemplate}"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="secondaryColumn" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemDetail" Storyboard.TargetProperty="Padding">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="60,0,66,0"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
@@ -340,6 +358,12 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="secondaryColumn" Storyboard.TargetProperty="Width">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                        </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
 
@@ -358,6 +382,12 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="secondaryColumn" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
