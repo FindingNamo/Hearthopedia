@@ -21,28 +21,6 @@ using System.ComponentModel;
 
 namespace HearthopediaWindows
 {
-    public class ArenaClassIcon : INotifyPropertyChanged
-    {
-        public CardClass Class { get; set; }
-
-        public string ClassIconPath
-        {
-            get
-            {
-                return string.Format("/Assets/Arena/{0}.png", EnumUtilities.GetName(Class));
-            }
-        }
-
-        private void OnPropertyChanged(string property)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(property));
-        }
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-}
-
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>

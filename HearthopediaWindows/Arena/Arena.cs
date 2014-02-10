@@ -13,6 +13,8 @@ namespace Hearthopedia.Arena
 
     public class Arena : INotifyPropertyChanged
     {
+        public ArenaClassIcon ClassIcon { get; set; }
+
         private int[] _manaCurve = new int[8];
 
         public int ManaCost0 { get { return _manaCurve[0]; } }
@@ -97,6 +99,14 @@ namespace Hearthopedia.Arena
             set; 
         }
 
+        public string RoundText
+        {
+            get
+            {
+                return string.Format(" {0} / {1} ", RoundNumber, CardsPerDeck);
+            }
+        }
+
         /// <summary>
         /// The Current Round number
         /// </summary>
@@ -111,6 +121,8 @@ namespace Hearthopedia.Arena
             _random = new Random();
             ChosenCards = new ObservableCollection<Card>();
             CurrentRoundCards = new ObservableCollection<Card>();
+
+            ClassIcon = new ArenaClassIcon() { Class = (CardClass)classId };
 
             SetupCommonRoundOdds();
             SetupUncommonRoundOdds();
@@ -155,6 +167,7 @@ namespace Hearthopedia.Arena
             int clampedMana = ClampInt(chosenCard.cost, 0, 7);
             _manaCurve[clampedMana] += 10;
             OnPropertyChanged(string.Format("ManaCost{0}", clampedMana));
+            OnPropertyChanged("RoundText");
         }
 
 
