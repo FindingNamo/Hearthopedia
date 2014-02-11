@@ -59,7 +59,7 @@
         <!-- The main arena layout-->
         <Grid Grid.Row="1">
             <!-- The main arena area -->
-            <Grid Grid.Column="0" Margin="100,50,100,0">
+            <Grid Grid.Column="0" Margin="100,0,100,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="200"/>
@@ -72,28 +72,27 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <Button Grid.Column="0" x:Name="CardButton0" Click="ChoosableCard_Clicked">
-                        <Image Grid.Column="0" x:Name="CardImage0" Margin="20" Stretch="Uniform"></Image>
-                    </Button>
-                    <Button Grid.Column="1" x:Name="CardButton1" Click="ChoosableCard_Clicked">
-                        <Image Grid.Column="1" x:Name="CardImage1" Margin="20" Stretch="Uniform"></Image>
-                    </Button>
-                    <Button Grid.Column="2" x:Name="CardButton2" Click="ChoosableCard_Clicked">
-                        <Button.Transitions>
-                            <TransitionCollection>
-                                <EntranceThemeTransition/>
-                            </TransitionCollection>
-                        </Button.Transitions>
-                        <Image Grid.Column="2" x:Name="CardImage2" Margin="20" Stretch="Uniform"></Image>
-                    </Button>
+
+                    <Image Grid.Column="0" x:Name="CardImage0" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
+                    <Image Grid.Column="1" x:Name="CardImage1" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
+                    <Image Grid.Column="2" x:Name="CardImage2" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
                 </Grid> 
                 
                 <Image x:Name="UnloadedCard" Source="/Assets/unloadedcard.png" Visibility="Collapsed" />
-                
+                                
                 <!-- Mana Curve Area -->
-                <Grid Grid.Row="1">
-                    <Grid HorizontalAlignment="Center" Margin="0,-50,0,24">
+                <Grid Grid.Row="1" Margin="0,0,0,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="ClassIcon" Grid.Column="0" Source="{Binding ClassIconPath}" Stretch="Uniform" Margin="10"/>
+                    
+                    <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
+                    
+                    <Grid HorizontalAlignment="Center" Margin="0,-50,0,0" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="48"/>
@@ -140,7 +139,6 @@
                         <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="7" Text="7+"/>
                     </Grid>
                 </Grid>
-                
             </Grid>
         </Grid>
 

@@ -44,6 +44,9 @@ namespace Hearthopedia.Arena
             CostBar6.DataContext = ArenaInstance;
             CostBar7.DataContext = ArenaInstance;
 
+            ClassIcon.DataContext = ArenaInstance.ClassIcon;
+            RoundPresenter.DataContext = ArenaInstance;
+
             UpdateCardImages();
         }
 
@@ -142,13 +145,13 @@ namespace Hearthopedia.Arena
             CardImage2.Source = UnloadedCard.Source;
 
             DownloadImage(ArenaInstance.CurrentRoundCards[0], CardImage0);
-            CardButton0.DataContext = ArenaInstance.CurrentRoundCards[0];
+            CardImage0.DataContext = ArenaInstance.CurrentRoundCards[0];
 
             DownloadImage(ArenaInstance.CurrentRoundCards[1], CardImage1);
-            CardButton1.DataContext = ArenaInstance.CurrentRoundCards[1];
+            CardImage1.DataContext = ArenaInstance.CurrentRoundCards[1];
 
             DownloadImage(ArenaInstance.CurrentRoundCards[2], CardImage2);
-            CardButton2.DataContext = ArenaInstance.CurrentRoundCards[2];
+            CardImage2.DataContext = ArenaInstance.CurrentRoundCards[2];
         }
 
         private void ChooseCard(Card c)
@@ -157,12 +160,13 @@ namespace Hearthopedia.Arena
             UpdateCardImages();
         }
 
-        private void ChoosableCard_Clicked(object sender, RoutedEventArgs e)
+        private void ChoosableCard_Tapped(object sender, TappedRoutedEventArgs e)
         {
             FrameworkElement senderCard = (FrameworkElement)sender;
             Card chosenCard = (Card)senderCard.DataContext;
 
             ChooseCard(chosenCard);
+
         }
     }
 }
