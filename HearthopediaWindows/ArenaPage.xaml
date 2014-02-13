@@ -8,140 +8,150 @@
     xmlns:common="using:HearthopediaWindows.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <!--
-        This grid acts as a root panel for the page that defines two rows:
-        * Row 0 contains the back button and page title
-        * Row 1 contains the rest of the page layout
-    -->
-    <Grid Style="{StaticResource LayoutRootStyle}">
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.PNG" Stretch="Uniform" Opacity="0.3"/>
-        </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.75*" />
-            <ColumnDefinition Width="0.25*" />
-        </Grid.ColumnDefinitions>
-
-        <!-- Back button and page title -->
-        <Grid Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-            <TextBlock x:Name="pageTitle" Grid.Column="1" Style="{StaticResource PageHeaderTextStyle}" Text="Arena"/>
-        </Grid>
-
-        <ListView
-                Grid.Row="0"
-                Grid.Column="1"
-                Grid.RowSpan="2"
-                x:Name="ChosenCards"
-                AutomationProperties.AutomationId="ItemsListView"
-                AutomationProperties.Name="Items"
-                TabIndex="1"
-                Margin="10"
-                ItemTemplate="{StaticResource ArenaCardList}" >
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-            
-        </ListView>
-
-        <!-- The main arena layout-->
-        <Grid Grid.Row="1">
-            <!-- The main arena area -->
-            <Grid Grid.Column="0" Margin="100,0,100,0">
+    mc:Ignorable="d" SizeChanged="pageRoot_SizeChanged">
+   
+    <!-- The true root grid. -->
+    <Grid>
+        <!-- A canvas doesn't get clipped when rendered off screen -->
+        <Canvas>
+         <!--
+            This grid acts as a root panel for the page that defines two rows:
+            * Row 0 contains the back button and page title
+            * Row 1 contains the rest of the page layout
+        -->
+            <Grid x:Name="LayoutRootGrid" Style="{StaticResource LayoutRootStyle}" Width="1920" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid.RenderTransform>
+                    <ScaleTransform x:Name="RootLayoutTransform"/>
+                </Grid.RenderTransform>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/background.PNG" Stretch="Uniform" Opacity="0.3"/>
+                </Grid.Background>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="140"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="200"/>
                 </Grid.RowDefinitions>
-                
-                <!-- Card Choosing area -->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*" />
+                    <ColumnDefinition Width="0.25*" />
+                </Grid.ColumnDefinitions>
 
-                    <Image Grid.Column="0" x:Name="CardImage0" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
-                    <Image Grid.Column="1" x:Name="CardImage1" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
-                    <Image Grid.Column="2" x:Name="CardImage2" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
-                </Grid> 
-                
-                <Image x:Name="UnloadedCard" Source="/Assets/unloadedcard.png" Visibility="Collapsed" />
-                                
-                <!-- Mana Curve Area -->
-                <Grid Grid.Row="1" Margin="0,0,0,25">
+                <!-- Back button and page title -->
+                <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                    <TextBlock x:Name="pageTitle" Grid.Column="1" Style="{StaticResource PageHeaderTextStyle}" Text="Arena"/>
+                </Grid>
 
-                    <Image x:Name="ClassIcon" Grid.Column="0" Source="{Binding ClassIconPath}" Stretch="Uniform" Margin="10"/>
-                    
-                    <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
-                    
-                    <Grid HorizontalAlignment="Center" Margin="0,-50,0,0" Grid.Column="1">
+                <ListView
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        x:Name="ChosenCards"
+                        AutomationProperties.AutomationId="ItemsListView"
+                        AutomationProperties.Name="Items"
+                        TabIndex="1"
+                        Margin="10"
+                        ItemTemplate="{StaticResource ArenaCardList}" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+            
+                </ListView>
+
+                <!-- The main arena layout-->
+                <Grid Grid.Row="1">
+                    <!-- The main arena area -->
+                    <Grid Grid.Column="0" Margin="100,0,100,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="48"/>
-                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="200"/>
                         </Grid.RowDefinitions>
+                
+                        <!-- Card Choosing area -->
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                            <ColumnDefinition Width="48" />
-                        </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" x:Name="CardImage0" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
+                            <Image Grid.Column="1" x:Name="CardImage1" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
+                            <Image Grid.Column="2" x:Name="CardImage2" Margin="20" Stretch="Uniform" Tapped="ChoosableCard_Tapped"></Image>
+                        </Grid> 
+                
+                        <Image x:Name="UnloadedCard" Source="/Assets/unloadedcard.png" Visibility="Collapsed" />
+                                
+                        <!-- Mana Curve Area -->
+                        <Grid Grid.Row="1" Margin="0,0,0,25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Grid x:Name="CostBar0" Margin="3" Grid.Row="0" Grid.Column="0" Height="{Binding ManaCost0}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar1" Margin="3" Grid.Row="0" Grid.Column="1" Height="{Binding ManaCost1}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar2" Margin="3" Grid.Row="0" Grid.Column="2" Height="{Binding ManaCost2}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar3" Margin="3" Grid.Row="0" Grid.Column="3" Height="{Binding ManaCost3}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar4" Margin="3" Grid.Row="0" Grid.Column="4" Height="{Binding ManaCost4}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar5" Margin="3" Grid.Row="0" Grid.Column="5" Height="{Binding ManaCost5}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar6" Margin="3" Grid.Row="0" Grid.Column="6" Height="{Binding ManaCost6}" VerticalAlignment="Bottom" Background="OrangeRed"/>
-                        <Grid x:Name="CostBar7" Margin="3" Grid.Row="0" Grid.Column="7" Height="{Binding ManaCost7}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                            <Image x:Name="ClassIcon" Grid.Column="0" Source="{Binding ClassIconPath}" Stretch="Uniform" Margin="10"/>
+                    
+                            <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
+                    
+                            <Grid HorizontalAlignment="Center" Margin="0,-50,0,0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="48"/>
+                                    <RowDefinition Height="48"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="48" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid x:Name="CostBar0" Margin="3" Grid.Row="0" Grid.Column="0" Height="{Binding ManaCost0}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar1" Margin="3" Grid.Row="0" Grid.Column="1" Height="{Binding ManaCost1}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar2" Margin="3" Grid.Row="0" Grid.Column="2" Height="{Binding ManaCost2}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar3" Margin="3" Grid.Row="0" Grid.Column="3" Height="{Binding ManaCost3}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar4" Margin="3" Grid.Row="0" Grid.Column="4" Height="{Binding ManaCost4}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar5" Margin="3" Grid.Row="0" Grid.Column="5" Height="{Binding ManaCost5}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar6" Margin="3" Grid.Row="0" Grid.Column="6" Height="{Binding ManaCost6}" VerticalAlignment="Bottom" Background="OrangeRed"/>
+                                <Grid x:Name="CostBar7" Margin="3" Grid.Row="0" Grid.Column="7" Height="{Binding ManaCost7}" VerticalAlignment="Bottom" Background="OrangeRed"/>
                         
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="0" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="1" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="2" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="3" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="4" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="5" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="6" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="7" Grid.Row="1"/>
-                        <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="8" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="0" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="1" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="2" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="3" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="4" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="5" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="6" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="7" Grid.Row="1"/>
+                                <Image Source="Assets/Sprites/blue32.png" Width="32" Height="32" Grid.Column="8" Grid.Row="1"/>
 
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="0" Text="0"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="1" Text="1"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="2" Text="2"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="3" Text="3"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="4" Text="4"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="5" Text="5"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="6" Text="6"/>
-                        <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="7" Text="7+"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="0" Text="0"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="1" Text="1"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="2" Text="2"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="3" Text="3"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="4" Text="4"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="5" Text="5"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="6" Text="6"/>
+                                <TextBlock HorizontalAlignment="Center"  Style="{StaticResource ArenaSmallCardStatsOverType}" Grid.Row="1" Grid.Column="7" Text="7+"/>
+                            </Grid>
+                        </Grid>
                     </Grid>
+                    <TextBlock Text="Choose one" FontSize="64" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top"/>
                 </Grid>
             </Grid>
-        </Grid>
-
+        </Canvas>
         <VisualStateManager.VisualStateGroups>
 
             <!-- Visual states reflect the application's view state -->

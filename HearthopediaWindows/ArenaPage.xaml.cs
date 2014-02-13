@@ -6,6 +6,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,14 +22,25 @@ namespace Hearthopedia.Arena
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
+    /// This page is locked to this aspect:
+    /// 1366x768
     /// </summary>
     public sealed partial class ArenaPage : HearthopediaWindows.Common.LayoutAwarePage
     {
         private Arena ArenaInstance {get; set;}
 
+        public double LockedAspectScaleY
+        {
+            get
+            {
+                return this.ActualWidth / 768f;
+            }
+        }
+
         public ArenaPage()
         {
             this.InitializeComponent();
+            this.DataContext = this;
         }
 
         private void SetupDataContexts()
@@ -166,7 +178,33 @@ namespace Hearthopedia.Arena
             Card chosenCard = (Card)senderCard.DataContext;
 
             ChooseCard(chosenCard);
+        }
 
+        /// <summary>
+        /// Resize the root element to maintain a locked aspect ratio
+        /// It'll stretch it to fill the shortest distance
+        /// Very wide screens stretch till the height is filled.
+        /// Narrow screens stretch till the width is filled.
+        /// </summary>
+        private void pageRoot_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double screenWidth = e.NewSize.Width;
+            double screenHeight = e.NewSize.Height;
+            
+            double targetWidth = 1980;
+            double targetHeight = 1080;
+            double targetAspect = targetWidth / targetHeight;
+
+            double scaleY = screenHeight / targetHeight;
+            double scaleX = screenWidth / targetWidth;
+
+            if (scaleY < scaleX)
+                scaleX = (targetAspect * screenHeight) / targetWidth;
+            else
+                scaleY = (screenWidth / targetAspect) / targetHeight;
+
+            RootLayoutTransform.ScaleX = scaleX;
+            RootLayoutTransform.ScaleY = scaleY;
         }
     }
 }
