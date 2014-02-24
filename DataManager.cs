@@ -11,6 +11,7 @@ namespace Hearthopedia
     {
         private ObservableCollection<Card> cards = new ObservableCollection<Card>();
         private ObservableCollection<Card> searchedCards = new ObservableCollection<Card>();
+        private Lazy<List<Mechanic>> _mechanics = new Lazy<List<Mechanic>>(() => new List<Mechanic>());
         private static DataManager dataManager;
 
         public static DataManager Instance
@@ -26,7 +27,6 @@ namespace Hearthopedia
 
         public DateTime LastSearchTime { get; set; }
 
-        private Lazy<List<Mechanic>> _mechanics = new Lazy<List<Mechanic>>(() => new List<Mechanic>());
         public List<Mechanic> Mechanics
         {
             get

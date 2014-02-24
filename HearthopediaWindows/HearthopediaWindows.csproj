@@ -170,6 +170,7 @@
       <DependentUpon>ArenaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Arena\ArenaClassIcon.cs" />
+    <Compile Include="Cards\CardTier.cs" />
     <Compile Include="FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>

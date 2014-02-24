@@ -340,14 +340,16 @@ namespace Hearthopedia
                 firstRun = true;
             }
 
-#if NETFX_CORE
-            StorageFile storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(@"Assets\cards.txt");
-            Stream stream = await storageFile.OpenStreamForReadAsync();
-            StreamReader reader = new StreamReader(stream);
-            await Task.Run(() =>
+            if (firstRun)
             {
-                defaultCardsString = reader.ReadToEnd();
-            });
+#if NETFX_CORE
+                StorageFile storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(@"Assets\cards.txt");
+                Stream stream = await storageFile.OpenStreamForReadAsync();
+                StreamReader reader = new StreamReader(stream);
+                await Task.Run(() =>
+                {
+                    defaultCardsString = reader.ReadToEnd();
+                });
 
 #else
             Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
@@ -360,8 +362,7 @@ namespace Hearthopedia
                 // reader.Dispose();
             }
 #endif
-            if (firstRun)
-            {
+
                 using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
                 {
                     writer.Write(defaultCardsString);
@@ -378,5 +379,131 @@ namespace Hearthopedia
 
             await DataAccess.GetDataFromHearthHead();
         }
+
+        public static async Task PopulateTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)
+        {
+            string urlGetTier = GetTierListURL(tierClass, tierSource);
+            int retriesLeft = 5;
+            string responseString = "";
+            string cachedResponseString = "";
+
+            // Wrap the entire thing in a try-catch due to that weird bug
+            HttpWebRequest request = WebRequest.CreateHttp(urlGetTier);
+            request.BeginGetResponse(async (asyncResult) =>
+            {
+                HttpWebRequest request2 = (HttpWebRequest)asyncResult.AsyncState;
+
+                // End the operation
+                while (retriesLeft > 0)
+                {
+                    try
+                    {
+                        HttpWebResponse response = (HttpWebResponse)request2.EndGetResponse(asyncResult);
+                        Stream streamResponse = response.GetResponseStream();
+                        StreamReader streamRead = new StreamReader(streamResponse);
+                        responseString = streamRead.ReadToEnd();
+
+                        List<CardTier> cardTierList = Utilities.GetCardTierFromJson(responseString);
+
+                        foreach (CardTier tierInfo in cardTierList)
+                        {
+                            foreach (Card card in DataManager.Instance.Cards)
+                            {
+                                if (tierInfo.name.ToLower() == card.name.ToLower())
+                                    card.tier = (CardTier.TierRank)tierInfo.tier;
+
+                            }
+                        }
+
+                        // No need to retry anymore since we've succeeded
+                        retriesLeft = 0;
+
+
+
+#if NETFX_CORE
+#else
+                            // Close the stream object
+                            streamResponse.Close();
+                            streamRead.Close();
+
+                            // Release the HttpWebResponse
+                            response.Close();
+#endif
+                    }
+                    catch
+                    {
+                        retriesLeft--;
+                    }
+                }
+            }, request);
+        }
+
+        
+        public static string GetTierListURL(CardTier.TierClass tierClass, CardTier.TierSource tierSource)
+        {
+            string baseURL = @"http://stillatthebottom.com/hearthopedia/";
+            switch (tierSource)
+            {
+                case CardTier.TierSource.Antigravity:
+                    {
+                        switch (tierClass)
+                        {
+                            case CardTier.TierClass.Druid:
+                                return baseURL + "antigravity_druid.json";
+                            case CardTier.TierClass.Hunter:
+                                return baseURL + "antigravity_hunter.json";
+                            case CardTier.TierClass.Mage:
+                                return baseURL + "antigravity_mage.json";
+                            case CardTier.TierClass.Paladin:
+                                return baseURL + "antigravity_paladin.json";
+                            case CardTier.TierClass.Priest:
+                                return baseURL + "antigravity_priest.json";
+                            case CardTier.TierClass.Rogue:
+                                return baseURL + "antigravity_rogue.json";
+                            case CardTier.TierClass.Shaman:
+                                return baseURL + "antigravity_shaman.json";
+                            case CardTier.TierClass.Warlock:
+                                return baseURL + "antigravity_warlock.json";
+                            case CardTier.TierClass.Warrior:
+                                return baseURL + "antigravity_warrior.json";
+                            default:
+                                return "antigravity_all.json";
+                        }
+                        break;
+                    }
+                case CardTier.TierSource.Trump:
+                    {
+                        switch (tierClass)
+                        {
+                            case CardTier.TierClass.Druid:
+                                return baseURL + "trump_druid.json";
+                            case CardTier.TierClass.Hunter:
+                                return baseURL + "trump_druid.json";
+                            case CardTier.TierClass.Mage:
+                                return baseURL + "trump_mage.json";
+                            case CardTier.TierClass.Paladin:
+                                return baseURL + "trump_paladin.json";
+                            case CardTier.TierClass.Priest:
+                                return baseURL + "trump_priest.json";
+                            case CardTier.TierClass.Rogue:
+                                return baseURL + "trump_rogue.json";
+                            case CardTier.TierClass.Shaman:
+                                return baseURL + "trump_shaman.json";
+                            case CardTier.TierClass.Warlock:
+                                return baseURL + "trump_warlock.json";
+                            case CardTier.TierClass.Warrior:
+                                return baseURL + "trump_warrior.json";
+                            default:
+                                return "trump_all.json";
+                        }
+                        break;
+                    }
+            }
+
+            // if we get here... it's bad times...
+            return "error";
+        }
     }
+   
+
 }

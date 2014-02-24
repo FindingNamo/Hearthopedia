@@ -20,6 +20,12 @@ namespace Hearthopedia
             return card;
         }
 
+        public static List<CardTier> GetCardTierFromJson(string json)
+        {
+            List<CardTier> cardTierList = JsonConvert.DeserializeObject<List<CardTier>>(json);
+            return cardTierList;
+        }
+
         public static Mechanic GetMechanicFromJson(string json)
         {
             Mechanic mechanic = JsonConvert.DeserializeObject<Mechanic>(json);

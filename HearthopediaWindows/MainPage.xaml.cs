@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
+using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -48,6 +49,18 @@ namespace HearthopediaWindows
             {
                 DataAccess.OnBootOperations();
             }
+
+            // 
+            SettingsPane.GetForCurrentView().CommandsRequested += SettingsCommandsRequested;
+        }
+
+        private void SettingsCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var privacyStatement = new SettingsCommand("privacy", "Privacy Statement", x => Windows.System.Launcher.LaunchUriAsync(
+                    new Uri("http://www.stillatthebottom.com/hearthopedia/privacy_statement.pdf")));
+
+            args.Request.ApplicationCommands.Clear();
+            args.Request.ApplicationCommands.Add(privacyStatement);
         }
 
         #region Page state management

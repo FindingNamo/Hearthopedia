@@ -98,7 +98,7 @@
             <CheckBox x:Name="CheckBoxAll" 
                 Grid.Column="1"
                 IsChecked="True"
-                Padding="20" 
+                Padding="10" 
                 HorizontalAlignment="Right" Tapped="CheckBoxAll_Tapped" />
         </Grid>
 

@@ -96,16 +96,22 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <SolidColorBrush Color="White" />
+                </Grid.Background>
                 <TextBox
                     Grid.Row="0"
-                    Grid.ColumnSpan="2"
+                    Grid.Column="0"
                     x:Name="TextBoxSearch"
                     TextChanged="TextBoxSearch_TextChanged"
-                    IsTextPredictionEnabled="False" />
+                    IsTextPredictionEnabled="False"
+                    VerticalAlignment="Center" 
+                    VerticalContentAlignment="Center" />
                 <Image x:Name="ImageFilter" 
                     Grid.Row="0"
-                    Grid.Column="1" 
-                    Source="/Assets/CardInfo/filter.png" Tapped="ImageFilter_Tapped" />
+                    Grid.Column="1"
+                    Source="/Assets/CardInfo/filter.png" 
+                    Tapped="ImageFilter_Tapped" />
             </Grid>
             
             <!-- Card list -->
@@ -282,7 +288,7 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
@@ -359,7 +365,7 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
@@ -385,7 +391,7 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="adColumn" Storyboard.TargetProperty="Width">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleRow" Storyboard.TargetProperty="Height">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="*"/>

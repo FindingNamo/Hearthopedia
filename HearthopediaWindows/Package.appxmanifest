@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="34061StillAtTheBottom.Hearthopedia" Publisher="CN=3D63ECE5-EA86-4677-A426-E0691BE66FFB" Version="1.2.9.14" />
+  <Identity Name="34061StillAtTheBottom.Hearthopedia" Publisher="CN=3D63ECE5-EA86-4677-A426-E0691BE66FFB" Version="1.2.22.14" />
   <Properties>
     <DisplayName>Hearthopedia</DisplayName>
     <PublisherDisplayName>Still At The Bottom</PublisherDisplayName>

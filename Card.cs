@@ -25,6 +25,8 @@ namespace Hearthopedia
         public int id { get; set; }
         public string image { get; set; }
 
+        public CardTier.TierRank tier { get; set; }
+
 
         // net url
         private string _imageUrl;
