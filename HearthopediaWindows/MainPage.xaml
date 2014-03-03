@@ -200,21 +200,6 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <!--<TextBlock Grid.Column="1" Grid.Row="0" Text="Type" Style="{StaticResource BasicInfoLabel}" Margin="60,15,94,0"/>
-                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding CardTypeString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>
-
-                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Subtype" Style="{StaticResource BasicInfoLabel}" Margin="73,15,72,0"/>
-                        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding CardRaceString}" Style="{StaticResource BasicInfoValue}" Margin="123,0"/>
-
-                        <TextBlock Grid.Column="1" Grid.Row="2" Text="Class" Style="{StaticResource BasicInfoLabel}" Margin="58,15,92,0"/>
-                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ClassNameString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>
-
-                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Quality" Style="{StaticResource BasicInfoLabel}" Margin="79,15,79,0"/>
-                        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding CardQualityString}" Style="{StaticResource BasicInfoValue}" Foreground="{Binding QualityColourHexString}" Margin="123,0"/>
-
-                        <TextBlock Grid.Column="1" Grid.Row="5" Text="Set" Style="{StaticResource BasicInfoLabel}" Margin="69,15,104,0"/>
-                        <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding CardSetString}" Style="{StaticResource BasicInfoValue}" Margin="89,0,123,0"/>-->
-
                         <TextBlock Grid.Row="0" Text="Type" Style="{StaticResource BasicInfoLabel}" />
                         <TextBlock Grid.Row="1" Text="{Binding CardTypeString}" Style="{StaticResource BasicInfoValue}" />
 

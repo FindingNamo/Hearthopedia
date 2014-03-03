@@ -24,7 +24,6 @@ using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
 using Windows.System.Threading;
-
 #endif
 
 namespace Hearthopedia
@@ -86,7 +85,7 @@ namespace Hearthopedia
 #endif
                     reader.Dispose();
                     
-                    if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)))
+                    if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)) && retriesLeft != 0)
                     {
                         // update local text file
                         StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
@@ -326,8 +325,6 @@ namespace Hearthopedia
 
         public static async Task OnBootOperations()
         {
-            string defaultCardsString = "";
-
             // If the file doesn't exist it means it's our first run ever
             bool firstRun = false;
             try
@@ -342,42 +339,14 @@ namespace Hearthopedia
 
             if (firstRun)
             {
-#if NETFX_CORE
-                StorageFile storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(@"Assets\cards.txt");
-                Stream stream = await storageFile.OpenStreamForReadAsync();
-                StreamReader reader = new StreamReader(stream);
-                await Task.Run(() =>
-                {
-                    defaultCardsString = reader.ReadToEnd();
-                });
-
-#else
-            Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
-
-            using (StreamReader reader = new StreamReader(Application.GetResourceStream(cardUri).Stream))
-            {
-                defaultCardsString = reader.ReadToEnd();
-
-                // reader.Close();
-                // reader.Dispose();
-            }
-#endif
-
-                using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
-                {
-                    writer.Write(defaultCardsString);
-                    writer.Flush();
-#if NETFX_CORE
-#else
-                    writer.Close();
-#endif
-                    writer.Dispose();
-                }
+                await WriteResourceToStorage(@"Assets/cards.txt", "cards.txt");
             }
 
             await DataAccess.PopulateDataManagerCards();
 
             await DataAccess.GetDataFromHearthHead();
+
+            await DataAccess.PopulateTierListData(CardTier.TierClass.Druid);
         }
 
         public static async Task PopulateTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)
@@ -435,11 +404,79 @@ namespace Hearthopedia
                         retriesLeft--;
                     }
                 }
+
+                // Compare to existing string
+                StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(GetLocalTierListPath(tierClass)));
+                cachedResponseString = await reader.ReadToEndAsync();
+#if NETFX_CORE
+#else
+                    reader.Close();
+#endif
+                reader.Dispose();
+
+                if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)) && retriesLeft != 0)
+                {
+                    // update local text file
+                    StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(GetLocalTierListPath(tierClass), CreationCollisionOption.ReplaceExisting));
+                    writer.Write(responseString);
+                    writer.Flush();
+#if NETFX_CORE
+#else
+                        writer.Close();
+#endif
+                    writer.Dispose();
+
+
+
+                    // Tell the app that there has been updates and let user choose when to update
+#if NETFX_CORE
+                    CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+
+                    await dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        MessageDialog dialog = new MessageDialog("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
+
+                        //Show message
+                        dialog.ShowAsync();
+                    });
+#else
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
+                        });
+#endif
+                }
             }, request);
         }
 
-        
-        public static string GetTierListURL(CardTier.TierClass tierClass, CardTier.TierSource tierSource)
+        private static string GetLocalTierListPath(CardTier.TierClass tierClass)
+        {
+            switch (tierClass)
+            {
+                case CardTier.TierClass.Druid:
+                    return "antigravity_druid.json";
+                case CardTier.TierClass.Hunter:
+                    return "antigravity_hunter.json";
+                case CardTier.TierClass.Mage:
+                    return "antigravity_mage.json";
+                case CardTier.TierClass.Paladin:
+                    return "antigravity_paladin.json";
+                case CardTier.TierClass.Priest:
+                    return "antigravity_priest.json";
+                case CardTier.TierClass.Rogue:
+                    return "antigravity_rogue.json";
+                case CardTier.TierClass.Shaman:
+                    return "antigravity_shaman.json";
+                case CardTier.TierClass.Warlock:
+                    return "antigravity_warlock.json";
+                case CardTier.TierClass.Warrior:
+                    return "antigravity_warrior.json";
+                default:
+                    return "bad times son...";
+            }
+        }
+
+        private static string GetTierListURL(CardTier.TierClass tierClass, CardTier.TierSource tierSource)
         {
             string baseURL = @"http://stillatthebottom.com/hearthopedia/";
             switch (tierSource)
@@ -502,6 +539,43 @@ namespace Hearthopedia
 
             // if we get here... it's bad times...
             return "error";
+        }
+
+        private static async Task WriteResourceToStorage(string resourcePath, string resultingFileName)
+        {
+            string defaultCardsString = "";
+
+#if NETFX_CORE
+            StorageFile storageFile = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(resourcePath);
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+            StreamReader reader = new StreamReader(stream);
+            await Task.Run(() =>
+            {
+                defaultCardsString = reader.ReadToEnd();
+            });
+
+#else
+            Uri cardUri = new Uri("Hearthopedia;component/Assets/cards.txt", UriKind.Relative);
+
+            using (StreamReader reader = new StreamReader(Application.GetResourceStream(cardUri).Stream))
+            {
+                defaultCardsString = reader.ReadToEnd();
+
+                // reader.Close();
+                // reader.Dispose();
+            }
+#endif
+
+            using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(resultingFileName, CreationCollisionOption.ReplaceExisting)))
+            {
+                writer.Write(defaultCardsString);
+                writer.Flush();
+#if NETFX_CORE
+#else
+                    writer.Close();
+#endif
+                writer.Dispose();
+            }
         }
     }
    
