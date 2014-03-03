@@ -43,6 +43,13 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Margin" Value="100,0,0,0" />
     </Style>
+    
+    <Style x:Key="SmallCardLabelSnapped" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+    </Style>
 
     <Style x:Key="SmallCardStatsOverType" TargetType="TextBlock">
         <Setter Property="Foreground" Value="#FFFFFFFF" />
@@ -1787,7 +1794,39 @@
             </Grid>
         </Grid>
     </DataTemplate>
-    
+
+    <!-- List-appropriate card lists but in snapped view -->
+    <DataTemplate x:Key="CardListItemTemplateSnapped">
+        <Grid >
+            <Image Grid.Row="0" 
+                   HorizontalAlignment="Left" 
+                   Source="{Binding ClassPortraitImagePath}" 
+                   Stretch="None" 
+                   RenderTransformOrigin="0,0" 
+                   Canvas.ZIndex="-1"/>
+
+            <Grid Grid.Row="0" Canvas.ZIndex="1">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0.4,0.5" MappingMode="RelativeToBoundingBox">
+                        <GradientStop Color="#00000000"/>
+                        <GradientStop Color="#FF000000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+
+            <!-- A grid for the label, and stats of the card -->
+            <Grid Grid.Row="0" Canvas.ZIndex="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Card name -->
+                <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource SmallCardLabelSnapped}"/>
+
+            </Grid>
+        </Grid>
+    </DataTemplate>
+
     <!--ListItem Template Filters-->
     <DataTemplate x:Key="FilterListItemTemplate">
         <Grid>
