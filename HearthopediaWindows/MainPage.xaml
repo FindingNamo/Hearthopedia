@@ -263,7 +263,9 @@
 
             <!-- Visual states reflect the application's view state -->
             <VisualStateGroup x:Name="ApplicationViewStates">
-                <!-- Filled uses a simpler list format in a narrower column -->
+
+                <VisualState x:Name="FullScreenLandscapeOrWide" />
+                    <!-- Filled uses a simpler list format in a narrower column -->
                 <VisualState x:Name="FilledOrNarrow">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="gridCardInfo" Storyboard.TargetProperty="(Grid.Column)">

@@ -339,14 +339,12 @@ namespace Hearthopedia
 
             if (firstRun)
             {
-                await WriteResourceToStorage(@"Assets/cards.txt", "cards.txt");
+                await WriteResourceToStorage(@"Assets\cards.txt", "cards.txt");
             }
 
             await DataAccess.PopulateDataManagerCards();
 
             await DataAccess.GetDataFromHearthHead();
-
-            await DataAccess.PopulateTierListData(CardTier.TierClass.Druid);
         }
 
         public static async Task PopulateTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)

@@ -199,7 +199,7 @@ namespace HearthopediaWindows
                 viewState == ApplicationViewState.FullScreenLandscape)
             {
                 var windowWidth = Window.Current.Bounds.Width;
-                if (windowWidth >= 1366) return "FullScreenLandscapeOrWide";
+                if (windowWidth >= 600) return "FullScreenLandscapeOrWide";
                 return "FilledOrNarrow";
             }
 
