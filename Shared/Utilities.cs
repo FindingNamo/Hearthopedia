@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
-
 using Hearthopedia.Filters;
 
 namespace Hearthopedia
