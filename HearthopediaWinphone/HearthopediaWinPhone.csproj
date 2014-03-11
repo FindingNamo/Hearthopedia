@@ -90,6 +90,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\HearthopediaWindows\Arena\Arena.cs">
+      <Link>Arena\Arena.cs</Link>
+    </Compile>
+    <Compile Include="..\HearthopediaWindows\Arena\ArenaClassIcon.cs">
+      <Link>Arena\ArenaClassIcon.cs</Link>
+    </Compile>
     <Compile Include="..\Shared\Card\Card.cs">
       <Link>Card\Card.cs</Link>
     </Compile>
@@ -153,6 +159,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ArenaPage.xaml.cs">
+      <DependentUpon>ArenaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
@@ -175,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ArenaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

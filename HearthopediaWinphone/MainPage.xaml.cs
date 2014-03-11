@@ -76,6 +76,12 @@ namespace Hearthopedia
             NavigationService.Navigate(new Uri("/FilterPage.xaml?search=" + textBoxSearch.Text, UriKind.Relative));
         }
 
+        private void ClassIcon_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            FrameworkElement icon = (FrameworkElement)sender;
+            NavigationService.Navigate(new Uri("/ArenaPage.xaml?classId=" + icon.Tag, UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

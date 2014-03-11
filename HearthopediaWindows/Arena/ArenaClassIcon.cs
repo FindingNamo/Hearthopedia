@@ -15,7 +15,11 @@ namespace Hearthopedia.Arena
         {
             get
             {
-                return string.Format("/Assets/Arena/{0}.png", EnumUtilities.GetName(Class));
+#if NETFX_CORE
+            return string.Format("/Assets/Arena/{0}.png", EnumUtilities.GetName(Class));
+#else
+            return string.Format("Assets\\Arena\\{0}.png", EnumUtilities.GetName(Class));
+#endif
             }
         }
 
