@@ -365,8 +365,6 @@ namespace Hearthopedia
 
                     ObservableCollection<Card> cards = new ObservableCollection<Card>(from card in DataManager.Instance.Cards where card.name.Contains(searchString) select card);
 
-                    
-
                     System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
                         DataManager.Instance.SearchedCards.Clear();

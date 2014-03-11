@@ -225,6 +225,33 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\druid.png">
+      <Link>Assets\Arena\druid.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\hunter.png">
+      <Link>Assets\Arena\hunter.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\mage.png">
+      <Link>Assets\Arena\mage.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\paladin.png">
+      <Link>Assets\Arena\paladin.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\priest.png">
+      <Link>Assets\Arena\priest.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\rogue.png">
+      <Link>Assets\Arena\rogue.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\shaman.png">
+      <Link>Assets\Arena\shaman.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\warlock.png">
+      <Link>Assets\Arena\warlock.png</Link>
+    </Content>
+    <Content Include="..\HearthopediaWindows\Assets\Arena\warrior.png">
+      <Link>Assets\Arena\warrior.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\background.png">
       <Link>Assets\background.png</Link>
     </Content>
