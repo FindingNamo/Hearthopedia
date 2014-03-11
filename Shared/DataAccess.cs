@@ -30,7 +30,7 @@ namespace Hearthopedia
 {
     class DataAccess
     {
-        public static async Task GetDataFromHearthHead()
+        public static async Task GetCardData()
         {
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
             int retriesLeft = 5;
@@ -190,13 +190,71 @@ namespace Hearthopedia
             }
         }
 
+        public static async Task PopulateDataManagerTierList()
+        {
+            DataManager.Instance.Cards.Clear();
+            DataManager.Instance.Mechanics.Clear();
 
+            // populate from disk
+            StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
+
+            bool parsingMechanics = false;
+            string currentLine = "";
+            string jsonString = "";
+            Card currentCard = null;
+
+            while (reader.Peek() >= 0)
+            {
+                currentLine = reader.ReadLine();
+
+                if (currentLine.Contains("g_hearthstone_mechanics"))
+                {
+                    parsingMechanics = true;
+                    continue;
+                }
+
+                if (!parsingMechanics && currentLine.Contains("\"id\""))
+                {
+                    jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    currentCard = Utilities.GetCardFromJson(jsonString);
+                    DataManager.Instance.Cards.Add(currentCard);
+                }
+
+                if (parsingMechanics && currentLine.Contains("\"id\""))
+                {
+                    jsonString = currentLine.Substring(currentLine.IndexOf("{"), currentLine.IndexOf("}") - currentLine.IndexOf("{") + 1);
+                    Mechanic newMechanic = Utilities.GetMechanicFromJson(jsonString);
+                    DataManager.Instance.Mechanics.Add(newMechanic);
+                }
+            }
+
+#if NETFX_CORE
+#else
+            reader.Close();
+#endif
+            reader.Dispose();
+
+            // Sort
+            DataManager.Instance.SortCards();
+
+            // Display cards if we just booted
+            DataManager.Instance.SearchedCards.Clear();
+
+            foreach (Card card in DataManager.Instance.Cards)
+            {
+                if (card.CardTypeString != null)
+                {
+                    if (!(card.CardTypeString.Equals("Unknown")))
+                        DataManager.Instance.SearchedCards.Add(card);
+                }
+            }
+        }
 
         public static async Task SearchCards(string searchString)
         {
             // Only do the if it's been this many seconds since the textbox changed
             double searchDelaySec = System.Convert.ToDouble("0.2");
-            int searchNumMinChar = 2;
+            int searchNumMinChar = 1;
 
             // only do the search if there are this many characters
             if ((searchString.Length >= searchNumMinChar))
@@ -229,7 +287,7 @@ namespace Hearthopedia
                             {
                                 if (card.CardTypeString != null)
                                 {
-                                    if (card.name.ToLower().Contains(searchString.ToLower()) &&
+                                    if (card.name.ToLower().StartsWith(searchString.ToLower()) &&
                                         !(card.CardTypeString.Equals("Unknown")) &&
                                         FilterManager.Instance.Check(card))
                                     {
@@ -340,14 +398,25 @@ namespace Hearthopedia
             if (firstRun)
             {
                 await WriteResourceToStorage(@"Assets\cards.txt", "cards.txt");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_druid.json", "antigravity_druid.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_hunter.json", "antigravity_hunter.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_mage.json", "antigravity_mage.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_paladin.json", "antigravity_paladin.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_priest.json", "antigravity_priest.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_rogue.json", "antigravity_rogue.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_shaman.json", "antigravity_shaman.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_warlock.json", "antigravity_warlock.json");
+                await WriteResourceToStorage(@"Assets\TierList\antigravity_warrior.json", "antigravity_warrior.json");
             }
 
             await DataAccess.PopulateDataManagerCards();
 
-            await DataAccess.GetDataFromHearthHead();
+            await DataAccess.GetCardData();
+
+            await DataAccess.GetTierListData(CardTier.TierClass.Druid);
         }
 
-        public static async Task PopulateTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)
+        public static async Task GetTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)
         {
             string urlGetTier = GetTierListURL(tierClass, tierSource);
             int retriesLeft = 5;

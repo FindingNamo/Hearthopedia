@@ -9,9 +9,31 @@ namespace Hearthopedia
 {
     class DataManager
     {
-        private ObservableCollection<Card> cards = new ObservableCollection<Card>();
-        private ObservableCollection<Card> searchedCards = new ObservableCollection<Card>();
-        private Lazy<List<Mechanic>> _mechanics = new Lazy<List<Mechanic>>(() => new List<Mechanic>());
+        #region Public Properties
+
+        public DateTime LastSearchTime { get; set; }
+
+        public List<Mechanic> Mechanics { get; private set; }
+
+        public ObservableCollection<Card> Cards { get; private set; }
+
+        public ObservableCollection<Card> SearchedCards { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        private DataManager()
+        {
+            this.SearchedCards = new ObservableCollection<Card>();
+            this.Cards = new ObservableCollection<Card>();
+            this.Mechanics = new List<Mechanic>();
+        }
+
+        #endregion
+
+        #region Singleton Accessor
+
         private static DataManager dataManager;
 
         public static DataManager Instance
@@ -25,40 +47,15 @@ namespace Hearthopedia
             }
         }
 
-        public DateTime LastSearchTime { get; set; }
+        #endregion
 
-        public List<Mechanic> Mechanics
-        {
-            get
-            {
-                return _mechanics.Value;
-            }
-        }
-
-        public ObservableCollection<Card> Cards
-        {
-            get
-            {
-                return cards;
-            }
-        }
-
-        public ObservableCollection<Card> SearchedCards
-        {
-            get
-            {
-                return searchedCards;
-            }
-
-            set
-            {
-                searchedCards = value;
-            }
-        }
+        #region Helpers
 
         public void SortCards()
         {
-            cards = new ObservableCollection<Card>(from i in cards orderby i.name select i);
+            this.Cards = new ObservableCollection<Card>(from i in this.Cards orderby i.name select i);
         }
+
+        #endregion
     }
 }

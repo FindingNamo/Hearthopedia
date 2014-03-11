@@ -15,11 +15,14 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 	<phone:PhoneApplicationPage.Resources>
-		
-	</phone:PhoneApplicationPage.Resources>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
 
         <Grid.Resources>
             <Style x:Key="SmallCardLabel" TargetType="TextBlock">
@@ -49,10 +52,6 @@
             </Style>
         </Grid.Resources>
 
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill" />
-        </Grid.Background>
-
         <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
             keys in the app's neutral language resource file (AppResources.resx) then
@@ -71,96 +70,124 @@
             attributes to be drawn from the .resx file that matches the
             CurrentUICulture of the app at run time.
          -->
+        <phone:Panorama Grid.Row="0">
+            <phone:Panorama.Background>
+                <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill" />
+            </phone:Panorama.Background>
 
-        <Grid x:Name="ContentPanel">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <!--Panorama item one-->
+            <phone:PanoramaItem>
+                <Grid x:Name="ContentPanel">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="/Assets/searchbar.png"  />
+                    <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+                    <Image Grid.Row="0"  Source="/Assets/filter.png" Tap="Image_Tap_1" Width="40" Height="40" Margin="420,16,10,16" />
+                    <Grid Grid.Row="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" ManipulationStarted="listCards_ManipulationStarted">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate >
+                                <DataTemplate>
+                                    <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
+                                    <Grid HorizontalAlignment="Stretch" Tap="OnListItemClick" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="93" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Border Grid.Row="1" BorderThickness="0, 0, 0, 1" BorderBrush="#FF808080" />
+
+                                        <Image Grid.Row="0" HorizontalAlignment="Left" Source="{Binding ClassPortraitImagePath}" Stretch="None" RenderTransformOrigin="0,0"/>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.Background>
+                                                <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0,0.5" MappingMode="RelativeToBoundingBox">
+                                                    <GradientStop Color="#FF000000"/>
+                                                    <GradientStop Color="#00000000" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                        </Grid>
+
+                                        <!-- A grid for the label, and stats of the card -->
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="32"/>
+                                                <ColumnDefinition Width="32"/>
+                                                <ColumnDefinition Width="32"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Card name -->
+                                            <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
+
+                                            <!-- Cost -->
+                                            <Image Grid.Column="1" Source="{Binding CostIconPath}" />
+                                            <TextBlock Grid.Column="1" Margin="2,0,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="1" Margin="0,2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="1" Margin="-2,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="1" Margin="0,-2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+
+                                            <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
+
+
+                                            <!-- Attack -->
+                                            <Image Grid.Column="2" Source="{Binding AttackIconPath}" />
+                                            <TextBlock Grid.Column="2" Margin="2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="2" Margin="0,2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="2" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="2" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}"/>
+
+                                            <!-- Health -->
+                                            <Image Grid.Column="3" Source="{Binding HealthIconPath}" />
+                                            <TextBlock Grid.Column="3" Margin="2,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="3" Margin="0,2,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="3" Margin="-2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+                                            <TextBlock Grid.Column="3" Margin="0,-2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
+
+                                            <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}"/>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    
+                </Grid>
+            </phone:PanoramaItem>
             
-            <Image Grid.Row="0" Source="/Assets/searchbar.png"  />
-            <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
-            <Image Grid.Row="0"  Source="/Assets/filter.png" Tap="Image_Tap_1" Width="40" Height="40" Margin="420,16,10,16" />
-            <Grid Grid.Row="1" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <ListBox x:Name="listCards" HorizontalContentAlignment="Stretch" ManipulationStarted="listCards_ManipulationStarted">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            <Setter Property="HorizontalAlignment" Value="Stretch" />
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate >
-                        <DataTemplate>
-                            <!-- Outer Grid, we need 2 so we can have a border go the full distance -->
-                            <Grid HorizontalAlignment="Stretch" Tap="OnListItemClick" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="93" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
+            <phone:PanoramaItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <toolkit:ListPicker 
+                        ExpansionMode="FullScreenOnly"
+                        Name="listPickerTierSource">
+                    </toolkit:ListPicker>
 
-                                <Border Grid.Row="1" BorderThickness="0, 0, 0, 1" BorderBrush="#FF808080" />
-
-                                <Image Grid.Row="0" HorizontalAlignment="Left" Source="{Binding ClassPortraitImagePath}" Stretch="None" RenderTransformOrigin="0,0"/>
-
-                                <Grid Grid.Row="0">
-                                    <Grid.Background>
-                                        <LinearGradientBrush StartPoint="0.3,0.5" EndPoint="0,0.5" MappingMode="RelativeToBoundingBox">
-                                            <GradientStop Color="#FF000000"/>
-                                            <GradientStop Color="#00000000" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Grid.Background>
-                                </Grid>
-
-                                <!-- A grid for the label, and stats of the card -->
-                                <Grid Grid.Row="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="32"/>
-                                        <ColumnDefinition Width="32"/>
-                                        <ColumnDefinition Width="32"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <!-- Card name -->
-                                    <TextBlock Grid.Column="0" Foreground="{Binding QualityColourHexString}" Text="{Binding name}" Style="{StaticResource SmallCardLabel}"/>
-
-                                    <!-- Cost -->
-                                    <Image Grid.Column="1" Source="{Binding CostIconPath}" />
-                                    <TextBlock Grid.Column="1" Margin="2,0,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="1" Margin="0,2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="1" Margin="-2,0,0,0" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="1" Margin="0,-2,0,0" Text="{Binding  cost}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-
-                                    <TextBlock Grid.Column="1" Text="{Binding cost}" Style="{StaticResource SmallCardStatsOverType}"/>
-
-
-                                    <!-- Attack -->
-                                    <Image Grid.Column="2" Source="{Binding AttackIconPath}" />
-                                    <TextBlock Grid.Column="2" Margin="2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="2" Margin="0,2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="2" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="2" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}"/>
-
-                                    <!-- Health -->
-                                    <Image Grid.Column="3" Source="{Binding HealthIconPath}" />
-                                    <TextBlock Grid.Column="3" Margin="2,0,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="0,2,0,0" Text="{Binding  HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="-2,0,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-                                    <TextBlock Grid.Column="3" Margin="0,-2,0,0" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverTypeOutline}"/>
-
-                                    <TextBlock Grid.Column="3" Text="{Binding HealthOrDurability}" Style="{StaticResource SmallCardStatsOverType}"/>
-                                </Grid>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-            <UI:AdControl Grid.Row="2" ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
-        </Grid>
+                </Grid>
+                
+            </phone:PanoramaItem>
+            
+        </phone:Panorama>
+        <UI:AdControl Grid.Row="1"  ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
+        
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
@@ -170,5 +197,4 @@
             Before shipping remove this XAML and the image itself.-->
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
-
 </phone:PhoneApplicationPage>

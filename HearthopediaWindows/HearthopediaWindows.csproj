@@ -191,31 +191,31 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="..\Assets\TierList\antigravity_druid.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_druid.json">
       <Link>Assets\TierList\antigravity_druid.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_hunter.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_hunter.json">
       <Link>Assets\TierList\antigravity_hunter.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_mage.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_mage.json">
       <Link>Assets\TierList\antigravity_mage.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_paladin.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_paladin.json">
       <Link>Assets\TierList\antigravity_paladin.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_priest.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_priest.json">
       <Link>Assets\TierList\antigravity_priest.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_rogue.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_rogue.json">
       <Link>Assets\TierList\antigravity_rogue.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_shaman.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_shaman.json">
       <Link>Assets\TierList\antigravity_shaman.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_warlock.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_warlock.json">
       <Link>Assets\TierList\antigravity_warlock.json</Link>
     </None>
-    <None Include="..\Assets\TierList\antigravity_warrior.json">
+    <None Include="..\Shared\Assets\TierList\antigravity_warrior.json">
       <Link>Assets\TierList\antigravity_warrior.json</Link>
     </None>
     <None Include="Common\ReadMe.txt" />
@@ -897,6 +897,7 @@
       <Name>Microsoft Advertising SDK for Windows 8 %28Xaml%29</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
