@@ -52,7 +52,11 @@ namespace Hearthopedia
         {
             get
             {
+#if NETFX_CORE
                 return _backupURI ?? (_backupURI = "ms-appx:///Assets/CardImages/" + image + ".png");
+#else
+                return _backupURI ?? (_backupURI = "Assets/CardImages/" + image + ".png");
+#endif
             }
         }
 

@@ -46,7 +46,8 @@ namespace Hearthopedia
 
             imageCard.Source = new BitmapImage(new Uri("\\Assets\\UnloadedCard.png", UriKind.Relative));
 
-            DownloadImage(selectedCard.imageURL);
+            //DownloadImage(selectedCard.imageURL);
+            ImageManager.Instance.SetImageFromCard(selectedCard, imageCard);
             DownloadFlavourText(selectedCard.flavourTextURL);
         }
 

@@ -40,10 +40,7 @@ namespace Hearthopedia
         {
             get
             {
-                if (dataManager == null)
-                    dataManager = new DataManager();
-
-                return dataManager;
+                return dataManager ?? (dataManager = new DataManager());
             }
         }
 

@@ -81,12 +81,15 @@ namespace Hearthopedia
 
             //DownloadImage(ArenaInstance.CurrentRoundCards[0], CardImage0);
             CardImage0.DataContext = ArenaInstance.CurrentRoundCards[0];
+            ImageManager.Instance.SetImageFromCard(ArenaInstance.CurrentRoundCards[0], CardImage0);
 
             //DownloadImage(ArenaInstance.CurrentRoundCards[1], CardImage1);
             CardImage1.DataContext = ArenaInstance.CurrentRoundCards[1];
+            ImageManager.Instance.SetImageFromCard(ArenaInstance.CurrentRoundCards[1], CardImage1);
 
             //DownloadImage(ArenaInstance.CurrentRoundCards[2], CardImage2);
             CardImage2.DataContext = ArenaInstance.CurrentRoundCards[2];
+            ImageManager.Instance.SetImageFromCard(ArenaInstance.CurrentRoundCards[2], CardImage2);
         }
     }
 }

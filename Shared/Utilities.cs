@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
 using Hearthopedia.Filters;
+using Windows.Storage;
 
 namespace Hearthopedia
 {
@@ -37,6 +38,16 @@ namespace Hearthopedia
             noHTML = noHTML.Replace(@"\", "");
             string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
             return noHTMLNormalised;
-        }        
+        }
+
+        public async static void CopyFromStreamToFile(Stream stream, string filePath)
+        {
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await localFolder.CreateFileAsync(filePath, CreationCollisionOption.ReplaceExisting);
+            using (Stream outputStream = await storageFile.OpenStreamForWriteAsync())
+            {
+                await stream.CopyToAsync(outputStream);
+            }
+        }
     }
 }
