@@ -66,6 +66,22 @@ namespace Hearthopedia
             return -1;
         }
 
+        /// <summary>
+        /// Given a set of cards, return the best tier of all of them.
+        /// </summary>
+        public int GetTopTierPick(IEnumerable<Card> cards)
+        {
+            int bestVal = (int) CardTier.TierRank.Terrible;
+            foreach (Card c in cards)
+            {
+                int currentTier = GetTierFromCard(c);
+                if (currentTier > 0)
+                    bestVal = Math.Min(bestVal, currentTier);
+            }
+
+            return bestVal;
+        }
+
         public static string GetLocalTierListPath(CardTier.TierClass tierClass)
         {
             switch (tierClass)

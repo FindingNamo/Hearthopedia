@@ -79,7 +79,7 @@ namespace Hearthopedia
         private void ClassIcon_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             FrameworkElement icon = (FrameworkElement)sender;
-            NavigationService.Navigate(new Uri("/ArenaPage.xaml?classId=" + icon.Tag, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/TierListChallenge.xaml?classId=" + icon.Tag, UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar

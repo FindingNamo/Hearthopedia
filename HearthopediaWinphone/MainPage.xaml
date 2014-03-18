@@ -200,7 +200,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" FontSize="48" Text="Arena Draft" />
+                        <TextBlock Grid.Row="0" FontSize="48" Text="Tier List Challenge" />
                         <TextBlock Grid.Row="1" FontSize="36" VerticalAlignment="Center" TextAlignment="Center" Text="Choose a class" />
                     </Grid>
                     <Grid Grid.Row="1">
