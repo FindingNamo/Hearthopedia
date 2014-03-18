@@ -215,33 +215,33 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shared\Assets\TierList\antigravity_druid.json">
+    <Resource Include="..\Shared\Assets\TierList\antigravity_druid.json">
       <Link>Assets\TierList\antigravity_druid.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_hunter.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_hunter.json">
       <Link>Assets\TierList\antigravity_hunter.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_mage.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_mage.json">
       <Link>Assets\TierList\antigravity_mage.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_paladin.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_paladin.json">
       <Link>Assets\TierList\antigravity_paladin.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_priest.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_priest.json">
       <Link>Assets\TierList\antigravity_priest.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_rogue.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_rogue.json">
       <Link>Assets\TierList\antigravity_rogue.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_shaman.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_shaman.json">
       <Link>Assets\TierList\antigravity_shaman.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_warlock.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_warlock.json">
       <Link>Assets\TierList\antigravity_warlock.json</Link>
-    </None>
-    <None Include="..\Shared\Assets\TierList\antigravity_warrior.json">
+    </Resource>
+    <Resource Include="..\Shared\Assets\TierList\antigravity_warrior.json">
       <Link>Assets\TierList\antigravity_warrior.json</Link>
-    </None>
+    </Resource>
     <None Include="Hearthopedia_2014_01_15_19_36_07.sap" />
     <None Include="Hearthopedia_2014_01_15_20_38_10.sap" />
     <None Include="packages.config" />

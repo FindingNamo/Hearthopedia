@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.IO;
+using System.Windows;
 
 namespace Hearthopedia
 {
@@ -49,7 +50,8 @@ namespace Hearthopedia
             List<CardTier> tierList;
 
             // load from local
-            using (StreamReader reader = new StreamReader(GetLocalTierListPath(this.ActiveTierClass)))
+            Stream resourceStream = Application.GetResourceStream(GetTierListResourceUri(this.ActiveTierClass)).Stream;
+            using (StreamReader reader = new StreamReader(resourceStream))
             {
                 string tierJson = reader.ReadToEnd();
 
@@ -82,6 +84,9 @@ namespace Hearthopedia
             return bestVal;
         }
 
+
+
+
         public static string GetLocalTierListPath(CardTier.TierClass tierClass)
         {
             switch (tierClass)
@@ -106,6 +111,35 @@ namespace Hearthopedia
                     return "antigravity_warrior.json";
                 default:
                     return "bad times son...";
+            }
+        }
+
+        public static Uri GetTierListResourceUri(CardTier.TierClass tierClass)
+        {
+            string baseResourceUri = @"Hearthopedia;component/Assets/TierList/";
+
+            switch (tierClass)
+            {
+                case CardTier.TierClass.Druid:
+                    return new Uri(baseResourceUri + "antigravity_druid.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Hunter:
+                    return new Uri(baseResourceUri + "antigravity_hunter.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Mage:
+                    return new Uri(baseResourceUri + "antigravity_mage.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Paladin:
+                    return new Uri(baseResourceUri + "antigravity_paladin.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Priest:
+                    return new Uri(baseResourceUri + "antigravity_priest.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Rogue:
+                    return new Uri(baseResourceUri + "antigravity_rogue.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Shaman:
+                    return new Uri(baseResourceUri + "antigravity_shaman.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Warlock:
+                    return new Uri(baseResourceUri + "antigravity_warlock.json", UriKind.RelativeOrAbsolute);
+                case CardTier.TierClass.Warrior:
+                    return new Uri(baseResourceUri + "antigravity_warrior.json", UriKind.RelativeOrAbsolute);
+                default:
+                    return null;
             }
         }
 
