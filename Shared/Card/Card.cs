@@ -301,5 +301,13 @@ namespace Hearthopedia
                 return EnumUtilities.GetName<CardClass>((CardClass)classs);
             }
         }
+
+        public string Tier
+        {
+            get
+            {
+                return TierListManager.Instance.GetTierFromCard(this).ToString();
+            }
+        }
     }
 }

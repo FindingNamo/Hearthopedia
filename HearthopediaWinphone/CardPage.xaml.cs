@@ -31,6 +31,7 @@ namespace Hearthopedia
             string idString = "";
             int idVal;
 
+            // Bind to selected card passed in via url
             if (NavigationContext.QueryString.TryGetValue("id", out idString))
             {
                 if (!int.TryParse(idString, out idVal))
@@ -46,34 +47,11 @@ namespace Hearthopedia
 
             imageCard.Source = new BitmapImage(new Uri("\\Assets\\UnloadedCard.png", UriKind.Relative));
 
-            //DownloadImage(selectedCard.imageURL);
             ImageManager.Instance.SetImageFromCard(selectedCard, imageCard);
             DownloadFlavourText(selectedCard.flavourTextURL);
-        }
 
-        private void  DownloadImage(string url)
-        {
-            try
-            {
-                WebClient webClient = new WebClient();
-                webClient.OpenReadCompleted += DownloadImageCompleted;
-                webClient.OpenReadAsync(new Uri(url));
-            }
-            catch
-            {
-            }
-        }
-
-        private void DownloadImageCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            //TODO: Trigger a sweet flipping animation
-
-            if (!e.Cancelled && e.Error == null)
-            {
-                BitmapImage bmp = new BitmapImage();
-                bmp.SetSource(e.Result);
-                imageCard.Source = bmp;
-            }
+            // Bind the Tier List Class Dropdown
+            ListPickerTierClass.ItemsSource = Enum.GetValues(typeof(CardTier.TierClass));
         }
 
         private void DownloadFlavourText(string url)
