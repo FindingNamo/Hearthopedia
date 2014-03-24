@@ -72,9 +72,9 @@ namespace Hearthopedia
                 TextBlockResult.Text = "You chose poorly...";
             }
 
-            TextBlockPrevResult0.Text = Enum.GetName(typeof(CardTier.TierRank), System.Convert.ToInt16(ArenaInstance.CurrentRoundCards[0].Tier));
-            TextBlockPrevResult1.Text = Enum.GetName(typeof(CardTier.TierRank), System.Convert.ToInt16(ArenaInstance.CurrentRoundCards[1].Tier));
-            TextBlockPrevResult2.Text = Enum.GetName(typeof(CardTier.TierRank), System.Convert.ToInt16(ArenaInstance.CurrentRoundCards[2].Tier));
+            TextBlockPrevResult0.Text = Enum.GetName(typeof(CardTier.TierRank), ArenaInstance.CurrentRoundCards[0].Tier);
+            TextBlockPrevResult1.Text = Enum.GetName(typeof(CardTier.TierRank), ArenaInstance.CurrentRoundCards[1].Tier);
+            TextBlockPrevResult2.Text = Enum.GetName(typeof(CardTier.TierRank), ArenaInstance.CurrentRoundCards[2].Tier);
 
             ArenaInstance.ChooseCard(c);
             UpdateCardImages();

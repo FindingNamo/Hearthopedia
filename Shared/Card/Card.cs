@@ -302,11 +302,11 @@ namespace Hearthopedia
             }
         }
 
-        public string Tier
+        public int Tier
         {
             get
             {
-                return TierListManager.Instance.GetTierFromCard(this).ToString();
+                return TierListManager.Instance.GetTierFromCard(this);
             }
         }
 
