@@ -81,13 +81,16 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
 
-                    <Image Grid.Row="0" Source="/Assets/searchbar.png"  />
-                    <toolkit:PhoneTextBox Grid.Row="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
-                    <Image Grid.Row="0"  Source="/Assets/filter.png" Tap="Image_Tap_1" Width="40" Height="40" Margin="420,16,10,16" />
-                    <Grid Grid.Row="1" >
+                    <Image Grid.Row="0" Grid.ColumnSpan="2" Source="/Assets/searchbar.png"  />
+                    <toolkit:PhoneTextBox Grid.Row="0" Grid.Column="0" CaretBrush="Wheat" BorderBrush="Transparent" Background="Transparent" Foreground="Wheat" VerticalAlignment="Center" x:Name="textBoxSearch" TextWrapping="NoWrap" TextChanged="textBoxSearch_TextChanged" Margin="56,0,28,0" GotFocus="TextBoxSearch_GotFocus" KeyUp="textBoxSearch_KeyUp" Hint="Search" HintStyle="{StaticResource HintCustomStyle}" Style="{StaticResource CustomPhoneTextBoxStyle}"/>
+                    <Image Grid.Row="0"  Grid.Column="1" Source="/Assets/filter.png" Tap="Image_Tap_1" Width="40" Height="40" />
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>

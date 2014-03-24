@@ -46,13 +46,13 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Image x:Name="UnloadedCard" Source="/Assets/unloadedcard.png" Visibility="Collapsed" />
-        <TextBlock Grid.Row="0" FontSize="48" Text="Tier List Challenge" />
+        <TextBlock Grid.Row="0" FontSize="24" Text="Which card is highest tier?" HorizontalAlignment="Center" />
 
         <!-- Card Choosing area -->
         <Grid Grid.Row="1">
@@ -61,7 +61,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock TextAlignment="Center" Grid.ColumnSpan="3" Text="Which card is highest tier?" />
 
             <Image Source="/Assets/unloadedcard.png" Grid.Column="0" x:Name="CardImage0" Stretch="Uniform" Tap="ChoosableCard_Tapped" />
             <Image Source="/Assets/unloadedcard.png" Grid.Column="1" x:Name="CardImage1" Stretch="Uniform" Tap="ChoosableCard_Tapped" />
@@ -69,16 +68,32 @@
         </Grid>
 
         <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock TextAlignment="Center" Grid.ColumnSpan="3" Text="You chose poorly." />
+            
+            <TextBlock Grid.Row="0"
+                Name="TextBlockResult" TextAlignment="Center" Grid.ColumnSpan="3" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,-20"
+                Name="TextBlockPrevResult0" TextAlignment="Center" VerticalAlignment="Bottom" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,0,-20"
+                Name="TextBlockPrevResult1" TextAlignment="Center" VerticalAlignment="Bottom" />
+            <TextBlock Grid.Row="1" Grid.Column="2" Margin="0,0,0,-20"
+                Name="TextBlockPrevResult2" TextAlignment="Center" VerticalAlignment="Bottom" />
 
-            <Image Source="/Assets/unloadedcard.png" Grid.Column="0" x:Name="PrevCardImage0" Stretch="Uniform" />
-            <Image Source="/Assets/unloadedcard.png" Grid.Column="1" x:Name="PrevCardImage1" Stretch="Uniform" />
-            <Image Source="/Assets/unloadedcard.png" Grid.Column="2" x:Name="PrevCardImage2" Stretch="Uniform" />
+            <Image Grid.Row="3"
+                Source="/Assets/unloadedcard.png" Grid.Column="0" x:Name="PrevCardImage0" Stretch="Uniform" />
+            <Image Grid.Row="3"
+                Source="/Assets/unloadedcard.png" Grid.Column="1" x:Name="PrevCardImage1" Stretch="Uniform" />
+            <Image Grid.Row="3"
+                Source="/Assets/unloadedcard.png" Grid.Column="2" x:Name="PrevCardImage2" Stretch="Uniform" />
         </Grid>
 
         <Grid Grid.Row="3">
@@ -86,19 +101,24 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-        <!--            <RowDefinition Height="32" /> -->
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Image x:Name="ClassIcon" Source="{Binding ClassIconPath}" />
-                <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Row="1" TextAlignment="Center" Visibility="Collapsed"/> 
+                <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Row="1" TextAlignment="Center" Visibility="Collapsed"/>
             </Grid>
-            
-            <TextBlock x:Name="ScoreLabel" Grid.Column="1" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Text="30" />
-            <TextBlock Grid.Column="1" FontSize="48" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="score" />
+
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                x:Name="ScoreLabel"  FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" />
+            <TextBlock Grid.Row="1"  Grid.Column="1"
+                FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Text="score" />
 
         </Grid>
     </Grid>

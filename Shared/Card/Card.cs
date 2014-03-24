@@ -309,5 +309,13 @@ namespace Hearthopedia
                 return TierListManager.Instance.GetTierFromCard(this).ToString();
             }
         }
+
+        public string TierString
+        {
+            get
+            {
+                return Enum.GetName(typeof(CardTier.TierRank), TierListManager.Instance.GetTierFromCard(this));
+            }
+        }
     }
 }

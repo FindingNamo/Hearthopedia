@@ -396,15 +396,15 @@ namespace Hearthopedia
             if (firstRun)
             {
                 await WriteResourceToStorage(@"Hearthopedia;component/Assets/cards.txt", "cards.txt");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_druid.json", "antigravity_druid.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_hunter.json", "antigravity_hunter.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_mage.json", "antigravity_mage.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_paladin.json", "antigravity_paladin.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component//TierList/antigravity_priest.json", "antigravity_priest.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_rogue.json", "antigravity_rogue.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_shaman.json", "antigravity_shaman.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_warlock.json", "antigravity_warlock.json");
-                //await WriteResourceToStorage(@"Hearthopedia;component/TierList/antigravity_warrior.json", "antigravity_warrior.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_druid.json", "antigravity_druid.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_hunter.json", "antigravity_hunter.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_mage.json", "antigravity_mage.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_paladin.json", "antigravity_paladin.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_priest.json", "antigravity_priest.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_rogue.json", "antigravity_rogue.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_shaman.json", "antigravity_shaman.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_warlock.json", "antigravity_warlock.json");
+                await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_warrior.json", "antigravity_warrior.json");
             }
 
             await DataAccess.PopulateDataManagerCards();
@@ -412,6 +412,8 @@ namespace Hearthopedia
             await DataAccess.GetCardData();
 
             await DataAccess.GetTierListData(CardTier.TierClass.Druid);
+
+            await TierListManager.Instance.UpdateCardTiers();
         }
 
         public static async Task GetTierListData(CardTier.TierClass tierClass, CardTier.TierSource tierSource = CardTier.TierSource.Antigravity)

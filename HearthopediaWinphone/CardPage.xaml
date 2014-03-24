@@ -177,26 +177,25 @@
                 Name="PanoramaItemTierList">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <toolkit:ListPicker Grid.Row="0"
-                                        Name="ListPickerTierClass"
-                                        ExpansionMode="FullScreenOnly">
-                        <toolkit:ListPicker.FullModeItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Margin="0,20" Text="{Binding}" FontSize="32"/>
-                            </DataTemplate>
-                        </toolkit:ListPicker.FullModeItemTemplate>
-                    </toolkit:ListPicker>
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
-                            <RowDefinition Height="40" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Foreground="White" FontWeight="Medium" Text="Tier" />
-                        <TextBlock Margin="8,0,0,0" Grid.Row="1" Foreground="White" TextWrapping="Wrap" Text="{Binding Tier}" />                        
-                    </Grid>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Foreground="White" FontWeight="Medium" Text="Class:" />
+                        <toolkit:ListPicker Name="ListPickerTierClass" 
+                                            ExpansionMode="FullScreenOnly" SelectionChanged="ListPickerTierClass_SelectionChanged">
+                            <toolkit:ListPicker.FullModeItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="0,20" Text="{Binding}" FontSize="32"/>
+                                </DataTemplate>
+                            </toolkit:ListPicker.FullModeItemTemplate>
+                        </toolkit:ListPicker>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Foreground="White" FontWeight="Medium" Text="Tier:" />
+                        <TextBlock Name="TextBlockTierRank"  Margin="8,0,0,0" Foreground="White" Text="{Binding TierString}" />                        
+                    </StackPanel>
                 </Grid>
                 
 

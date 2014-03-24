@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.IO;
 using System.Windows;
+using Windows.Storage;
 
 namespace Hearthopedia
 {
@@ -16,7 +17,21 @@ namespace Hearthopedia
 
         public CardTier.TierSource ActiveTierSource { get; set; }
 
-        public CardTier.TierClass ActiveTierClass { get; set; }
+        private CardTier.TierClass _activeTierClass;
+
+        public CardTier.TierClass ActiveTierClass {
+            get
+            {
+                return _activeTierClass;
+            }
+            set
+            {
+                _activeTierClass = value;
+                this.UpdateCardTiers();
+            }
+        }
+
+        public List<CardTier> CardTiers { get; private set; }
 
         #endregion
 
@@ -44,21 +59,29 @@ namespace Hearthopedia
 
         #endregion
 
-        public int GetTierFromCard(Card card)
+        public async Task UpdateCardTiers()
         {
-           
-            List<CardTier> tierList;
+            // Read from local
+            using (StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(GetLocalTierListPath(this.ActiveTierClass))))
+            {
+                this.CardTiers = GetTiersFromJson(reader.ReadToEnd());
+            }
 
-            // load from local
+            // Read from Web and update local file
+
+            // Read from resources as a last resort
             Stream resourceStream = Application.GetResourceStream(GetTierListResourceUri(this.ActiveTierClass)).Stream;
             using (StreamReader reader = new StreamReader(resourceStream))
             {
                 string tierJson = reader.ReadToEnd();
 
-                tierList = GetTiersFromJson(tierJson);
+                this.CardTiers = GetTiersFromJson(tierJson);
             }
+        }
 
-            foreach (CardTier cardTier in tierList)
+        public int GetTierFromCard(Card card)
+        {
+            foreach (CardTier cardTier in this.CardTiers)
             {
                 if (cardTier.name.ToLower() == card.name.ToLower())
                     return cardTier.tier;
@@ -83,9 +106,6 @@ namespace Hearthopedia
 
             return bestVal;
         }
-
-
-
 
         public static string GetLocalTierListPath(CardTier.TierClass tierClass)
         {

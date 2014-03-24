@@ -1,7 +1,7 @@
 Must:
-[ ] - Filters for Windows
+[x] - Filters for Windows
 
-[ ] - Image Caching
+[x] - Image Caching
 
 [ ] - EnumUtils - TryCatches for unknowns enums? Maybe return Unknown for now?
 
@@ -15,3 +15,10 @@ Like
 [ ] Arena Mode to make sure people keep using the app
 
 [ ] Clean up GetDataFromHeathHead.  It's nasty in there.
+
+Arena Helper
+-Opponent secrets
+-Opponent "best" cards
+-Suggested playstyle
+-New list view with integrated tier list
+-Automatic filtering based on class

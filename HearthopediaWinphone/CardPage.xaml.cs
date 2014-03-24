@@ -17,6 +17,9 @@ namespace Hearthopedia
 {
     public partial class CardPage : PhoneApplicationPage
     {
+        // Need this hack because 2-way binding to the active tier list is not trivial
+        private bool listPickerDoneBinding = false;
+
         private Card selectedCard;
 
         public CardPage()
@@ -52,6 +55,9 @@ namespace Hearthopedia
 
             // Bind the Tier List Class Dropdown
             ListPickerTierClass.ItemsSource = Enum.GetValues(typeof(CardTier.TierClass));
+            ListPickerTierClass.SelectedIndex = (int)TierListManager.Instance.ActiveTierClass;
+            listPickerDoneBinding = true;
+            
         }
 
         private void DownloadFlavourText(string url)
@@ -84,6 +90,19 @@ namespace Hearthopedia
                 {
                     textBlockFlavourText.Text = "";
                 }
+            }
+        }
+
+        private void ListPickerTierClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Need that weird bool because of a listpicker bug that causes the event to fire multiple time upon creation
+            if (listPickerDoneBinding && (e.AddedItems.Count!= 0))
+            {
+                CardTier.TierClass selectedClass;
+                Enum.TryParse<CardTier.TierClass>(e.AddedItems[0].ToString(), out selectedClass);
+                if (selectedClass != TierListManager.Instance.ActiveTierClass)
+                    TierListManager.Instance.ActiveTierClass = selectedClass;
+                TextBlockTierRank.Text = selectedCard.TierString;
             }
         }
     }
