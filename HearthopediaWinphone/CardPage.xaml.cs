@@ -93,7 +93,7 @@ namespace Hearthopedia
             }
         }
 
-        private void ListPickerTierClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void ListPickerTierClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Need that weird bool because of a listpicker bug that causes the event to fire multiple time upon creation
             if (listPickerDoneBinding && (e.AddedItems.Count!= 0))
@@ -101,7 +101,11 @@ namespace Hearthopedia
                 CardTier.TierClass selectedClass;
                 Enum.TryParse<CardTier.TierClass>(e.AddedItems[0].ToString(), out selectedClass);
                 if (selectedClass != TierListManager.Instance.ActiveTierClass)
+                {
                     TierListManager.Instance.ActiveTierClass = selectedClass;
+                    await TierListManager.Instance.UpdateCardTiers();
+                }
+
                 TextBlockTierRank.Text = selectedCard.TierString;
             }
         }
