@@ -51,7 +51,6 @@ namespace Hearthopedia
         private void SetupDataContexts()
         {
             ClassIcon.DataContext = ArenaInstance.ClassIcon;
-            RoundPresenter.DataContext = ArenaInstance;
 
             UpdateCardImages();
         }

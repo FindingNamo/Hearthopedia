@@ -68,39 +68,41 @@ namespace Hearthopedia
             }
 
             // try to download to have an updated local copy
+            Uri uri = new Uri(card.imageURL);
+#if NETFX_CORE
+            StorageFile destinationFile;
             try
             {
-                Uri uri = new Uri(card.imageURL);
-#if NETFX_CORE
-                StorageFile destinationFile;
-                try
-                {
-                    destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("temp" + ".png", CreationCollisionOption.GenerateUniqueName);
-                }
-                catch (FileNotFoundException ex)
-                {
-                    return;
-                }
+                destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("temp" + ".png", CreationCollisionOption.GenerateUniqueName);
+            }
+            catch (FileNotFoundException ex)
+            {
+                return;
+            }
 
 
-                BackgroundDownloader downloader = new BackgroundDownloader();
-                DownloadOperation download = downloader.CreateDownload(uri, destinationFile);
-                await download.StartAsync();
-                await destinationFile.CopyAsync(ApplicationData.Current.LocalFolder, card.localFilename, NameCollisionOption.ReplaceExisting);
+            BackgroundDownloader downloader = new BackgroundDownloader();
+            DownloadOperation download = downloader.CreateDownload(uri, destinationFile);
+            await download.StartAsync();
+            await destinationFile.CopyAsync(ApplicationData.Current.LocalFolder, card.localFilename, NameCollisionOption.ReplaceExisting);
 
 #else
-                WebClient webClient = new WebClient();
-                webClient.OpenReadCompleted += (sender, e) =>
+            WebClient webClient = new WebClient();
+            webClient.OpenReadCompleted += (sender, e) =>
+                {
+                    // if we don't have web we need to catch the exception
+                    try
                     {
+
                         Utilities.CopyFromStreamToFile(e.Result, card.localFilename);
-                    };
-                webClient.OpenReadAsync(uri);
+                    }
+                    catch
+                    {
+                    }
+                };
+            webClient.OpenReadAsync(uri);
 #endif
                 
-            }
-            catch (Exception e)
-            {
-            }
         }
 
         #endregion

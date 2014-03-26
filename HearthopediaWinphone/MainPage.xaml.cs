@@ -31,10 +31,6 @@ namespace Hearthopedia
             // Check if it's the first boot ever an do the right thing
             DataAccess.OnBootOperations();
 
-            listPickerTierSource.Items.Add("1");
-            listPickerTierSource.Items.Add("2");
-            listPickerTierSource.Items.Add("3");
-
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }

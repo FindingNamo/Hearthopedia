@@ -170,23 +170,6 @@
                     
                 </Grid>
             </phone:PanoramaItem>
-            
-            <phone:PanoramaItem>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <toolkit:ListPicker 
-                        ExpansionMode="FullScreenOnly"
-                        Name="listPickerTierSource">
-                    </toolkit:ListPicker>
-
-                </Grid>
-                
-            </phone:PanoramaItem>
 
             <phone:PanoramaItem>
                 <Grid>

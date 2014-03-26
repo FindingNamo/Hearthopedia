@@ -451,10 +451,7 @@ namespace Hearthopedia
                             }
                         }
 
-                        // No need to retry anymore since we've succeeded
-                        retriesLeft = 0;
-
-
+                        
 
 #if NETFX_CORE
 #else
@@ -465,6 +462,8 @@ namespace Hearthopedia
                             // Release the HttpWebResponse
                             response.Close();
 #endif
+
+                            break;
                     }
                     catch
                     {
@@ -540,16 +539,21 @@ namespace Hearthopedia
                 // reader.Dispose();
             }
 #endif
-
-            using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(resultingFileName, CreationCollisionOption.ReplaceExisting)))
+            try
             {
-                writer.Write(defaultCardsString);
-                writer.Flush();
+                using (StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(resultingFileName, CreationCollisionOption.ReplaceExisting)))
+                {
+                    writer.Write(defaultCardsString);
+                    writer.Flush();
 #if NETFX_CORE
 #else
                     writer.Close();
 #endif
-                writer.Dispose();
+                    writer.Dispose();
+                }
+            }
+            catch
+            {
             }
         }
     }

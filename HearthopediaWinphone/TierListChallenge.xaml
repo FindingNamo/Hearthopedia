@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -46,9 +47,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Image x:Name="UnloadedCard" Source="/Assets/unloadedcard.png" Visibility="Collapsed" />
@@ -96,7 +98,7 @@
                 Source="/Assets/unloadedcard.png" Grid.Column="2" x:Name="PrevCardImage2" Stretch="Uniform" />
         </Grid>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="3" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -105,15 +107,10 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <Grid Grid.Column="0" Grid.RowSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
 
-                <Image x:Name="ClassIcon" Source="{Binding ClassIconPath}" />
-                <TextBlock x:Name="RoundPresenter" Text="{Binding RoundText}" Grid.Row="1" TextAlignment="Center" Visibility="Collapsed"/>
-            </Grid>
+
+            <Image Grid.RowSpan="2" Grid.Column="0"
+                x:Name="ClassIcon" Source="{Binding ClassIconPath}" Stretch="Uniform" />
 
             <TextBlock Grid.Row="0" Grid.Column="1"
                 x:Name="ScoreLabel"  FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" />
@@ -121,6 +118,7 @@
                 FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Text="score" />
 
         </Grid>
+        <UI:AdControl Grid.Row="4"  ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
