@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{daa7e37a-765b-4951-8447-35213e3f1ff0}" Title="Hearthopedia" RuntimeType="Silverlight" Version="1.3.26.14" Genre="apps.normal" Author="Still at the Bottom" Description="Sample description" Publisher="Hearthopedia" PublisherID="{da5469da-6dec-4631-b10c-ad1570d719b5}">
+  <App xmlns="" ProductID="{daa7e37a-765b-4951-8447-35213e3f1ff0}" Title="Hearthopedia" RuntimeType="Silverlight" Version="1.3.27.14" Genre="apps.normal" Author="Still at the Bottom" Description="Sample description" Publisher="Hearthopedia" PublisherID="{da5469da-6dec-4631-b10c-ad1570d719b5}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
