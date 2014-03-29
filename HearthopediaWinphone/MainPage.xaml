@@ -233,7 +233,7 @@
                         <Image Grid.Row="1" Grid.Column="2" Margin="10" Tag="4"  Tap="ClassIcon_Tap" Source="/Assets/Arena/rogue.png" />
                         
                         <Image Grid.Row="2" Grid.Column="0" Margin="10" Tag="7"  Tap="ClassIcon_Tap" Source="/Assets/Arena/shaman.png" />
-                        <Image Grid.Row="2" Grid.Column="1" Margin="10" Tag="8"  Tap="ClassIcon_Tap" Source="/Assets/Arena/warlock.png" />
+                        <Image Grid.Row="2" Grid.Column="1" Margin="10" Tag="9"  Tap="ClassIcon_Tap" Source="/Assets/Arena/warlock.png" />
                         <Image Grid.Row="2" Grid.Column="2" Margin="10" Tag="1"  Tap="ClassIcon_Tap" Source="/Assets/Arena/warrior.png" />
                     </Grid>
                     
@@ -243,7 +243,7 @@
             </phone:PanoramaItem>
 
         </phone:Panorama>
-        <UI:AdControl Grid.Row="1"  ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480" ErrorOccurred="AdControl_ErrorOccurred"/>
+        <UI:AdControl Grid.Row="1"  ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
 
         <!-- Feedback overlay -->
         <rma:FeedbackOverlay x:Name="FeedbackOverlay"

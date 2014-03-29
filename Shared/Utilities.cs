@@ -43,10 +43,16 @@ namespace Hearthopedia
         public async static void CopyFromStreamToFile(Stream stream, string filePath)
         {
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await localFolder.CreateFileAsync(filePath, CreationCollisionOption.ReplaceExisting);
-            using (Stream outputStream = await storageFile.OpenStreamForWriteAsync())
+            try
             {
-                await stream.CopyToAsync(outputStream);
+                StorageFile storageFile = await localFolder.CreateFileAsync(filePath, CreationCollisionOption.ReplaceExisting);
+                using (Stream outputStream = await storageFile.OpenStreamForWriteAsync())
+                {
+                    await stream.CopyToAsync(outputStream);
+                }
+            }
+            catch
+            {
             }
         }
     }
