@@ -8,7 +8,6 @@ using System.IO;
 using Windows.Foundation;
 using Windows.Storage;
 using System.Threading;
-using System.Net;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.Reflection;
