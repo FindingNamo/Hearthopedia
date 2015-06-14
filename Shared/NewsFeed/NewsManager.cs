@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace Hearthopedia.NewsFeed
 {
@@ -16,6 +17,7 @@ namespace Hearthopedia.NewsFeed
     {
         public string Title { get; set; }
         public string Date { get; set; }
+        public string Description { get; set; }
         public string PostUrl { get; set; }
     }
 
@@ -55,10 +57,16 @@ namespace Hearthopedia.NewsFeed
                     .Descendants("item")     // for each 'item' element.
                     .Select(item =>          // create one of these.
                     {
+                        string desc = item.Element("description").Value;
+                        desc = Regex.Replace(desc, "<br ?/>", "\n");
+                        desc = Regex.Replace(desc, @"<(.|\n)*?>", string.Empty);
+                        desc = HttpUtility.HtmlDecode(desc);
+
                         return new NewsItem
                         {
                             Title = item.Element("title").Value,
                             Date = item.Element("pubDate").Value,
+                            Description = desc,
                             PostUrl = item.Element("link").Value
                         };
                     });

@@ -79,33 +79,6 @@
                 <ImageBrush ImageSource="/Assets/background.png" Stretch="UniformToFill" />
             </phone:Panorama.Background>
 
-            <phone:PanoramaItem>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" FontSize="48" Text="News" />
-                    <ListBox x:Name="NewsFeedListBox" Grid.Row="1" HorizontalContentAlignment="Stretch">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="#80000000" BorderThickness="2">
-                                    <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                                        <TextBlock Text="{Binding Title}" Style="{StaticResource PhoneTextTitle2Style}" />
-                                        <TextBlock Text="{Binding Date}" Style="{StaticResource PhoneTextAccentStyle}" />
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Grid>
-            </phone:PanoramaItem>
             <!--Panorama item one-->
             <phone:PanoramaItem>
                 <Grid x:Name="ContentPanel">
@@ -267,6 +240,36 @@
                     
                 </Grid>
 
+            </phone:PanoramaItem>
+
+            <!-- News -->
+            <phone:PanoramaItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" FontSize="48" Text="News" />
+                    <ListBox x:Name="NewsFeedListBox" Grid.Row="1" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#80000000" BorderThickness="2" Tap="OnNewsItemClick">
+                                    <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                                        <TextBlock Text="{Binding Title}" Style="{StaticResource PhoneTextTitle3Style}" TextTrimming="WordEllipsis" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Description}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding Date}" Style="{StaticResource PhoneTextAccentStyle}" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
             </phone:PanoramaItem>
 
         </phone:Panorama>

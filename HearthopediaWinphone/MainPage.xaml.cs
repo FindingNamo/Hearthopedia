@@ -79,6 +79,13 @@ namespace Hearthopedia
             NavigationService.Navigate(new Uri("/TierListChallenge.xaml?classId=" + icon.Tag, UriKind.Relative));
         }
 
+        private void OnNewsItemClick(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            FrameworkElement clickedObject = (FrameworkElement)sender;
+            NewsItem selectedItem = clickedObject.DataContext as NewsItem;
+            NavigationService.Navigate(new Uri("/NewsPage.xaml?newsUrl=" + HttpUtility.UrlEncode(selectedItem.PostUrl), UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
