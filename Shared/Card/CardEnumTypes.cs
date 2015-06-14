@@ -43,15 +43,17 @@ public enum CardSet
     Reward = 4,
     Missions = 5,
     Promotions = 11,
-
-	[FriendlyNameAttribute("Naxxramas")]
 	Naxxramas = 12,
 
 	[FriendlyNameAttribute("Goblins vs Gnomes")]
 	GoblinsVsGnomes = 13,
 
 	[FriendlyNameAttribute("Blackrock Mountain")]
-	BlackrockMountain = 14
+	BlackrockMountain = 14,
+
+    Credits = 16,
+    HeroSkins = 17,
+    Bosses = 18,
 }
 
 public enum CardRace
@@ -60,6 +62,7 @@ public enum CardRace
     Beast = 20,
     Demon = 15,
     Dragon = 24,
+    Mech = 17,
     Murloc = 14,
     Pirate = 23,
     Totem = 21,
