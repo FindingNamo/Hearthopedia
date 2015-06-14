@@ -31,7 +31,7 @@ namespace Hearthopedia
 {
     class DataAccess
     {
-        public static void ShowPopupMessage(string message)
+        public async static void ShowPopupMessage(string message)
         {
             // Tell the app that there has been updates and let user choose when to update
 #if NETFX_CORE

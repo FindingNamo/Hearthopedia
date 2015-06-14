@@ -43,6 +43,15 @@ public enum CardSet
     Reward = 4,
     Missions = 5,
     Promotions = 11,
+
+	[FriendlyNameAttribute("Naxxramas")]
+	Naxxramas = 12,
+
+	[FriendlyNameAttribute("Goblins vs Gnomes")]
+	GoblinsVsGnomes = 13,
+
+	[FriendlyNameAttribute("Blackrock Mountain")]
+	BlackrockMountain = 14
 }
 
 public enum CardRace
