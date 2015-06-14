@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Input;
+using Hearthopedia.NewsFeed;
 
 namespace Hearthopedia
 {
@@ -27,10 +28,10 @@ namespace Hearthopedia
             Binding cardsBinding = new Binding();
             cardsBinding.Source = DataManager.Instance.SearchedCards;
             listCards.SetBinding(ListBox.ItemsSourceProperty, cardsBinding);
+            NewsFeedListBox.ItemsSource = NewsManager.Instance.NewsItems;
 
             // Check if it's the first boot ever an do the right thing
             DataAccess.OnBootOperations();
-
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }

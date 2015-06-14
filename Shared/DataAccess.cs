@@ -12,6 +12,8 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using Hearthopedia.Filters;
+using Hearthopedia.NewsFeed;
+using System.Net.Http;
 
 #if NETFX_CORE
 using Windows.Storage.Streams;
@@ -29,94 +31,65 @@ namespace Hearthopedia
 {
     class DataAccess
     {
+        public static void ShowPopupMessage(string message)
+        {
+            // Tell the app that there has been updates and let user choose when to update
+#if NETFX_CORE
+            CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+
+            await dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                MessageDialog dialog = new MessageDialog(message);
+
+                //Show message
+                dialog.ShowAsync();
+            });
+#else
+            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                MessageBoxResult result = MessageBox.Show(message);
+            });
+#endif
+        }
+
+        public static async Task<string> GetWebString(string url)
+        {
+            HttpClient client = new HttpClient();
+            string webResponse = string.Empty;
+
+            try
+            {
+                webResponse = await client.GetStringAsync(url);
+            }
+            catch
+            {
+            }
+
+            return webResponse;
+        }
+
         public static async Task GetCardData()
         {
             string urlGetCardHH = "http://www.hearthhead.com/data=hearthstone-cards";
-            int retriesLeft = 5;
-            string responseString = "";
+            string webResponse = await GetWebString(urlGetCardHH);
             string cachedResponseString = "";
+            
+            // Compare to existing string
+            using(var reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt")))
+            {
+                cachedResponseString = await reader.ReadToEndAsync();
+            }
 
-                // Wrap the entire thing in a try-catch due to that weird bug
-                HttpWebRequest request = WebRequest.CreateHttp(urlGetCardHH);
-                request.BeginGetResponse(async (asyncResult) =>
+            if (!String.IsNullOrWhiteSpace(webResponse) && (cachedResponseString != webResponse))
+            {
+                using (var writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting)))
                 {
-                    HttpWebRequest request2 = (HttpWebRequest)asyncResult.AsyncState;
+                    writer.Write(webResponse);
+                    writer.Flush();
+                }
 
-                    // End the operation
-                    while (retriesLeft > 0)
-                    {
-                        try
-                        {
-                            HttpWebResponse response = (HttpWebResponse)request2.EndGetResponse(asyncResult);
-                            Stream streamResponse = response.GetResponseStream();
-                            StreamReader streamRead = new StreamReader(streamResponse);
-                            responseString = streamRead.ReadToEnd();
-
-                            // No need to retry anymore since we've succeeded
-                            retriesLeft = 0;
-
-
-
-#if NETFX_CORE
-#else
-                            // Close the stream object
-                            streamResponse.Close();
-                            streamRead.Close();
-
-                            // Release the HttpWebResponse
-                            response.Close();
-#endif
-                        }
-                        catch
-                        {
-                            retriesLeft--;
-                        }
-                    }
-
-
-
-                    // Compare to existing string
-                    StreamReader reader = new StreamReader(await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("cards.txt"));
-                    cachedResponseString = await reader.ReadToEndAsync();
-#if NETFX_CORE
-#else
-                    reader.Close();
-#endif
-                    reader.Dispose();
-                    
-                    if ((cachedResponseString != responseString) && !(String.IsNullOrEmpty(responseString)) && retriesLeft != 0)
-                    {
-                        // update local text file
-                        StreamWriter writer = new StreamWriter(await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("cards.txt", CreationCollisionOption.ReplaceExisting));
-                        writer.Write(responseString);
-                        writer.Flush();
-#if NETFX_CORE
-#else
-                        writer.Close();
-#endif
-                        writer.Dispose();
-
-
-
-                        // Tell the app that there has been updates and let user choose when to update
-#if NETFX_CORE
-                        CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
-
-                        await dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                        {
-                            MessageDialog dialog = new MessageDialog("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
-
-                            //Show message
-                            dialog.ShowAsync();
-                        });
-#else
-                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
-                        {
-                            MessageBoxResult result = MessageBox.Show("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
-                        });
-#endif
-                    }
-                }, request);
+                ShowPopupMessage("It looks like cards have been updated!  Next time you start Hearthopedia, the cards will be available ^_^!");
+            }
         }
 
         public static async Task DeleteFromLocalStorage(string fileName)
@@ -406,6 +379,7 @@ namespace Hearthopedia
                 await WriteResourceToStorage(@"Hearthopedia;component/Assets/TierList/antigravity_warrior.json", "antigravity_warrior.json");
             }
 
+            NewsManager.Instance.GetNews();
             await DataAccess.PopulateDataManagerCards();
 
             await DataAccess.GetCardData();
