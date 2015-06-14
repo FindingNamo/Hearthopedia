@@ -17,6 +17,7 @@ namespace Hearthopedia
         public static Card GetCardFromJson(string json)
         {
             Card card = JsonConvert.DeserializeObject<Card>(json);
+            card.DebugEnumCheck();
             return card;
         }
 

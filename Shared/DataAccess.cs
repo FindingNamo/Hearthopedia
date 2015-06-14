@@ -31,7 +31,7 @@ namespace Hearthopedia
 {
     class DataAccess
     {
-        public async static void ShowPopupMessage(string message)
+        public static async void ShowPopupMessage(string message, params object[] args)
         {
             // Tell the app that there has been updates and let user choose when to update
 #if NETFX_CORE
@@ -39,7 +39,7 @@ namespace Hearthopedia
 
             await dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                MessageDialog dialog = new MessageDialog(message);
+                MessageDialog dialog = new MessageDialog(string.Format(message, args));
 
                 //Show message
                 dialog.ShowAsync();
@@ -47,7 +47,7 @@ namespace Hearthopedia
 #else
             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                MessageBoxResult result = MessageBox.Show(message);
+                MessageBoxResult result = MessageBox.Show(string.Format(message, args));
             });
 #endif
         }

@@ -14,6 +14,7 @@ using System.IO;
 #else
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 #endif
 
 namespace Hearthopedia
@@ -317,5 +318,30 @@ namespace Hearthopedia
                 return Enum.GetName(typeof(CardTier.TierRank), TierListManager.Instance.GetTierFromCard(this));
             }
         }
+
+        /// <summary>
+        /// Test to see that all the fields in this card map to a known enum.
+        /// </summary>
+        /// <returns></returns>
+        [Conditional("DEBUG")]
+        public void DebugEnumCheck()
+        {
+            if (!Enum.IsDefined(typeof(CardSet), set))
+                DataAccess.ShowPopupMessage("CardSet {0} is undefined.", set);
+
+            if (!Enum.IsDefined(typeof(CardTypes), type))
+                DataAccess.ShowPopupMessage("CardTypes {0} is undefined.", type);
+
+            if (!Enum.IsDefined(typeof(CardClass), classs))
+                DataAccess.ShowPopupMessage("CardClass {0} is undefined.", classs);
+
+            if (!Enum.IsDefined(typeof(CardRace), race))
+                DataAccess.ShowPopupMessage("CardRace {0} is undefined.", race);
+
+            if (!Enum.IsDefined(typeof(CardQuality), quality))
+                DataAccess.ShowPopupMessage("CardQuality {0} is undefined.", quality);
+        }
+
     }
 }
+
