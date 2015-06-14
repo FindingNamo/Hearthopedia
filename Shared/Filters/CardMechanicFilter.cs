@@ -29,6 +29,7 @@ namespace Hearthopedia.Filters
         private List<MechanicOption> AssembleMechanicFilterOptions()
         {
             List<MechanicOption> returnList = new List<MechanicOption>();
+            returnList.Add(new MechanicOption(Mechanic.None.name, Mechanic.None.Id, true/*defaultValue*/));
             foreach(Mechanic m in DataManager.Instance.Mechanics)
             {
                 returnList.Add(new MechanicOption(m.name, m.Id, true/*defaultValue*/));

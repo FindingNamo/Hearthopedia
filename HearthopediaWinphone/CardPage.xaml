@@ -141,7 +141,7 @@
                     </Grid>
                     
                     <Grid Grid.Row="1">
-                        <TextBlock Name="textBlockFlavourText" Style="{Binding BasicInfoValue}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="" />
+                        <TextBlock Name="textBlockFlavourText" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="" />
                     </Grid>
                 </Grid>
             </phone:PanoramaItem>
