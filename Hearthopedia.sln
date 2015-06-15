@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearthopediaWindows", "HearthopediaWindows\HearthopediaWindows.csproj", "{8E54E654-4EDF-474A-B993-7CE65610F238}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearthopediaWinPhone", "HearthopediaWinphone\HearthopediaWinPhone.csproj", "{DAA7E37A-765B-4951-8447-35213E3F1FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearthopediaImageDownloader", "HearthopediaImageDownloader\HearthopediaImageDownloader.csproj", "{5A1345C0-A076-46EC-8528-8E49D5CC123E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,16 @@ Global
 		{DAA7E37A-765B-4951-8447-35213E3F1FF0}.Release|x86.ActiveCfg = Release|x86
 		{DAA7E37A-765B-4951-8447-35213E3F1FF0}.Release|x86.Build.0 = Release|x86
 		{DAA7E37A-765B-4951-8447-35213E3F1FF0}.Release|x86.Deploy.0 = Release|x86
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Release|x64.ActiveCfg = Release|Any CPU
+		{5A1345C0-A076-46EC-8528-8E49D5CC123E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
