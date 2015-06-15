@@ -305,6 +305,810 @@
     <Resource Include="..\Shared\Assets\cards.txt">
       <Link>Assets\cards.txt</Link>
     </Resource>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_1.png">
+      <Link>Assets\CardImages\BRMA01_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_1H.png">
+      <Link>Assets\CardImages\BRMA01_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_2.png">
+      <Link>Assets\CardImages\BRMA01_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_2H.png">
+      <Link>Assets\CardImages\BRMA01_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_3.png">
+      <Link>Assets\CardImages\BRMA01_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_4.png">
+      <Link>Assets\CardImages\BRMA01_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA01_4t.png">
+      <Link>Assets\CardImages\BRMA01_4t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA02_1.png">
+      <Link>Assets\CardImages\BRMA02_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA02_1H.png">
+      <Link>Assets\CardImages\BRMA02_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA02_2.png">
+      <Link>Assets\CardImages\BRMA02_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA02_2H.png">
+      <Link>Assets\CardImages\BRMA02_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA02_2t.png">
+      <Link>Assets\CardImages\BRMA02_2t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA03_1.png">
+      <Link>Assets\CardImages\BRMA03_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA03_1H.png">
+      <Link>Assets\CardImages\BRMA03_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA03_2.png">
+      <Link>Assets\CardImages\BRMA03_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA03_3.png">
+      <Link>Assets\CardImages\BRMA03_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA03_3H.png">
+      <Link>Assets\CardImages\BRMA03_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_1.png">
+      <Link>Assets\CardImages\BRMA04_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_1H.png">
+      <Link>Assets\CardImages\BRMA04_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_2.png">
+      <Link>Assets\CardImages\BRMA04_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_3.png">
+      <Link>Assets\CardImages\BRMA04_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_3H.png">
+      <Link>Assets\CardImages\BRMA04_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_4.png">
+      <Link>Assets\CardImages\BRMA04_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA04_4H.png">
+      <Link>Assets\CardImages\BRMA04_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_1.png">
+      <Link>Assets\CardImages\BRMA05_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_1H.png">
+      <Link>Assets\CardImages\BRMA05_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_2.png">
+      <Link>Assets\CardImages\BRMA05_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_2H.png">
+      <Link>Assets\CardImages\BRMA05_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_3.png">
+      <Link>Assets\CardImages\BRMA05_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA05_3H.png">
+      <Link>Assets\CardImages\BRMA05_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_1.png">
+      <Link>Assets\CardImages\BRMA06_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_1H.png">
+      <Link>Assets\CardImages\BRMA06_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_2.png">
+      <Link>Assets\CardImages\BRMA06_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_2H.png">
+      <Link>Assets\CardImages\BRMA06_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_3.png">
+      <Link>Assets\CardImages\BRMA06_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_3H.png">
+      <Link>Assets\CardImages\BRMA06_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_4.png">
+      <Link>Assets\CardImages\BRMA06_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA06_4H.png">
+      <Link>Assets\CardImages\BRMA06_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA07_1.png">
+      <Link>Assets\CardImages\BRMA07_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA07_1H.png">
+      <Link>Assets\CardImages\BRMA07_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA07_2.png">
+      <Link>Assets\CardImages\BRMA07_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA07_2H.png">
+      <Link>Assets\CardImages\BRMA07_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA07_3.png">
+      <Link>Assets\CardImages\BRMA07_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA08_1.png">
+      <Link>Assets\CardImages\BRMA08_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA08_1H.png">
+      <Link>Assets\CardImages\BRMA08_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA08_2.png">
+      <Link>Assets\CardImages\BRMA08_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA08_2H.png">
+      <Link>Assets\CardImages\BRMA08_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA08_3.png">
+      <Link>Assets\CardImages\BRMA08_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_1.png">
+      <Link>Assets\CardImages\BRMA09_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_1H.png">
+      <Link>Assets\CardImages\BRMA09_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_2.png">
+      <Link>Assets\CardImages\BRMA09_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_2H.png">
+      <Link>Assets\CardImages\BRMA09_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_2Ht.png">
+      <Link>Assets\CardImages\BRMA09_2Ht.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_2t.png">
+      <Link>Assets\CardImages\BRMA09_2t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_3.png">
+      <Link>Assets\CardImages\BRMA09_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_3H.png">
+      <Link>Assets\CardImages\BRMA09_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_3Ht.png">
+      <Link>Assets\CardImages\BRMA09_3Ht.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_3t.png">
+      <Link>Assets\CardImages\BRMA09_3t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_4.png">
+      <Link>Assets\CardImages\BRMA09_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_4H.png">
+      <Link>Assets\CardImages\BRMA09_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_4Ht.png">
+      <Link>Assets\CardImages\BRMA09_4Ht.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_4t.png">
+      <Link>Assets\CardImages\BRMA09_4t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_5.png">
+      <Link>Assets\CardImages\BRMA09_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_5H.png">
+      <Link>Assets\CardImages\BRMA09_5H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_5Ht.png">
+      <Link>Assets\CardImages\BRMA09_5Ht.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_5t.png">
+      <Link>Assets\CardImages\BRMA09_5t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA09_6.png">
+      <Link>Assets\CardImages\BRMA09_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_1.png">
+      <Link>Assets\CardImages\BRMA10_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_1H.png">
+      <Link>Assets\CardImages\BRMA10_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_3.png">
+      <Link>Assets\CardImages\BRMA10_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_3H.png">
+      <Link>Assets\CardImages\BRMA10_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_4.png">
+      <Link>Assets\CardImages\BRMA10_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_4H.png">
+      <Link>Assets\CardImages\BRMA10_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_5.png">
+      <Link>Assets\CardImages\BRMA10_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_5H.png">
+      <Link>Assets\CardImages\BRMA10_5H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA10_6.png">
+      <Link>Assets\CardImages\BRMA10_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA11_1.png">
+      <Link>Assets\CardImages\BRMA11_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA11_1H.png">
+      <Link>Assets\CardImages\BRMA11_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA11_2.png">
+      <Link>Assets\CardImages\BRMA11_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA11_2H.png">
+      <Link>Assets\CardImages\BRMA11_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA11_3.png">
+      <Link>Assets\CardImages\BRMA11_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_1.png">
+      <Link>Assets\CardImages\BRMA12_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_10.png">
+      <Link>Assets\CardImages\BRMA12_10.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_1H.png">
+      <Link>Assets\CardImages\BRMA12_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_2.png">
+      <Link>Assets\CardImages\BRMA12_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_2H.png">
+      <Link>Assets\CardImages\BRMA12_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_3.png">
+      <Link>Assets\CardImages\BRMA12_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_3H.png">
+      <Link>Assets\CardImages\BRMA12_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_4.png">
+      <Link>Assets\CardImages\BRMA12_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_4H.png">
+      <Link>Assets\CardImages\BRMA12_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_5.png">
+      <Link>Assets\CardImages\BRMA12_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_5H.png">
+      <Link>Assets\CardImages\BRMA12_5H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_6.png">
+      <Link>Assets\CardImages\BRMA12_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_6H.png">
+      <Link>Assets\CardImages\BRMA12_6H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_7.png">
+      <Link>Assets\CardImages\BRMA12_7.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_7H.png">
+      <Link>Assets\CardImages\BRMA12_7H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_8.png">
+      <Link>Assets\CardImages\BRMA12_8.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_8t.png">
+      <Link>Assets\CardImages\BRMA12_8t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA12_9.png">
+      <Link>Assets\CardImages\BRMA12_9.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_1.png">
+      <Link>Assets\CardImages\BRMA13_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_1H.png">
+      <Link>Assets\CardImages\BRMA13_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_2.png">
+      <Link>Assets\CardImages\BRMA13_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_2H.png">
+      <Link>Assets\CardImages\BRMA13_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_3.png">
+      <Link>Assets\CardImages\BRMA13_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_3H.png">
+      <Link>Assets\CardImages\BRMA13_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_4.png">
+      <Link>Assets\CardImages\BRMA13_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_4H.png">
+      <Link>Assets\CardImages\BRMA13_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_5.png">
+      <Link>Assets\CardImages\BRMA13_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_6.png">
+      <Link>Assets\CardImages\BRMA13_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_7.png">
+      <Link>Assets\CardImages\BRMA13_7.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA13_8.png">
+      <Link>Assets\CardImages\BRMA13_8.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_1.png">
+      <Link>Assets\CardImages\BRMA14_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_10.png">
+      <Link>Assets\CardImages\BRMA14_10.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_10H.png">
+      <Link>Assets\CardImages\BRMA14_10H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_11.png">
+      <Link>Assets\CardImages\BRMA14_11.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_12.png">
+      <Link>Assets\CardImages\BRMA14_12.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_1H.png">
+      <Link>Assets\CardImages\BRMA14_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_2.png">
+      <Link>Assets\CardImages\BRMA14_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_2H.png">
+      <Link>Assets\CardImages\BRMA14_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_3.png">
+      <Link>Assets\CardImages\BRMA14_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_4.png">
+      <Link>Assets\CardImages\BRMA14_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_4H.png">
+      <Link>Assets\CardImages\BRMA14_4H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_5.png">
+      <Link>Assets\CardImages\BRMA14_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_5H.png">
+      <Link>Assets\CardImages\BRMA14_5H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_6.png">
+      <Link>Assets\CardImages\BRMA14_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_6H.png">
+      <Link>Assets\CardImages\BRMA14_6H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_7.png">
+      <Link>Assets\CardImages\BRMA14_7.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_7H.png">
+      <Link>Assets\CardImages\BRMA14_7H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_8.png">
+      <Link>Assets\CardImages\BRMA14_8.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_8H.png">
+      <Link>Assets\CardImages\BRMA14_8H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_9.png">
+      <Link>Assets\CardImages\BRMA14_9.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA14_9H.png">
+      <Link>Assets\CardImages\BRMA14_9H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_1.png">
+      <Link>Assets\CardImages\BRMA15_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_1H.png">
+      <Link>Assets\CardImages\BRMA15_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_2.png">
+      <Link>Assets\CardImages\BRMA15_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_2H.png">
+      <Link>Assets\CardImages\BRMA15_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_3.png">
+      <Link>Assets\CardImages\BRMA15_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA15_4.png">
+      <Link>Assets\CardImages\BRMA15_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_1.png">
+      <Link>Assets\CardImages\BRMA16_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_1H.png">
+      <Link>Assets\CardImages\BRMA16_1H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_2.png">
+      <Link>Assets\CardImages\BRMA16_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_2H.png">
+      <Link>Assets\CardImages\BRMA16_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_3.png">
+      <Link>Assets\CardImages\BRMA16_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_4.png">
+      <Link>Assets\CardImages\BRMA16_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA16_5.png">
+      <Link>Assets\CardImages\BRMA16_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_2.png">
+      <Link>Assets\CardImages\BRMA17_2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_2H.png">
+      <Link>Assets\CardImages\BRMA17_2H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_3.png">
+      <Link>Assets\CardImages\BRMA17_3.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_3H.png">
+      <Link>Assets\CardImages\BRMA17_3H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_4.png">
+      <Link>Assets\CardImages\BRMA17_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_5.png">
+      <Link>Assets\CardImages\BRMA17_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_5H.png">
+      <Link>Assets\CardImages\BRMA17_5H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_6.png">
+      <Link>Assets\CardImages\BRMA17_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_6H.png">
+      <Link>Assets\CardImages\BRMA17_6H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_7.png">
+      <Link>Assets\CardImages\BRMA17_7.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_8.png">
+      <Link>Assets\CardImages\BRMA17_8.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_8H.png">
+      <Link>Assets\CardImages\BRMA17_8H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA17_9.png">
+      <Link>Assets\CardImages\BRMA17_9.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMA_01.png">
+      <Link>Assets\CardImages\BRMA_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_100.png">
+      <Link>Assets\CardImages\BRMC_100.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_83.png">
+      <Link>Assets\CardImages\BRMC_83.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_84.png">
+      <Link>Assets\CardImages\BRMC_84.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_85.png">
+      <Link>Assets\CardImages\BRMC_85.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_86.png">
+      <Link>Assets\CardImages\BRMC_86.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_87.png">
+      <Link>Assets\CardImages\BRMC_87.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_88.png">
+      <Link>Assets\CardImages\BRMC_88.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_89.png">
+      <Link>Assets\CardImages\BRMC_89.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_90.png">
+      <Link>Assets\CardImages\BRMC_90.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_91.png">
+      <Link>Assets\CardImages\BRMC_91.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_92.png">
+      <Link>Assets\CardImages\BRMC_92.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_93.png">
+      <Link>Assets\CardImages\BRMC_93.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_94.png">
+      <Link>Assets\CardImages\BRMC_94.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_95.png">
+      <Link>Assets\CardImages\BRMC_95.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_95h.png">
+      <Link>Assets\CardImages\BRMC_95h.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_95he.png">
+      <Link>Assets\CardImages\BRMC_95he.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_96.png">
+      <Link>Assets\CardImages\BRMC_96.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_97.png">
+      <Link>Assets\CardImages\BRMC_97.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_98.png">
+      <Link>Assets\CardImages\BRMC_98.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_99.png">
+      <Link>Assets\CardImages\BRMC_99.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRMC_99e.png">
+      <Link>Assets\CardImages\BRMC_99e.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_001.png">
+      <Link>Assets\CardImages\BRM_001.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_002.png">
+      <Link>Assets\CardImages\BRM_002.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_003.png">
+      <Link>Assets\CardImages\BRM_003.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_004.png">
+      <Link>Assets\CardImages\BRM_004.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_004t.png">
+      <Link>Assets\CardImages\BRM_004t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_005.png">
+      <Link>Assets\CardImages\BRM_005.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_006.png">
+      <Link>Assets\CardImages\BRM_006.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_006t.png">
+      <Link>Assets\CardImages\BRM_006t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_007.png">
+      <Link>Assets\CardImages\BRM_007.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_008.png">
+      <Link>Assets\CardImages\BRM_008.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_009.png">
+      <Link>Assets\CardImages\BRM_009.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_010.png">
+      <Link>Assets\CardImages\BRM_010.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_010a.png">
+      <Link>Assets\CardImages\BRM_010a.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_010b.png">
+      <Link>Assets\CardImages\BRM_010b.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_010t.png">
+      <Link>Assets\CardImages\BRM_010t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_010t2.png">
+      <Link>Assets\CardImages\BRM_010t2.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_011.png">
+      <Link>Assets\CardImages\BRM_011.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_012.png">
+      <Link>Assets\CardImages\BRM_012.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_013.png">
+      <Link>Assets\CardImages\BRM_013.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_014.png">
+      <Link>Assets\CardImages\BRM_014.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_015.png">
+      <Link>Assets\CardImages\BRM_015.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_016.png">
+      <Link>Assets\CardImages\BRM_016.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_017.png">
+      <Link>Assets\CardImages\BRM_017.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_018.png">
+      <Link>Assets\CardImages\BRM_018.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_019.png">
+      <Link>Assets\CardImages\BRM_019.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_020.png">
+      <Link>Assets\CardImages\BRM_020.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_022.png">
+      <Link>Assets\CardImages\BRM_022.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_022t.png">
+      <Link>Assets\CardImages\BRM_022t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_024.png">
+      <Link>Assets\CardImages\BRM_024.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_025.png">
+      <Link>Assets\CardImages\BRM_025.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_026.png">
+      <Link>Assets\CardImages\BRM_026.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_027.png">
+      <Link>Assets\CardImages\BRM_027.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_027h.png">
+      <Link>Assets\CardImages\BRM_027h.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_027p.png">
+      <Link>Assets\CardImages\BRM_027p.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_027pH.png">
+      <Link>Assets\CardImages\BRM_027pH.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_028.png">
+      <Link>Assets\CardImages\BRM_028.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_029.png">
+      <Link>Assets\CardImages\BRM_029.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_030.png">
+      <Link>Assets\CardImages\BRM_030.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_030t.png">
+      <Link>Assets\CardImages\BRM_030t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_031.png">
+      <Link>Assets\CardImages\BRM_031.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_033.png">
+      <Link>Assets\CardImages\BRM_033.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\BRM_034.png">
+      <Link>Assets\CardImages\BRM_034.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_01.png">
+      <Link>Assets\CardImages\CRED_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_02.png">
+      <Link>Assets\CardImages\CRED_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_03.png">
+      <Link>Assets\CardImages\CRED_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_04.png">
+      <Link>Assets\CardImages\CRED_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_05.png">
+      <Link>Assets\CardImages\CRED_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_06.png">
+      <Link>Assets\CardImages\CRED_06.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_07.png">
+      <Link>Assets\CardImages\CRED_07.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_08.png">
+      <Link>Assets\CardImages\CRED_08.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_09.png">
+      <Link>Assets\CardImages\CRED_09.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_10.png">
+      <Link>Assets\CardImages\CRED_10.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_11.png">
+      <Link>Assets\CardImages\CRED_11.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_12.png">
+      <Link>Assets\CardImages\CRED_12.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_13.png">
+      <Link>Assets\CardImages\CRED_13.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_14.png">
+      <Link>Assets\CardImages\CRED_14.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_15.png">
+      <Link>Assets\CardImages\CRED_15.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_16.png">
+      <Link>Assets\CardImages\CRED_16.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_17.png">
+      <Link>Assets\CardImages\CRED_17.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_18.png">
+      <Link>Assets\CardImages\CRED_18.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_19.png">
+      <Link>Assets\CardImages\CRED_19.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_20.png">
+      <Link>Assets\CardImages\CRED_20.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_21.png">
+      <Link>Assets\CardImages\CRED_21.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_22.png">
+      <Link>Assets\CardImages\CRED_22.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_23.png">
+      <Link>Assets\CardImages\CRED_23.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_24.png">
+      <Link>Assets\CardImages\CRED_24.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_25.png">
+      <Link>Assets\CardImages\CRED_25.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_26.png">
+      <Link>Assets\CardImages\CRED_26.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_27.png">
+      <Link>Assets\CardImages\CRED_27.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_28.png">
+      <Link>Assets\CardImages\CRED_28.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_29.png">
+      <Link>Assets\CardImages\CRED_29.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_30.png">
+      <Link>Assets\CardImages\CRED_30.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_31.png">
+      <Link>Assets\CardImages\CRED_31.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_32.png">
+      <Link>Assets\CardImages\CRED_32.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_33.png">
+      <Link>Assets\CardImages\CRED_33.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_34.png">
+      <Link>Assets\CardImages\CRED_34.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_35.png">
+      <Link>Assets\CardImages\CRED_35.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_36.png">
+      <Link>Assets\CardImages\CRED_36.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_37.png">
+      <Link>Assets\CardImages\CRED_37.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_38.png">
+      <Link>Assets\CardImages\CRED_38.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_39.png">
+      <Link>Assets\CardImages\CRED_39.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_40.png">
+      <Link>Assets\CardImages\CRED_40.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_41.png">
+      <Link>Assets\CardImages\CRED_41.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_42.png">
+      <Link>Assets\CardImages\CRED_42.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_43.png">
+      <Link>Assets\CardImages\CRED_43.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_44.png">
+      <Link>Assets\CardImages\CRED_44.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_45.png">
+      <Link>Assets\CardImages\CRED_45.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CRED_46.png">
+      <Link>Assets\CardImages\CRED_46.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\CS1h_001.png">
       <Link>Assets\CardImages\CS1h_001.png</Link>
     </Content>
@@ -394,6 +1198,9 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\CS2_034.png">
       <Link>Assets\CardImages\CS2_034.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CS2_034_H1.png">
+      <Link>Assets\CardImages\CS2_034_H1.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\CS2_037.png">
       <Link>Assets\CardImages\CS2_037.png</Link>
@@ -515,8 +1322,14 @@
     <Content Include="..\Shared\Assets\CardImages\CS2_101t.png">
       <Link>Assets\CardImages\CS2_101t.png</Link>
     </Content>
+    <Content Include="..\Shared\Assets\CardImages\CS2_101_H1.png">
+      <Link>Assets\CardImages\CS2_101_H1.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\CS2_102.png">
       <Link>Assets\CardImages\CS2_102.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\CS2_102_H1.png">
+      <Link>Assets\CardImages\CS2_102_H1.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\CS2_103.png">
       <Link>Assets\CardImages\CS2_103.png</Link>
@@ -712,6 +1525,9 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\DS1h_292.png">
       <Link>Assets\CardImages\DS1h_292.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\DS1h_292_H1.png">
+      <Link>Assets\CardImages\DS1h_292_H1.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\DS1_055.png">
       <Link>Assets\CardImages\DS1_055.png</Link>
@@ -922,6 +1738,9 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\EX1_116.png">
       <Link>Assets\CardImages\EX1_116.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\EX1_116t.png">
+      <Link>Assets\CardImages\EX1_116t.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\EX1_124.png">
       <Link>Assets\CardImages\EX1_124.png</Link>
@@ -1574,6 +2393,114 @@
     <Content Include="..\Shared\Assets\CardImages\EX1_tk9.png">
       <Link>Assets\CardImages\EX1_tk9.png</Link>
     </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_001.png">
+      <Link>Assets\CardImages\FP1_001.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_002.png">
+      <Link>Assets\CardImages\FP1_002.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_002t.png">
+      <Link>Assets\CardImages\FP1_002t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_003.png">
+      <Link>Assets\CardImages\FP1_003.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_004.png">
+      <Link>Assets\CardImages\FP1_004.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_005.png">
+      <Link>Assets\CardImages\FP1_005.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_006.png">
+      <Link>Assets\CardImages\FP1_006.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_007.png">
+      <Link>Assets\CardImages\FP1_007.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_007t.png">
+      <Link>Assets\CardImages\FP1_007t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_008.png">
+      <Link>Assets\CardImages\FP1_008.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_009.png">
+      <Link>Assets\CardImages\FP1_009.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_010.png">
+      <Link>Assets\CardImages\FP1_010.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_011.png">
+      <Link>Assets\CardImages\FP1_011.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_012.png">
+      <Link>Assets\CardImages\FP1_012.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_012t.png">
+      <Link>Assets\CardImages\FP1_012t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_013.png">
+      <Link>Assets\CardImages\FP1_013.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_014.png">
+      <Link>Assets\CardImages\FP1_014.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_014t.png">
+      <Link>Assets\CardImages\FP1_014t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_015.png">
+      <Link>Assets\CardImages\FP1_015.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_016.png">
+      <Link>Assets\CardImages\FP1_016.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_017.png">
+      <Link>Assets\CardImages\FP1_017.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_018.png">
+      <Link>Assets\CardImages\FP1_018.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_019.png">
+      <Link>Assets\CardImages\FP1_019.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_019t.png">
+      <Link>Assets\CardImages\FP1_019t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_020.png">
+      <Link>Assets\CardImages\FP1_020.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_021.png">
+      <Link>Assets\CardImages\FP1_021.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_022.png">
+      <Link>Assets\CardImages\FP1_022.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_023.png">
+      <Link>Assets\CardImages\FP1_023.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_024.png">
+      <Link>Assets\CardImages\FP1_024.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_025.png">
+      <Link>Assets\CardImages\FP1_025.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_026.png">
+      <Link>Assets\CardImages\FP1_026.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_027.png">
+      <Link>Assets\CardImages\FP1_027.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_028.png">
+      <Link>Assets\CardImages\FP1_028.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_029.png">
+      <Link>Assets\CardImages\FP1_029.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_030.png">
+      <Link>Assets\CardImages\FP1_030.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\FP1_031.png">
+      <Link>Assets\CardImages\FP1_031.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\GAME_002.png">
       <Link>Assets\CardImages\GAME_002.png</Link>
     </Content>
@@ -1583,8 +2510,419 @@
     <Content Include="..\Shared\Assets\CardImages\GAME_006.png">
       <Link>Assets\CardImages\GAME_006.png</Link>
     </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_001.png">
+      <Link>Assets\CardImages\GVG_001.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_002.png">
+      <Link>Assets\CardImages\GVG_002.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_003.png">
+      <Link>Assets\CardImages\GVG_003.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_004.png">
+      <Link>Assets\CardImages\GVG_004.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_005.png">
+      <Link>Assets\CardImages\GVG_005.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_006.png">
+      <Link>Assets\CardImages\GVG_006.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_007.png">
+      <Link>Assets\CardImages\GVG_007.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_008.png">
+      <Link>Assets\CardImages\GVG_008.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_009.png">
+      <Link>Assets\CardImages\GVG_009.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_010.png">
+      <Link>Assets\CardImages\GVG_010.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_011.png">
+      <Link>Assets\CardImages\GVG_011.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_012.png">
+      <Link>Assets\CardImages\GVG_012.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_013.png">
+      <Link>Assets\CardImages\GVG_013.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_014.png">
+      <Link>Assets\CardImages\GVG_014.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_015.png">
+      <Link>Assets\CardImages\GVG_015.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_016.png">
+      <Link>Assets\CardImages\GVG_016.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_017.png">
+      <Link>Assets\CardImages\GVG_017.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_018.png">
+      <Link>Assets\CardImages\GVG_018.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_019.png">
+      <Link>Assets\CardImages\GVG_019.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_020.png">
+      <Link>Assets\CardImages\GVG_020.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_021.png">
+      <Link>Assets\CardImages\GVG_021.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_022.png">
+      <Link>Assets\CardImages\GVG_022.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_023.png">
+      <Link>Assets\CardImages\GVG_023.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_024.png">
+      <Link>Assets\CardImages\GVG_024.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_025.png">
+      <Link>Assets\CardImages\GVG_025.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_026.png">
+      <Link>Assets\CardImages\GVG_026.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_027.png">
+      <Link>Assets\CardImages\GVG_027.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_028.png">
+      <Link>Assets\CardImages\GVG_028.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_028t.png">
+      <Link>Assets\CardImages\GVG_028t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_029.png">
+      <Link>Assets\CardImages\GVG_029.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_030.png">
+      <Link>Assets\CardImages\GVG_030.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_030a.png">
+      <Link>Assets\CardImages\GVG_030a.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_030b.png">
+      <Link>Assets\CardImages\GVG_030b.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_031.png">
+      <Link>Assets\CardImages\GVG_031.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_032.png">
+      <Link>Assets\CardImages\GVG_032.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_032a.png">
+      <Link>Assets\CardImages\GVG_032a.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_032b.png">
+      <Link>Assets\CardImages\GVG_032b.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_033.png">
+      <Link>Assets\CardImages\GVG_033.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_034.png">
+      <Link>Assets\CardImages\GVG_034.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_035.png">
+      <Link>Assets\CardImages\GVG_035.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_036.png">
+      <Link>Assets\CardImages\GVG_036.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_037.png">
+      <Link>Assets\CardImages\GVG_037.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_038.png">
+      <Link>Assets\CardImages\GVG_038.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_039.png">
+      <Link>Assets\CardImages\GVG_039.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_040.png">
+      <Link>Assets\CardImages\GVG_040.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_041.png">
+      <Link>Assets\CardImages\GVG_041.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_041a.png">
+      <Link>Assets\CardImages\GVG_041a.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_041b.png">
+      <Link>Assets\CardImages\GVG_041b.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_042.png">
+      <Link>Assets\CardImages\GVG_042.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_043.png">
+      <Link>Assets\CardImages\GVG_043.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_044.png">
+      <Link>Assets\CardImages\GVG_044.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_045.png">
+      <Link>Assets\CardImages\GVG_045.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_045t.png">
+      <Link>Assets\CardImages\GVG_045t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_046.png">
+      <Link>Assets\CardImages\GVG_046.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_047.png">
+      <Link>Assets\CardImages\GVG_047.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_048.png">
+      <Link>Assets\CardImages\GVG_048.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_049.png">
+      <Link>Assets\CardImages\GVG_049.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_050.png">
+      <Link>Assets\CardImages\GVG_050.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_051.png">
+      <Link>Assets\CardImages\GVG_051.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_052.png">
+      <Link>Assets\CardImages\GVG_052.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_053.png">
+      <Link>Assets\CardImages\GVG_053.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_054.png">
+      <Link>Assets\CardImages\GVG_054.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_055.png">
+      <Link>Assets\CardImages\GVG_055.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_056.png">
+      <Link>Assets\CardImages\GVG_056.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_056t.png">
+      <Link>Assets\CardImages\GVG_056t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_057.png">
+      <Link>Assets\CardImages\GVG_057.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_058.png">
+      <Link>Assets\CardImages\GVG_058.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_059.png">
+      <Link>Assets\CardImages\GVG_059.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_060.png">
+      <Link>Assets\CardImages\GVG_060.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_061.png">
+      <Link>Assets\CardImages\GVG_061.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_062.png">
+      <Link>Assets\CardImages\GVG_062.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_063.png">
+      <Link>Assets\CardImages\GVG_063.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_064.png">
+      <Link>Assets\CardImages\GVG_064.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_065.png">
+      <Link>Assets\CardImages\GVG_065.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_066.png">
+      <Link>Assets\CardImages\GVG_066.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_067.png">
+      <Link>Assets\CardImages\GVG_067.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_068.png">
+      <Link>Assets\CardImages\GVG_068.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_069.png">
+      <Link>Assets\CardImages\GVG_069.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_070.png">
+      <Link>Assets\CardImages\GVG_070.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_071.png">
+      <Link>Assets\CardImages\GVG_071.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_072.png">
+      <Link>Assets\CardImages\GVG_072.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_073.png">
+      <Link>Assets\CardImages\GVG_073.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_074.png">
+      <Link>Assets\CardImages\GVG_074.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_075.png">
+      <Link>Assets\CardImages\GVG_075.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_076.png">
+      <Link>Assets\CardImages\GVG_076.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_077.png">
+      <Link>Assets\CardImages\GVG_077.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_078.png">
+      <Link>Assets\CardImages\GVG_078.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_079.png">
+      <Link>Assets\CardImages\GVG_079.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_080.png">
+      <Link>Assets\CardImages\GVG_080.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_080t.png">
+      <Link>Assets\CardImages\GVG_080t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_081.png">
+      <Link>Assets\CardImages\GVG_081.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_082.png">
+      <Link>Assets\CardImages\GVG_082.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_083.png">
+      <Link>Assets\CardImages\GVG_083.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_084.png">
+      <Link>Assets\CardImages\GVG_084.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_085.png">
+      <Link>Assets\CardImages\GVG_085.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_086.png">
+      <Link>Assets\CardImages\GVG_086.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_087.png">
+      <Link>Assets\CardImages\GVG_087.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_088.png">
+      <Link>Assets\CardImages\GVG_088.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_089.png">
+      <Link>Assets\CardImages\GVG_089.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_090.png">
+      <Link>Assets\CardImages\GVG_090.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_091.png">
+      <Link>Assets\CardImages\GVG_091.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_092.png">
+      <Link>Assets\CardImages\GVG_092.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_092t.png">
+      <Link>Assets\CardImages\GVG_092t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_093.png">
+      <Link>Assets\CardImages\GVG_093.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_094.png">
+      <Link>Assets\CardImages\GVG_094.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_095.png">
+      <Link>Assets\CardImages\GVG_095.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_096.png">
+      <Link>Assets\CardImages\GVG_096.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_097.png">
+      <Link>Assets\CardImages\GVG_097.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_098.png">
+      <Link>Assets\CardImages\GVG_098.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_099.png">
+      <Link>Assets\CardImages\GVG_099.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_100.png">
+      <Link>Assets\CardImages\GVG_100.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_101.png">
+      <Link>Assets\CardImages\GVG_101.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_102.png">
+      <Link>Assets\CardImages\GVG_102.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_103.png">
+      <Link>Assets\CardImages\GVG_103.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_104.png">
+      <Link>Assets\CardImages\GVG_104.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_105.png">
+      <Link>Assets\CardImages\GVG_105.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_106.png">
+      <Link>Assets\CardImages\GVG_106.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_107.png">
+      <Link>Assets\CardImages\GVG_107.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_108.png">
+      <Link>Assets\CardImages\GVG_108.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_109.png">
+      <Link>Assets\CardImages\GVG_109.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_110.png">
+      <Link>Assets\CardImages\GVG_110.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_110t.png">
+      <Link>Assets\CardImages\GVG_110t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_111.png">
+      <Link>Assets\CardImages\GVG_111.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_111t.png">
+      <Link>Assets\CardImages\GVG_111t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_112.png">
+      <Link>Assets\CardImages\GVG_112.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_113.png">
+      <Link>Assets\CardImages\GVG_113.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_114.png">
+      <Link>Assets\CardImages\GVG_114.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_115.png">
+      <Link>Assets\CardImages\GVG_115.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_116.png">
+      <Link>Assets\CardImages\GVG_116.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_117.png">
+      <Link>Assets\CardImages\GVG_117.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_118.png">
+      <Link>Assets\CardImages\GVG_118.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_119.png">
+      <Link>Assets\CardImages\GVG_119.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_120.png">
+      <Link>Assets\CardImages\GVG_120.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_121.png">
+      <Link>Assets\CardImages\GVG_121.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_122.png">
+      <Link>Assets\CardImages\GVG_122.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\GVG_123.png">
+      <Link>Assets\CardImages\GVG_123.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\HERO_01.png">
       <Link>Assets\CardImages\HERO_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\HERO_01a.png">
+      <Link>Assets\CardImages\HERO_01a.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\HERO_02.png">
       <Link>Assets\CardImages\HERO_02.png</Link>
@@ -1598,6 +2936,9 @@
     <Content Include="..\Shared\Assets\CardImages\HERO_05.png">
       <Link>Assets\CardImages\HERO_05.png</Link>
     </Content>
+    <Content Include="..\Shared\Assets\CardImages\HERO_05a.png">
+      <Link>Assets\CardImages\HERO_05a.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\HERO_06.png">
       <Link>Assets\CardImages\HERO_06.png</Link>
     </Content>
@@ -1606,6 +2947,9 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\HERO_08.png">
       <Link>Assets\CardImages\HERO_08.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\HERO_08a.png">
+      <Link>Assets\CardImages\HERO_08a.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\HERO_09.png">
       <Link>Assets\CardImages\HERO_09.png</Link>
@@ -1627,6 +2971,330 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\Mekka4t.png">
       <Link>Assets\CardImages\Mekka4t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_01.png">
+      <Link>Assets\CardImages\NAX10_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_01H.png">
+      <Link>Assets\CardImages\NAX10_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_02.png">
+      <Link>Assets\CardImages\NAX10_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_02H.png">
+      <Link>Assets\CardImages\NAX10_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_03.png">
+      <Link>Assets\CardImages\NAX10_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX10_03H.png">
+      <Link>Assets\CardImages\NAX10_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_01.png">
+      <Link>Assets\CardImages\NAX11_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_01H.png">
+      <Link>Assets\CardImages\NAX11_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_02.png">
+      <Link>Assets\CardImages\NAX11_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_02H.png">
+      <Link>Assets\CardImages\NAX11_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_03.png">
+      <Link>Assets\CardImages\NAX11_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX11_04.png">
+      <Link>Assets\CardImages\NAX11_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_01.png">
+      <Link>Assets\CardImages\NAX12_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_01H.png">
+      <Link>Assets\CardImages\NAX12_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_02.png">
+      <Link>Assets\CardImages\NAX12_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_02H.png">
+      <Link>Assets\CardImages\NAX12_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_03.png">
+      <Link>Assets\CardImages\NAX12_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_03H.png">
+      <Link>Assets\CardImages\NAX12_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX12_04.png">
+      <Link>Assets\CardImages\NAX12_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_01.png">
+      <Link>Assets\CardImages\NAX13_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_01H.png">
+      <Link>Assets\CardImages\NAX13_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_02.png">
+      <Link>Assets\CardImages\NAX13_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_03.png">
+      <Link>Assets\CardImages\NAX13_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_04H.png">
+      <Link>Assets\CardImages\NAX13_04H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX13_05H.png">
+      <Link>Assets\CardImages\NAX13_05H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX14_01.png">
+      <Link>Assets\CardImages\NAX14_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX14_01H.png">
+      <Link>Assets\CardImages\NAX14_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX14_02.png">
+      <Link>Assets\CardImages\NAX14_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX14_03.png">
+      <Link>Assets\CardImages\NAX14_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX14_04.png">
+      <Link>Assets\CardImages\NAX14_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_01.png">
+      <Link>Assets\CardImages\NAX15_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_01H.png">
+      <Link>Assets\CardImages\NAX15_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_02.png">
+      <Link>Assets\CardImages\NAX15_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_02H.png">
+      <Link>Assets\CardImages\NAX15_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_03n.png">
+      <Link>Assets\CardImages\NAX15_03n.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_03t.png">
+      <Link>Assets\CardImages\NAX15_03t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_04.png">
+      <Link>Assets\CardImages\NAX15_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_04H.png">
+      <Link>Assets\CardImages\NAX15_04H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX15_05.png">
+      <Link>Assets\CardImages\NAX15_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1h_01.png">
+      <Link>Assets\CardImages\NAX1h_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1h_03.png">
+      <Link>Assets\CardImages\NAX1h_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1h_04.png">
+      <Link>Assets\CardImages\NAX1h_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1_01.png">
+      <Link>Assets\CardImages\NAX1_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1_03.png">
+      <Link>Assets\CardImages\NAX1_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1_04.png">
+      <Link>Assets\CardImages\NAX1_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX1_05.png">
+      <Link>Assets\CardImages\NAX1_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_01.png">
+      <Link>Assets\CardImages\NAX2_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_01H.png">
+      <Link>Assets\CardImages\NAX2_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_03.png">
+      <Link>Assets\CardImages\NAX2_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_03H.png">
+      <Link>Assets\CardImages\NAX2_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_05.png">
+      <Link>Assets\CardImages\NAX2_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX2_05H.png">
+      <Link>Assets\CardImages\NAX2_05H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX3_01.png">
+      <Link>Assets\CardImages\NAX3_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX3_01H.png">
+      <Link>Assets\CardImages\NAX3_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX3_02.png">
+      <Link>Assets\CardImages\NAX3_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX3_02H.png">
+      <Link>Assets\CardImages\NAX3_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX3_03.png">
+      <Link>Assets\CardImages\NAX3_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_01.png">
+      <Link>Assets\CardImages\NAX4_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_01H.png">
+      <Link>Assets\CardImages\NAX4_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_03.png">
+      <Link>Assets\CardImages\NAX4_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_03H.png">
+      <Link>Assets\CardImages\NAX4_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_04.png">
+      <Link>Assets\CardImages\NAX4_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_04H.png">
+      <Link>Assets\CardImages\NAX4_04H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX4_05.png">
+      <Link>Assets\CardImages\NAX4_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX5_01.png">
+      <Link>Assets\CardImages\NAX5_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX5_01H.png">
+      <Link>Assets\CardImages\NAX5_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX5_02.png">
+      <Link>Assets\CardImages\NAX5_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX5_02H.png">
+      <Link>Assets\CardImages\NAX5_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX5_03.png">
+      <Link>Assets\CardImages\NAX5_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_01.png">
+      <Link>Assets\CardImages\NAX6_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_01H.png">
+      <Link>Assets\CardImages\NAX6_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_02.png">
+      <Link>Assets\CardImages\NAX6_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_02H.png">
+      <Link>Assets\CardImages\NAX6_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_03.png">
+      <Link>Assets\CardImages\NAX6_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_03t.png">
+      <Link>Assets\CardImages\NAX6_03t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX6_04.png">
+      <Link>Assets\CardImages\NAX6_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_01.png">
+      <Link>Assets\CardImages\NAX7_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_01H.png">
+      <Link>Assets\CardImages\NAX7_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_02.png">
+      <Link>Assets\CardImages\NAX7_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_03.png">
+      <Link>Assets\CardImages\NAX7_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_03H.png">
+      <Link>Assets\CardImages\NAX7_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_04.png">
+      <Link>Assets\CardImages\NAX7_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_04H.png">
+      <Link>Assets\CardImages\NAX7_04H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX7_05.png">
+      <Link>Assets\CardImages\NAX7_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_01.png">
+      <Link>Assets\CardImages\NAX8_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_01H.png">
+      <Link>Assets\CardImages\NAX8_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_02.png">
+      <Link>Assets\CardImages\NAX8_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_02H.png">
+      <Link>Assets\CardImages\NAX8_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_03.png">
+      <Link>Assets\CardImages\NAX8_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_03t.png">
+      <Link>Assets\CardImages\NAX8_03t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_04.png">
+      <Link>Assets\CardImages\NAX8_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_04t.png">
+      <Link>Assets\CardImages\NAX8_04t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_05.png">
+      <Link>Assets\CardImages\NAX8_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX8_05t.png">
+      <Link>Assets\CardImages\NAX8_05t.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_01.png">
+      <Link>Assets\CardImages\NAX9_01.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_01H.png">
+      <Link>Assets\CardImages\NAX9_01H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_02.png">
+      <Link>Assets\CardImages\NAX9_02.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_02H.png">
+      <Link>Assets\CardImages\NAX9_02H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_03.png">
+      <Link>Assets\CardImages\NAX9_03.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_03H.png">
+      <Link>Assets\CardImages\NAX9_03H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_04.png">
+      <Link>Assets\CardImages\NAX9_04.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_04H.png">
+      <Link>Assets\CardImages\NAX9_04H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_05.png">
+      <Link>Assets\CardImages\NAX9_05.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_05H.png">
+      <Link>Assets\CardImages\NAX9_05H.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_06.png">
+      <Link>Assets\CardImages\NAX9_06.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAX9_07.png">
+      <Link>Assets\CardImages\NAX9_07.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAXM_001.png">
+      <Link>Assets\CardImages\NAXM_001.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\NAXM_002.png">
+      <Link>Assets\CardImages\NAXM_002.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\NEW1_003.png">
       <Link>Assets\CardImages\NEW1_003.png</Link>
@@ -1745,6 +3413,27 @@
     <Content Include="..\Shared\Assets\CardImages\NEW1_041.png">
       <Link>Assets\CardImages\NEW1_041.png</Link>
     </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_001.png">
+      <Link>Assets\CardImages\PART_001.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_002.png">
+      <Link>Assets\CardImages\PART_002.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_003.png">
+      <Link>Assets\CardImages\PART_003.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_004.png">
+      <Link>Assets\CardImages\PART_004.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_005.png">
+      <Link>Assets\CardImages\PART_005.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_006.png">
+      <Link>Assets\CardImages\PART_006.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\PART_007.png">
+      <Link>Assets\CardImages\PART_007.png</Link>
+    </Content>
     <Content Include="..\Shared\Assets\CardImages\PRO_001.png">
       <Link>Assets\CardImages\PRO_001.png</Link>
     </Content>
@@ -1765,6 +3454,27 @@
     </Content>
     <Content Include="..\Shared\Assets\CardImages\skele21.png">
       <Link>Assets\CardImages\skele21.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TBA01_1.png">
+      <Link>Assets\CardImages\TBA01_1.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TBA01_4.png">
+      <Link>Assets\CardImages\TBA01_4.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TBA01_5.png">
+      <Link>Assets\CardImages\TBA01_5.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TBA01_6.png">
+      <Link>Assets\CardImages\TBA01_6.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TB_006.png">
+      <Link>Assets\CardImages\TB_006.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TB_007.png">
+      <Link>Assets\CardImages\TB_007.png</Link>
+    </Content>
+    <Content Include="..\Shared\Assets\CardImages\TB_008.png">
+      <Link>Assets\CardImages\TB_008.png</Link>
     </Content>
     <Content Include="..\Shared\Assets\CardImages\tt_004.png">
       <Link>Assets\CardImages\tt_004.png</Link>
