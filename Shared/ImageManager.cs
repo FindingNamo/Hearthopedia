@@ -48,23 +48,36 @@ namespace Hearthopedia
 
         public async void SetImageFromCard(Card card, Image cardImage)
         {
+            BitmapImage image = null;
+            Uri imageUri;
+
             // use local copy first
             try
             {
                 StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(card.localFilename);
-                Uri imageUri; BitmapImage image = null;
-                if (Uri.TryCreate(localFile.Path, UriKind.RelativeOrAbsolute, out imageUri))
-                {
-                    image = new BitmapImage(imageUri);
-                }
-                cardImage.Source = image;
+                imageUri = new Uri(localFile.Path, UriKind.RelativeOrAbsolute);
             }
             // if things go horribly wrong or if it's the first time and we don't have a local copy, use backup
             catch
             {
-                Uri imageUri = new Uri(card.backupURI, UriKind.RelativeOrAbsolute);
-                BitmapImage image = new BitmapImage(imageUri);
-                cardImage.Source = image;
+                imageUri = new Uri(card.backupURI, UriKind.RelativeOrAbsolute);
+            }
+
+            if (imageUri != null)
+            {
+                image = new BitmapImage
+                {
+                    CreateOptions = BitmapCreateOptions.IgnoreImageCache,
+                    UriSource = imageUri,
+                };
+
+                image.ImageOpened += (sender, args) =>
+                {
+                    Utilities.DispatchOnUIThread(() =>
+                    {
+                        cardImage.Source = image;
+                    });
+                };
             }
 
             // try to download to have an updated local copy

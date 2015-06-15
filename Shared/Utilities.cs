@@ -14,10 +14,23 @@ namespace Hearthopedia
 {
     class Utilities
     {
+        public static void DispatchOnUIThread(Action action)
+        {
+#if NETFX_CORE
+            CoreDispatcher dispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+          dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => {
+#else
+          System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+          {
+#endif
+              action();
+          });
+        }
+
         public static Card GetCardFromJson(string json)
         {
             Card card = JsonConvert.DeserializeObject<Card>(json);
-            card.DebugEnumCheck();
+            //card.DebugEnumCheck();
             return card;
         }
 
