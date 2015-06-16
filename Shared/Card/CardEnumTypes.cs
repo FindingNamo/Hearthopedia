@@ -52,6 +52,8 @@ public enum CardSet
 	BlackrockMountain = 14,
 
     Credits = 16,
+
+	[FriendlyNameAttribute("Hero Skins")]
     HeroSkins = 17,
     Bosses = 18,
 }
