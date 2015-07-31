@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:WindowsPhone8="clr-namespace:Microsoft.AdMediator.WindowsPhone8;assembly=Microsoft.AdMediator.WindowsPhone8"
     x:Class="Hearthopedia.CardPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -14,9 +14,9 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
-    
+
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        
+
         <Grid.Resources>
 
             <Style x:Key="SmallCardStatsOverTypeOutline" TargetType="TextBlock">
@@ -60,7 +60,7 @@
                     </ContentPresenter>
                 </DataTemplate>
             </phone:Panorama.TitleTemplate>
-            
+
             <phone:Panorama.HeaderTemplate>
                 <DataTemplate>
                     <ContentPresenter>
@@ -79,7 +79,7 @@
                         <RowDefinition Height=".7*" />
                         <RowDefinition Height=".3*" />
                     </Grid.RowDefinitions>
-                   
+
                     <!-- A Grid to describe the text stats -->
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
@@ -137,11 +137,11 @@
                         <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="-2,0,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
                         <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Margin="0,-2,0,0" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverTypeOutline}" />
                         <TextBlock Grid.Column="0" Grid.Row="8" Text="{Binding attack}" Style="{StaticResource SmallCardStatsOverType}" />
-                        
+
                     </Grid>
-                    
+
                     <Grid Grid.Row="1">
-                        <TextBlock Name="textBlockFlavourText" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="" />
+                        <TextBlock x:Name="textBlockFlavourText" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontStyle="Italic" Text="" />
                     </Grid>
                 </Grid>
             </phone:PanoramaItem>
@@ -149,8 +149,7 @@
             <phone:PanoramaItem Header="Mechanics">
                 <ListBox x:Name="listCards" ItemsSource="{Binding MechanicData}" HorizontalContentAlignment="Stretch">
                     <ListBox.Template>
-                        <ControlTemplate TargetType="ListBox">
-                        </ControlTemplate>
+                        <ControlTemplate TargetType="ListBox"/>
                     </ListBox.Template>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
@@ -174,7 +173,7 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem  Header="Tier List"
-                Name="PanoramaItemTierList">
+				x:Name="PanoramaItemTierList">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -182,8 +181,8 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0">
                         <TextBlock Foreground="White" FontWeight="Medium" Text="Class:" />
-                        <toolkit:ListPicker Name="ListPickerTierClass" 
-                                            ExpansionMode="FullScreenOnly" SelectionChanged="ListPickerTierClass_SelectionChanged">
+                        <toolkit:ListPicker x:Name="ListPickerTierClass" 
+							ExpansionMode="FullScreenOnly" SelectionChanged="ListPickerTierClass_SelectionChanged">
                             <toolkit:ListPicker.FullModeItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Margin="0,20" Text="{Binding}" FontSize="32"/>
@@ -191,19 +190,26 @@
                             </toolkit:ListPicker.FullModeItemTemplate>
                         </toolkit:ListPicker>
                     </StackPanel>
-                    
+
                     <StackPanel Grid.Row="1">
                         <TextBlock Foreground="White" FontWeight="Medium" Text="Tier:" />
-                        <TextBlock Name="TextBlockTierRank"  Margin="8,0,0,0" Foreground="White" Text="{Binding TierString}" />                        
+                        <TextBlock x:Name="TextBlockTierRank"  Margin="8,0,0,0" Foreground="White" Text="{Binding TierString}" />
                     </StackPanel>
                 </Grid>
-                
+
 
             </phone:PanoramaItem>
 
 
 
         </phone:Panorama>
-        <UI:AdControl Grid.Row="2" ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
+
+        <WindowsPhone8:AdMediatorControl 
+            x:Name="AdMediator_CardPage" 
+            Height="80" 
+            Id="AdMediator-Id-472933D1-39DF-4DCC-A5FA-8BD4B47767A6" 
+            Grid.Row="2" 
+            Width="480"/>
+
     </Grid>
 </phone:PhoneApplicationPage>

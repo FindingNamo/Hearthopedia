@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="34061StillAtTheBottom.Hearthopedia" Publisher="CN=3D63ECE5-EA86-4677-A426-E0691BE66FFB" Version="2.0.0.0" />
+  <Identity Name="34061StillAtTheBottom.Hearthopedia" Publisher="CN=3D63ECE5-EA86-4677-A426-E0691BE66FFB" Version="2.1.0.1" />
   <mp:PhoneIdentity PhoneProductId="daa7e37a-765b-4951-8447-35213e3f1ff0" PhonePublisherId="da5469da-6dec-4631-b10c-ad1570d719b5" />
   <Properties>
     <DisplayName>HearthopediaWinPhone</DisplayName>
@@ -38,4 +38,7 @@
       </InProcessServer>
     </Extension>
   </Extensions>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+  </Capabilities>
 </Package>

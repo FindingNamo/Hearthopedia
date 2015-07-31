@@ -235,6 +235,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="AdMediator.config" />
     <None Include="RateMyAppGuide_v1 1.pdf" />
     <Resource Include="..\Shared\Assets\TierList\antigravity_druid.json">
       <Link>Assets\TierList\antigravity_druid.json</Link>
@@ -3711,6 +3712,35 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AdDuplex.WindowsPhone, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AdDuplexWP8.2.8.1.0\lib\wp8\AdDuplex.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.Core, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AdMediator.WindowsPhone8, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\Microsoft.AdMediator8\1.0\References\CommonConfiguration\neutral\Microsoft.AdMediator.WindowsPhone8.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone8.AdDuplex, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AdMediator.WindowsPhone8.AdDuplex.1.0.12\lib\wp\Microsoft.AdMediator.WindowsPhone8.AdDuplex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AdMediator.WindowsPhone81SL.MicrosoftAdvertising, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AdMediator.WindowsPhone81SL.MicrosoftAdvertising.1.0.13\lib\wp\Microsoft.AdMediator.WindowsPhone81SL.MicrosoftAdvertising.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile, Version=8.1.40502.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Advertising.WindowsPhone.SL81.8.1.40502.1\lib\wp81\Microsoft.Advertising.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile.Common">
+      <HintPath>..\packages\Microsoft.Advertising.WindowsPhone.SL81.8.1.40502.1\lib\wp81\Microsoft.Advertising.Mobile.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile.UI">
+      <HintPath>..\packages\Microsoft.Advertising.WindowsPhone.SL81.8.1.40502.1\lib\wp81\Microsoft.Advertising.Mobile.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
@@ -3731,11 +3761,6 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="MSAdvertising, Version=6.1">
-      <Name>Microsoft Advertising SDK for Windows Phone 8 %28XAML%29</Name>
-    </SDKReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

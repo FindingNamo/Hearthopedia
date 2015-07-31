@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     xmlns:rma="clr-namespace:RateMyApp.Controls;assembly=RateMyApp"
+    xmlns:windowsPhone8="clr-namespace:Microsoft.AdMediator.WindowsPhone8;assembly=Microsoft.AdMediator.WindowsPhone8"
     x:Class="Hearthopedia.MainPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -273,7 +273,11 @@
             </phone:PanoramaItem>
 
         </phone:Panorama>
-        <UI:AdControl Grid.Row="1"  ApplicationId="99c35982-21c1-4b7d-b2a2-7f338d84d410" AdUnitId="10635459" Height="80" VerticalAlignment="Top" Width="480"/>
+        <windowsPhone8:AdMediatorControl Grid.Row="2"
+            x:Name="AdMediator_MainPage"
+            Height="80" 
+            Id="AdMediator-Id-679E0DB7-1F98-467E-BCD6-B4D0DC58CD75" 
+            Width="480"/>
 
         <!-- Feedback overlay -->
         <rma:FeedbackOverlay x:Name="FeedbackOverlay"
